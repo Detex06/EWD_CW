@@ -15,6 +15,10 @@ app.listen(config.port, (err) => {
 // Connection URL
 mongoose.Promise = global.Promise
 mongoose.connect(config.mongoUri, { dbName: "users" })
+.then(()=>console.log('connected'))
+.catch(e=>console.log(e));
+/*
 mongoose.connection.on('error', err => {
  throw new Error(`unable to connect to database: ${config.mongoUri}`)
 })
+*/
