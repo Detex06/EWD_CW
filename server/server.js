@@ -3,7 +3,7 @@ import app from './express'
 import mongoose from 'mongoose'
 
 //might need to fix later with the "mongodb+srv://<myusername>:<mypassword>@cluster0.dgpco.mongodb.net/<mydatabasename>?retryWrites=true&w=majority"
-const mongoUri = process.env.URI ||  "mongodb://127.0.0.1:27017";
+const URI = process.env.URI ||  "mongodb://127.0.0.1:27017";
 
 app.listen(config.port, (err) => {
     if (err) {
@@ -14,7 +14,7 @@ app.listen(config.port, (err) => {
 
 // Connection URL
 mongoose.Promise = global.Promise
-mongoose.connect(config.mongoUri, { dbName: "users" })
+mongoose.connect(config.URI, { dbName: "users" })
 mongoose.connection.on('error', err => {
- throw new Error(`unable to connect to database: ${config.mongoUri}`)
+ throw new Error(`unable to connect to database: ${config.URI}`)
 })
