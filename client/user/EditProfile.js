@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
@@ -8,8 +8,8 @@ import Typography from '@material-ui/core/Typography'
 import Icon from '@material-ui/core/Icon'
 import { makeStyles } from '@material-ui/core/styles'
 import auth from './../auth/auth-helper'
-import {read, update} from './api-user.js'
-import {Redirect} from 'react-router-dom'
+import { read, update } from './api-user.js'
+import { Redirect } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -43,6 +43,7 @@ export default function EditProfile({ match }) {
     name: '',
     password: '',
     email: '',
+    about: '',
     open: false,
     error: '',
     redirectToProfile: false
@@ -55,14 +56,14 @@ export default function EditProfile({ match }) {
 
     read({
       userId: match.params.userId
-    }, {t: jwt.token}, signal).then((data) => {
+    }, { t: jwt.token }, signal).then((data) => {
       if (data && data.error) {
-        setValues({...values, error: data.error})
+        setValues({ ...values, error: data.error })
       } else {
-        setValues({...values, name: data.name, email: data.email})
+        setValues({ ...values, name: data.name, email: data.email, about: data.about })
       }
     })
-    return function cleanup(){
+    return function cleanup() {
       abortController.abort()
     }
 
@@ -72,7 +73,8 @@ export default function EditProfile({ match }) {
     const user = {
       name: values.name || undefined,
       email: values.email || undefined,
-      password: values.password || undefined
+      password: values.password || undefined,
+      about: values.about || undefined
     }
     update({
       userId: match.params.userId
@@ -80,39 +82,49 @@ export default function EditProfile({ match }) {
       t: jwt.token
     }, user).then((data) => {
       if (data && data.error) {
-        setValues({...values, error: data.error})
+        setValues({ ...values, error: data.error })
       } else {
-        setValues({...values, userId: data._id, redirectToProfile: true})
+        setValues({ ...values, userId: data._id, redirectToProfile: true })
       }
     })
   }
   const handleChange = name => event => {
-    setValues({...values, [name]: event.target.value})
+    setValues({ ...values, [name]: event.target.value })
   }
 
-    if (values.redirectToProfile) {
-      return (<Redirect to={'/user/' + values.userId}/>)
-    }
-    return (
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography variant="h6" className={classes.title}>
-            Edit Profile
-          </Typography>
-          <TextField id="name" label="Name" className={classes.textField} value={values.name} onChange={handleChange('name')} margin="normal"/><br/>
-          <TextField id="email" type="email" label="Email" className={classes.textField} value={values.email} onChange={handleChange('email')} margin="normal"/><br/>
-          <TextField id="password" type="password" label="Password" className={classes.textField} value={values.password} onChange={handleChange('password')} margin="normal"/>
-          <br/> {
-            values.error && (<Typography component="p" color="error">
-              <Icon color="error" className={classes.error}>error</Icon>
-              {values.error}
-            </Typography>)
-          }
-        </CardContent>
-        <CardActions>
-          <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Submit</Button>
-        </CardActions>
-      </Card>
-    )
+  if (values.redirectToProfile) {
+    return (<Redirect to={'/user/' + values.userId} />)
+  }
+  return (
+    <Card className={classes.card}>
+      <CardContent>
+        <Typography variant="h6" className={classes.title}>
+          Edit Profile
+        </Typography>
+        <TextField id="name" label="Name" className={classes.textField} value={values.name} onChange={handleChange('name')} margin="normal" /><br />
+        <TextField id="email" type="email" label="Email" className={classes.textField} value={values.email} onChange={handleChange('email')} margin="normal" /><br />
+        <TextField id="password" type="password" label="Password" className={classes.textField} value={values.password} onChange={handleChange('password')} margin="normal" />
+        <TextField
+          id="multiline-flexible"
+          label="About"
+          multiline
+          rows="2"
+          value={values.about}
+          onChange={handleChange('about')}
+          className={classes.textField}
+          margin="normal"
+        />
+        <br /> {
+          values.error && (<Typography component="p" color="error">
+            <Icon color="error" className={classes.error}>error</Icon>
+            {values.error}
+          </Typography>)
+        }
+      </CardContent>
+      <CardActions>
+        <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Submit</Button>
+      </CardActions>
+    </Card>
+  )
 }
 

@@ -83,10 +83,16 @@ export default function Profile({ match }) {
               </ListItemSecondaryAction>)
             }
           </ListItem>
+          <ListItem>
+            <ListItemText primary={user.about}/>
+          </ListItem>
           <Divider/>
           <ListItem>
             <ListItemText primary={"Joined: " + (
               new Date(user.created)).toDateString()}/>
+          </ListItem>
+          <ListItem>
+            <ListItemText primary={"Profile edits:" + user.profileclicks}/>
           </ListItem>
         </List>
       </Paper>
