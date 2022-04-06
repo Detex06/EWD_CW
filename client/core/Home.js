@@ -147,8 +147,7 @@ export default function Home() {
                 {items.map((item, i) => {
                     console.log("LOADING ITEMS");
                     console.log(JSON.stringify(item));
-                    //return <Link to={"/" + item._id} key={i}>
-                        <ListItem>
+                    return <ListItem>
                             <ListItemAvatar>
                                 <Avatar>
                                     <Person />
