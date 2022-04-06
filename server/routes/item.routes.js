@@ -5,7 +5,7 @@ const router = express.Router()
 
 
 router.route('/api/')
-    .get(itemCtrl.list)
+    .get(itemCtrl.listItems)
     //.post(itemCtrl.create)
 
 
