@@ -153,7 +153,7 @@ export default function Home() {
                     console.log("LOADING PRODUCTS");
                     console.log(JSON.stringify(item));
                     <div>
-                        <h1>{item.name}</h1>
+                        <h1>{JSON.stringify(item.name)}</h1>
                         <p>{item.price}</p>
                     </div>
                         
