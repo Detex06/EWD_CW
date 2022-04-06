@@ -141,30 +141,29 @@ export default function Home() {
     return (
         <Paper className={classes.root} elevation={4}>
             <Typography variant="h6" className={classes.title}>
-                All Users
+                WORK
             </Typography>
-            
             <List dense>
-                {items.map((item) => {
-                    <ListItem
-                        secondaryAction={
-                            <IconButton edge="end" aria-label="delete">
-                                <ArrowForward/>
-                            </IconButton>
-                        }
-                    >
-                        <ListItemAvatar>
-                            <Avatar>
-                                <Person />
-                            </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText
-                            primary="Single-line item"
-                            secondary={secondary ? 'Secondary text' : null}
-                        />
-                    </ListItem>
-})
-}
+                {users.map((item, i) => {
+                    console.log("LOADING ITEMS");
+                    console.log(JSON.stringify(item));
+                    return <Link to={"/" + item._id} key={i}>
+                        <ListItem button>
+                            <ListItemAvatar>
+                                <Avatar>
+                                    <Person />
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText primary={item.name} />
+                            <ListItemSecondaryAction>
+                                <IconButton>
+                                    <ArrowForward />
+                                </IconButton>
+                            </ListItemSecondaryAction>
+                        </ListItem>
+                    </Link>
+                })
+                }
             </List>
         </Paper>
     )
