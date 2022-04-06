@@ -155,7 +155,7 @@ export default function Home() {
                     >
                         <ListItemAvatar>
                             <Avatar>
-                                <PersonIcon />
+                                <Person />
                             </Avatar>
                         </ListItemAvatar>
                         <ListItemText
