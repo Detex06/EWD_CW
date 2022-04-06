@@ -95,9 +95,9 @@ export default function Home() {
         
     )
 */
-export default function Home(products) {
+export default function Home() {
     const classes = useStyles()
-    const {items} = products;
+    const {items} = useState([]);
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
