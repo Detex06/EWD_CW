@@ -2,8 +2,8 @@ import config from './../config/config'
 import app from './express'
 import mongoose from 'mongoose'
 
-//might need to fix later with the "mongodb+srv://<myusername>:<mypassword>@cluster0.dgpco.mongodb.net/<mydatabasename>?retryWrites=true&w=majority"
-//const mongoUri = process.env.URI ||  "mongodb://127.0.0.1:27017";
+//used for local testing
+//PORT=8080 npm run-script development
 
 // Connection URL
 mongoose.Promise = global.Promise

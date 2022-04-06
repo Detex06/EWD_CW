@@ -1,6 +1,6 @@
 const list = async (signal) => {
     try {
-      let response = await fetch('/api/items/', {
+      let response = await fetch('/api', {
         method: 'GET',
         signal: signal,
       })
@@ -8,4 +8,5 @@ const list = async (signal) => {
     } catch(err) {
       console.log(err)
     }
+    
   }
