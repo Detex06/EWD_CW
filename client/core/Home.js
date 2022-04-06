@@ -153,7 +153,7 @@ export default function Home() {
                                     <Person />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary={item.name} />
+                            <ListItemText primary={item.name} secondary={item.price} />
                             <ListItemSecondaryAction>
                                 <IconButton>
                                     <ArrowForward />
