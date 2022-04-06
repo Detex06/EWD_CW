@@ -144,7 +144,7 @@ export default function Home() {
                 WORK
             </Typography>
             <List dense>
-                {users.map((item, i) => {
+                {items.map((item, i) => {
                     console.log("LOADING ITEMS");
                     console.log(JSON.stringify(item));
                     return <Link to={"/" + item._id} key={i}>
