@@ -86,9 +86,6 @@ export default function Home() {
 export default function Home() {
     const classes = useStyles()
     const {items} = useState([]);
-    {items.map((item) => {
-        <Item key={item.} item={item}></Item>
-    })}
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
