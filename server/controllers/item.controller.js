@@ -5,8 +5,8 @@ import errorHandler from './../helpers/dbErrorHandler'
 const listItems = async (req, res) => {
     try {
         let items = await Item.find().select('name price amount')
-        res.json(items)
         console.log("JSON Product data recieved!")
+        res.json(items)
     } catch (err) {
         return res.status(400).json({
             error: errorHandler.getErrorMessage(err)
@@ -16,5 +16,5 @@ const listItems = async (req, res) => {
 
 
 export default {
-    list
+    listItems
 }

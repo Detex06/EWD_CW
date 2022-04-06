@@ -90,14 +90,16 @@ export default function Home() {
             abortController.abort()
         }
     }, [])
-*/
-export default function Home() {
-    const classes = useStyles()
-    const [items, setItems] = useState([{
+
+    {
         name: '',
         price: '',
         amount: '',
-    }]);
+    }
+*/
+export default function Home() {
+    const classes = useStyles()
+    const [items, setItems] = useState([]);
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
