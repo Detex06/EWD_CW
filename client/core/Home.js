@@ -148,7 +148,7 @@ export default function Home() {
                     console.log("LOADING ITEMS");
                     console.log(JSON.stringify(item));
                     //return <Link to={"/" + item._id} key={i}>
-                        <ListItem button>
+                        <ListItem>
                             <ListItemAvatar>
                                 <Avatar>
                                     <Person />
