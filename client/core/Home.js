@@ -147,19 +147,18 @@ export default function Home() {
             <Typography variant="h6" className={classes.title}>
                 Welcome to the Shop
             </Typography>
-            <List dense>
-                {items.map((item) => {
+                {items.map((item, i) => {
                     
                     console.log("LOADING PRODUCTS");
                     console.log(JSON.stringify(item));
-                    <div>
+                    <div key={i}>
                         <h1>{JSON.stringify(item.name)}</h1>
                         <p>{item.price}</p>
                     </div>
                         
                 })
                 }
-            </List>
+                
         </Paper>
     )
 }
