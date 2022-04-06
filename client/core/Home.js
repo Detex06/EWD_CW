@@ -124,6 +124,8 @@ export default function Home() {
             }
         }).then(jsonRes => setItems(jsonRes))*/
     },[])
+    
+    console.log(JSON.stringify(items));
     return (
         <Paper className={classes.root} elevation={4}>
             <Typography variant="h6" className={classes.title}>
@@ -132,6 +134,7 @@ export default function Home() {
             <List dense>
                 {items.map((item) => {
                     console.log("LOADING PRODUCTS");
+                    console.log(JSON.stringify(items));
                         <ListItem button>
                             <ListItemAvatar>
                                 <Avatar>

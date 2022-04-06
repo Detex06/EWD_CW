@@ -49,6 +49,7 @@ export default function Users() {
             </Typography>
             <List dense>
                 {users.map((item, i) => {
+                    console.log("LOADING USERS");
                     return <Link to={"/user/" + item._id} key={i}>
                         <ListItem button>
                             <ListItemAvatar>
