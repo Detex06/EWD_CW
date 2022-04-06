@@ -1,6 +1,14 @@
 import mongoose from 'mongoose'
 import crypto from 'crypto'
 
+/*
+
+    basket: { //to be changed later
+        type: String,
+        trim: true,
+      },
+*/
+
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -19,10 +27,6 @@ const UserSchema = new mongoose.Schema({
       type: String,
       trim: true,
     },
-    basket: { //to be changed later
-        type: String,
-        trim: true,
-      },
     profileclicks: {
       type: Number,
       default: 0,

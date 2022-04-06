@@ -98,10 +98,10 @@ export default function Home() {
         price: '',
         amount: '',
     }]);
-    useEffect(() => {/*
+    useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
-        list(signal).then((data) => {
+        listItems(signal).then((data) => {
             if (data && data.error) {
                 console.log(data.error)
             } else {
@@ -110,13 +110,14 @@ export default function Home() {
         })
         return function cleanup() {
             abortController.abort()
-        }*/
+        }
+        /*
         fetch("/").then(res => {
             if(res.ok) {
                 return res.json()
             }
-        }).then(jsonRes => setItems(jsonRes))
-    })
+        }).then(jsonRes => setItems(jsonRes))*/
+    },[])
     return (
         <Paper className={classes.root} elevation={4}>
             <Typography variant="h6" className={classes.title}>

@@ -1,4 +1,4 @@
-const list = async (signal) => {
+const listItems = async (signal) => {
     try {
       let response = await fetch('/api', {
         method: 'GET',
@@ -13,5 +13,5 @@ const list = async (signal) => {
   }
 
   export {
-    list
+    listItems
   }
