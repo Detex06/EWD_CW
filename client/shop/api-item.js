@@ -4,6 +4,7 @@ const list = async (signal) => {
         method: 'GET',
         signal: signal,
       })
+      console.log("API Product data recieved!")
       return await response.json()
     } catch(err) {
       console.log(err)

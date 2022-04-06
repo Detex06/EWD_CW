@@ -2,11 +2,14 @@ import mongoose from 'mongoose'
 
 const ItemSchema = new mongoose.Schema({
     name: {
-        type: String,
-        trim: true,
+      type: String,
+      trim: true
     },
     price: {
-      type: Number,
+      type: Number
+    },
+    amount: {
+      type: Number
     }
 })
 
