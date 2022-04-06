@@ -4,7 +4,7 @@ import itemCtrl from '../controllers/item.controller'
 const router = express.Router()
 
 
-router.route('/api')
+router.route('/api/')
     .get(itemCtrl.list)
     //.post(itemCtrl.create)
 
