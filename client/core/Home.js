@@ -99,7 +99,11 @@ export default function Home() {
 */
 export default function Home() {
     const classes = useStyles()
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState([{
+        name: '',
+        price: '',
+        amount: '',
+    }]);
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
@@ -127,14 +131,14 @@ export default function Home() {
             </Typography>
             <List dense>
                 {items.map((item) => {
+                    console.log("LOADING PRODUCTS");
                         <ListItem button>
                             <ListItemAvatar>
                                 <Avatar>
                                     <Person />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary={item.name} />
-                            <ListItemText primary={item.price} />
+                            <ListItemText primary={item.name} secondary={item.price} />
                             <Item key={item._id} item={item}></Item>
                             <ListItemSecondaryAction>
                                 <IconButton>
