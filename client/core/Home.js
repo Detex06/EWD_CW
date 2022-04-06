@@ -147,20 +147,24 @@ export default function Home() {
                 {items.map((item, i) => {
                     console.log("LOADING ITEMS");
                     console.log(JSON.stringify(item));
-                    return <ListItem>
+                    if (item.amount = 0) { }
+                    else {
+                        return <ListItem>
                             <ListItemAvatar>
                                 <Avatar>
                                     <Person />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary={item.name} secondary={item.price} />
+                            <ListItemText primary={item.name} secondary={"£" + item.price} />
                             <ListItemSecondaryAction>
                                 <IconButton>
                                     <ArrowForward />
                                 </IconButton>
                             </ListItemSecondaryAction>
                         </ListItem>
-                    //</Link>
+
+                        //</Link>
+                    }
                 })
                 }
             </List>
