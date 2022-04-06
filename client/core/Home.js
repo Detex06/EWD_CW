@@ -149,9 +149,13 @@ export default function Home() {
             </Typography>
             <List dense>
                 {items.map((item) => {
-                    <Items items={items}></Items>
+                    
                     console.log("LOADING PRODUCTS");
                     console.log(JSON.stringify(item));
+                    <div>
+                        <h1>{item.name}</h1>
+                        <p>{item.price}</p>
+                    </div>
                         
                 })
                 }
