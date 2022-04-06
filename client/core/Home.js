@@ -144,7 +144,7 @@ export default function Home() {
                 All Users
             </Typography>
             
-            <List dense={dense}>
+            <List dense>
                 {items.map((item) => {
                     <ListItem
                         secondaryAction={
