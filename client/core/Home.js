@@ -116,7 +116,7 @@ export default function Home() {
                             </ListItemAvatar>
                             <ListItemText primary={item.name} />
                             <ListItemText primary={item.price} />
-                            <Item></Item>
+                            <Item key={item._id} item={item}></Item>
                             <ListItemSecondaryAction>
                                 <IconButton>
                                     <ArrowForward />

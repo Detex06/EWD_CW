@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Item(item) {
-    const {item} = item_list;
+export default function Item(items) {
+    const {item} = items;
     return (
         <div>
             <h2>{item.name}</h2>
