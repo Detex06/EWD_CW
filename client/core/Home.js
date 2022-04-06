@@ -147,7 +147,7 @@ export default function Home() {
                 {items.map((item, i) => {
                     console.log("LOADING ITEMS");
                     console.log(JSON.stringify(item));
-                    if (item.amount = 0) { }
+                    if (item.amount == 0) { }
                     else {
                         return <ListItem>
                             <ListItemAvatar>
