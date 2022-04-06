@@ -139,15 +139,8 @@ export default function Home() {
     
     console.log(JSON.stringify(items));
     return (
-
-        
-
-
-        <Paper className={classes.root} elevation={4}>
-            <Typography variant="h6" className={classes.title}>
-                Welcome to the Shop
-            </Typography>
-                {items.map((item, i) => {
+        <div className="Shop">
+        {items.map((item,i) => {
                     
                     console.log("LOADING PRODUCTS");
                     console.log(JSON.stringify(item));
@@ -157,8 +150,7 @@ export default function Home() {
                     </div>
                         
                 })
-                }
-                
-        </Paper>
+            }
+        </div>
     )
 }
