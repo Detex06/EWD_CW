@@ -8,6 +8,7 @@ import helmet from 'helmet'
 import Template from '../template'
 import userRoutes from './routes/user.routes'
 import authRoutes from './routes/auth.routes'
+import itemRoutes from './routes/item.routes'
 
 // modules for server side rendering
 import React from 'react'
@@ -48,6 +49,7 @@ app.use(cors())
 app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
 app.use('/', authRoutes)
 app.use('/', userRoutes)
+app.use('/', itemRoutes)
 
 app.get('*', (req, res) => {
     const sheets = new ServerStyleSheets()

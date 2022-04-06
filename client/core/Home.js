@@ -77,7 +77,7 @@ export default function Home() {
 */
 export default function Home() {
     const classes = useStyles()
-    const [items, setUsers] = useState([]);
+    const [items, setItems] = useState([]);
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
@@ -85,7 +85,7 @@ export default function Home() {
             if (data && data.error) {
                 console.log(data.error)
             } else {
-                setUsers(data)
+                setItems(data)
             }
         })
         return function cleanup() {
