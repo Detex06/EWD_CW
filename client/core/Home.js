@@ -147,7 +147,7 @@ export default function Home() {
                 {items.map((item, i) => {
                     console.log("LOADING ITEMS");
                     console.log(JSON.stringify(item));
-                    return <Link to={"/" + item._id} key={i}>
+                    //return <Link to={"/" + item._id} key={i}>
                         <ListItem button>
                             <ListItemAvatar>
                                 <Avatar>
@@ -161,7 +161,7 @@ export default function Home() {
                                 </IconButton>
                             </ListItemSecondaryAction>
                         </ListItem>
-                    </Link>
+                    //</Link>
                 })
                 }
             </List>
