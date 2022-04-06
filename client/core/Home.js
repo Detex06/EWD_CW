@@ -135,22 +135,37 @@ export default function Home() {
                 return res.json()
             }
         }).then(jsonRes => setItems(jsonRes))*/
-    },[])
-    
+    }, [])
+
     console.log(JSON.stringify(items));
     return (
-        <div className="Shop">
-        {items.map((item,i) => {
-                    
-                    console.log("LOADING PRODUCTS");
-                    console.log(JSON.stringify(item));
-                    <div key={i}>
-                        <h1>{JSON.stringify(item.name)}</h1>
-                        <p>{item.price}</p>
-                    </div>
-                        
-                })
-            }
-        </div>
+        <Paper className={classes.root} elevation={4}>
+            <Typography variant="h6" className={classes.title}>
+                All Users
+            </Typography>
+            
+            <List dense={dense}>
+                {items.map((item) => {
+                    <ListItem
+                        secondaryAction={
+                            <IconButton edge="end" aria-label="delete">
+                                <ArrowForward/>
+                            </IconButton>
+                        }
+                    >
+                        <ListItemAvatar>
+                            <Avatar>
+                                <PersonIcon />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText
+                            primary="Single-line item"
+                            secondary={secondary ? 'Secondary text' : null}
+                        />
+                    </ListItem>
+})
+}
+            </List>
+        </Paper>
     )
 }
