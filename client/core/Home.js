@@ -74,11 +74,9 @@ export default function Home() {
 
                     return <Link to={"/shop/" + item._id} key={i}>
                     </Link>
-*/
-export default function Home() {
-    const classes = useStyles()
-    const [items, setItems] = useState([]);
-    useEffect(() => {
+
+
+                    useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
         list(signal).then((data) => {
@@ -92,6 +90,33 @@ export default function Home() {
             abortController.abort()
         }
     }, [])
+*/
+export default function Home() {
+    const classes = useStyles()
+    const [items, setItems] = useState([{
+        name: '',
+        price: '',
+        amount: '',
+    }]);
+    useEffect(() => {/*
+        const abortController = new AbortController()
+        const signal = abortController.signal
+        list(signal).then((data) => {
+            if (data && data.error) {
+                console.log(data.error)
+            } else {
+                setItems(data)
+            }
+        })
+        return function cleanup() {
+            abortController.abort()
+        }*/
+        fetch("/").then(res => {
+            if(res.ok) {
+                return res.json()
+            }
+        }).then(jsonRes => setItems(jsonRes))
+    })
     return (
         <Paper className={classes.root} elevation={4}>
             <Typography variant="h6" className={classes.title}>
