@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import myImg from './../assets/images/myimage.png'
 import { Link } from 'react-router-dom'
 import Item from '../shop/Items'
-import { list } from '../shop/api-item.js'
+import { listItems } from '../shop/api-item.js'
 
 import Paper from '@material-ui/core/Paper'
 import List from '@material-ui/core/List'
