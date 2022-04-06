@@ -6,6 +6,8 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
 import myImg from './../assets/images/myimage.png'
 import { Link } from 'react-router-dom'
+import Item from '../shop/Items'
+import { list } from '../shop/api-item.js'
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -32,23 +34,102 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
+//replae "myImg" with appropriate images latr
+/*
+//!!!!!!!!!!! OLD HOME START !!!!!!!!!!!!!!
 export default function Home() {
     const classes = useStyles()
     return (
         <Card className={classes.card}>
+                    
             <Link to="/users"> Users </Link>
             <Typography variant="h6" className={classes.title}>
                 Home Page
             </Typography>
             <CardMedia className={classes.media} image={myImg} title="My Image" />
-            <Typography variant="body2" component="p" className={classes.credit}
-                color="textSecondary">Photo: Picasso</Typography>
+            <Typography variant="body2" component="p" className={classes.credit} 
+                color="textSecondary">Photo of: Potato</Typography>
             <CardContent>
                 <Typography variant="body1" component="p">
                     Welcome to Lab 6 home page.
                 </Typography>
             </CardContent>
         </Card>
+        
     )
+//!!!!!!!!!!! OLD HOME END !!!!!!!!!!!!!!
 
+export default function Home() {
+    const classes = useStyles()
+    const {items} = item_list;
+    {items.map((item) => {
+        <Item key={item.} item={item}></Item>
+    })}
+    return (
+        <Card className={classes.card}>
+            <Typography variant="h6" className={classes.title}>
+                Home Page
+            </Typography>
+            <CardMedia className={classes.media} image={myImg} title="My Image" />
+            <Typography variant="body2" component="p" className={classes.credit} 
+                color="textSecondary">Photo of: Potato</Typography>
+            <CardContent>
+                <Typography variant="body1" component="p">
+                    Welcome to Lab 6 home page.
+                    
+                </Typography>
+            </CardContent>
+        </Card>
+        
+    )
+*/
+export default function Home() {
+    const classes = useStyles()
+    const {items} = useState([]);
+    {items.map((item) => {
+        <Item key={item.} item={item}></Item>
+    })}
+    useEffect(() => {
+        const abortController = new AbortController()
+        const signal = abortController.signal
+        list(signal).then((data) => {
+            if (data && data.error) {
+                console.log(data.error)
+            } else {
+                setUsers(data)
+            }
+        })
+        return function cleanup() {
+            abortController.abort()
+        }
+    }, [])
+    return (
+        <Paper className={classes.root} elevation={4}>
+            <Typography variant="h6" className={classes.title}>
+                Welcome to the Shop
+            </Typography>
+            <List dense>
+                {items.map((item, i) => {
+                    return <Link to={"/shop/" + item._id} key={i}>
+                        <ListItem button>
+                            <ListItemAvatar>
+                                <Avatar>
+                                    <Person />
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText primary={item.name} />
+                            <ListItemText primary={item.price} />
+                            <Item></Item>
+                            <ListItemSecondaryAction>
+                                <IconButton>
+                                    <ArrowForward />
+                                </IconButton>
+                            </ListItemSecondaryAction>
+                        </ListItem>
+                    </Link>
+                })
+                }
+            </List>
+        </Paper>
+    )
 }

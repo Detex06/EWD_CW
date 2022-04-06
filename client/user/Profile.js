@@ -88,6 +88,13 @@ export default function Profile({ match }) {
           </ListItem>
           <Divider/>
           <ListItem>
+            <Typography>
+              User Basket
+            </Typography>
+            <ListItemText primary={user.basket}/>
+          </ListItem>
+          <Divider/>
+          <ListItem>
             <ListItemText primary={"Joined: " + (
               new Date(user.created)).toDateString()}/>
           </ListItem>

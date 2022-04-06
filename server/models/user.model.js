@@ -19,6 +19,10 @@ const UserSchema = new mongoose.Schema({
       type: String,
       trim: true,
     },
+    basket: { //to be changed later
+        type: String,
+        trim: true,
+      },
     profileclicks: {
       type: Number,
       default: 0,
