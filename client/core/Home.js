@@ -6,7 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
 import myImg from './../assets/images/myimage.png'
 import { Link } from 'react-router-dom'
-import Item from '../shop/Items'
+import Items from '../shop/Items'
 import { listItems } from '../shop/api-item.js'
 
 import Paper from '@material-ui/core/Paper'
