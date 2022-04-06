@@ -91,11 +91,23 @@ export default function Home() {
         }
     }, [])
 
-    {
-        name: '',
-        price: '',
-        amount: '',
-    }
+    
+    <ListItem button>
+                            <ListItemAvatar>
+                                <Avatar>
+                                    <Person />
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText 
+                            primary={item.name} 
+                            secondary={item.price} 
+                            />
+                            <ListItemSecondaryAction>
+                                <IconButton>
+                                    <ArrowForward />
+                                </IconButton>
+                            </ListItemSecondaryAction>
+                        </ListItem>
 */
 export default function Home() {
     const classes = useStyles()
@@ -127,28 +139,20 @@ export default function Home() {
     
     console.log(JSON.stringify(items));
     return (
+
+        
+
+
         <Paper className={classes.root} elevation={4}>
             <Typography variant="h6" className={classes.title}>
                 Welcome to the Shop
             </Typography>
             <List dense>
                 {items.map((item) => {
+                    <Items items={items}></Items>
                     console.log("LOADING PRODUCTS");
-                    console.log(JSON.stringify(items));
-                        <ListItem button>
-                            <ListItemAvatar>
-                                <Avatar>
-                                    <Person />
-                                </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText primary={item.name} secondary={item.price} />
-                            <Item key={item._id} item={item}></Item>
-                            <ListItemSecondaryAction>
-                                <IconButton>
-                                    <ArrowForward />
-                                </IconButton>
-                            </ListItemSecondaryAction>
-                        </ListItem>
+                    console.log(JSON.stringify(item));
+                        
                 })
                 }
             </List>

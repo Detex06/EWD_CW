@@ -50,6 +50,7 @@ export default function Users() {
             <List dense>
                 {users.map((item, i) => {
                     console.log("LOADING USERS");
+                    console.log(JSON.stringify(item));
                     return <Link to={"/user/" + item._id} key={i}>
                         <ListItem button>
                             <ListItemAvatar>
