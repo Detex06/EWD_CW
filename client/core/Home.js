@@ -83,7 +83,7 @@ export default function Home() {
         
     )
 */
-export default function Home() {
+export default function Home(products) {
     const classes = useStyles()
     const {items} = products;
     useEffect(() => {
