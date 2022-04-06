@@ -92,22 +92,6 @@ export default function Home() {
     }, [])
 
     
-    <ListItem button>
-                            <ListItemAvatar>
-                                <Avatar>
-                                    <Person />
-                                </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText 
-                            primary={item.name} 
-                            secondary={item.price} 
-                            />
-                            <ListItemSecondaryAction>
-                                <IconButton>
-                                    <ArrowForward />
-                                </IconButton>
-                            </ListItemSecondaryAction>
-                        </ListItem>
 */
 export default function Home() {
     const classes = useStyles()
@@ -129,19 +113,13 @@ export default function Home() {
         return function cleanup() {
             abortController.abort()
         }
-        /*
-        fetch("/").then(res => {
-            if(res.ok) {
-                return res.json()
-            }
-        }).then(jsonRes => setItems(jsonRes))*/
     }, [])
 
     console.log(JSON.stringify(items));
     return (
         <Paper className={classes.root} elevation={4}>
             <Typography variant="h6" className={classes.title}>
-                WORK
+                WELCOME TO THE SHOP
             </Typography>
             <List dense>
                 {items.map((item, i) => {
@@ -149,7 +127,8 @@ export default function Home() {
                     console.log(JSON.stringify(item));
                     if (item.amount == 0) { }
                     else {
-                        return <ListItem>
+                        return (
+                        <ListItem>
                             <ListItemAvatar>
                                 <Avatar>
                                     <Person />
@@ -162,8 +141,7 @@ export default function Home() {
                                 </IconButton>
                             </ListItemSecondaryAction>
                         </ListItem>
-
-                        //</Link>
+                        )
                     }
                 })
                 }
