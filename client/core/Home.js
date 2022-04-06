@@ -72,6 +72,8 @@ export default function Home() {
 //!!!!!!!!!!! OLD HOME END !!!!!!!!!!!!!!
 
 
+                    return <Link to={"/shop/" + item._id} key={i}>
+                    </Link>
 */
 export default function Home() {
     const classes = useStyles()
@@ -96,8 +98,7 @@ export default function Home() {
                 Welcome to the Shop
             </Typography>
             <List dense>
-                {items.map((item, i) => {
-                    return <Link to={"/shop/" + item._id} key={i}>
+                {items.map((item) => {
                         <ListItem button>
                             <ListItemAvatar>
                                 <Avatar>
@@ -113,7 +114,6 @@ export default function Home() {
                                 </IconButton>
                             </ListItemSecondaryAction>
                         </ListItem>
-                    </Link>
                 })
                 }
             </List>
