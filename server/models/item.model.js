@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const itemSchema = new mongoose.Schema({
+const ItemSchema = new mongoose.Schema({
     name: {
         type: String,
         trim: true,
@@ -10,6 +10,6 @@ const itemSchema = new mongoose.Schema({
     }
 })
 
-const itemModel = mongoose.model('Item', itemSchema);
+const itemModel = mongoose.model('Item', ItemSchema);
 itemModel.createIndexes();
 export default itemModel

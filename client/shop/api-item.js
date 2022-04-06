@@ -8,5 +8,9 @@ const list = async (signal) => {
     } catch(err) {
       console.log(err)
     }
-    
+
+  }
+
+  export {
+    list
   }

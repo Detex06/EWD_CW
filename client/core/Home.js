@@ -71,33 +71,11 @@ export default function Home() {
     )
 //!!!!!!!!!!! OLD HOME END !!!!!!!!!!!!!!
 
-export default function Home() {
-    const classes = useStyles()
-    const {items} = item_list;
-    {items.map((item) => {
-        <Item key={item.} item={item}></Item>
-    })}
-    return (
-        <Card className={classes.card}>
-            <Typography variant="h6" className={classes.title}>
-                Home Page
-            </Typography>
-            <CardMedia className={classes.media} image={myImg} title="My Image" />
-            <Typography variant="body2" component="p" className={classes.credit} 
-                color="textSecondary">Photo of: Potato</Typography>
-            <CardContent>
-                <Typography variant="body1" component="p">
-                    Welcome to Lab 6 home page.
-                    
-                </Typography>
-            </CardContent>
-        </Card>
-        
-    )
+
 */
 export default function Home() {
     const classes = useStyles()
-    const {items} = useState([]);
+    const [items, setUsers] = useState([]);
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
