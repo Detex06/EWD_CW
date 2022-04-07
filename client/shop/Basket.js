@@ -74,7 +74,7 @@ export default function Basket() {
     return (
         <List dense>
 
-            {prop.user.basket.map((item) => {
+            {prop.basket.map((item) => {
 
                 console.log("LOADING ITEMS");
                 console.log(JSON.stringify(item));
