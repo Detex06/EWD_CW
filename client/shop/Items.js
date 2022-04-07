@@ -35,11 +35,11 @@ export default function Items(prop) {
                                 </ListItemAvatar>
                                 <ListItemText primary={item.name} secondary={"£" + item.price} />
 
-                                <AddShoppingCartIcon>
+                                <ShoppingCartIcon>
                                     <IconButton onlClick={basketAdd(item)}>
                                         <BsFillCartPlusFill/>
                                     </IconButton>
-                                </AddShoppingCartIcon>
+                                </ShoppingCartIcon>
                                 
                                 
                             </ListItem>
