@@ -18,3 +18,5 @@ const Item = (prop) => {
         </ListItem>
     )
 }
+
+export default Item;
