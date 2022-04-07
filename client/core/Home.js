@@ -52,6 +52,8 @@ export default function Home() {
         price: '',
         amount: '',
     }]);
+    
+
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
