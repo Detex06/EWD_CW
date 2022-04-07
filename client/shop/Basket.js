@@ -32,7 +32,7 @@ import { values } from 'lodash'
 //     }
 // }))
 
-export default function Basket({ match }) {
+export default function Basket() {
     const total = 0;
     // const classes = useStyles()
     // const [user, setBasket] = useState({
@@ -74,7 +74,7 @@ export default function Basket({ match }) {
     return (
         <List dense>
 
-            {user.basket.map((item) => {
+            {prop.user.basket.map((item) => {
 
                 console.log("LOADING ITEMS");
                 console.log(JSON.stringify(item));

@@ -122,10 +122,10 @@ export default {
     create,
     userByID,
     read,
-    listBasket,
+    //listBasket,
     list,
     listadmin,
     remove,
-    update,
-    updateBasket
+    update
+    //updateBasket
 }

@@ -130,11 +130,11 @@ const remove = async (params, credentials) => {
 
 export {
   create,
-  listBasket,
+  //listBasket,
   list,
   listadmin,
   read,
   update,
-  updateBasket,
+  //updateBasket,
   remove
 }
