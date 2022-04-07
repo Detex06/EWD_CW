@@ -7,7 +7,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import ListItemText from '@material-ui/core/ListItemText'
 import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
-import BsFillCartPlusFill from '@material-ui/icons/BsFillCartPlusFill'
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Person from '@material-ui/icons/Person'
 
 export default function Items(prop) {
@@ -35,11 +35,11 @@ export default function Items(prop) {
                                 </ListItemAvatar>
                                 <ListItemText primary={item.name} secondary={"£" + item.price} />
 
-                                <ListItemSecondaryAction>
+                                <AddShoppingCartIcon>
                                     <IconButton onlClick={basketAdd(item)}>
                                         <BsFillCartPlusFill/>
                                     </IconButton>
-                                </ListItemSecondaryAction>
+                                </AddShoppingCartIcon>
                                 
                                 
                             </ListItem>
