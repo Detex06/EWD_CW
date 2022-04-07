@@ -88,7 +88,7 @@ export default function Basket() {
                                     <Person />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText onChange={handleChange} name="basket" value={item} primary={item._id + " " + item.name} secondary={"£" + item.price + " x " + item.amount} />
+                            <ListItemText primary={item._id + " " + item.name} secondary={"£" + item.price + " x " + item.amount} />
 
                             <ListItemSecondaryAction>
                                 <IconButton>
@@ -107,16 +107,18 @@ export default function Basket() {
     )
 }
 
-function handleChange(event) {
-    const { name, value } = event.target;
+//onChange={handleChange} name="basket" value={item} 
 
-    setBasket(oldBasket => {
-        return {
-            ...oldBasket,
-            [name]: value
-        }
-    })
-}
+// function handleChange(event) {
+//     const { name, value } = event.target;
+
+//     setBasket(oldBasket => {
+//         return {
+//             ...oldBasket,
+//             [name]: value
+//         }
+//     })
+// }
 
 const basketAdd = (item) => {
 
