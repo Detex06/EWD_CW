@@ -16,16 +16,16 @@ const create = async (req, res) => {
     }
 }
 
-const listBasket = async (req, res) => {
-    try {
-        let users = await User.find().select('name email about basket updated created')
-        res.json(users)
-    } catch (err) {
-        return res.status(400).json({
-            error: errorHandler.getErrorMessage(err)
-        })
-    }
-}
+// const listBasket = async (req, res) => {
+//     try {
+//         let users = await User.find().select('name email about basket updated created')
+//         res.json(users)
+//     } catch (err) {
+//         return res.status(400).json({
+//             error: errorHandler.getErrorMessage(err)
+//         })
+//     }
+// }
 
 const list = async (req, res) => {
     try {
@@ -88,20 +88,21 @@ const update = async (req, res) => {
     }
 }
 
-const updateBasket = async (req, res) => {
-    try {
-        let user = req.profile
-        user = extend(user, req.body)
-        await user.save()
-        user.hashed_password = undefined
-        user.salt = undefined
-        res.json(user)
-    } catch (err) {
-        return res.status(400).json({
-            error: errorHandler.getErrorMessage(err)
-        })
-    }
-}
+// const updateBasket = async (req, res) => {
+//     try {
+//         let user = req.profile
+//         user = extend(user, req.body)
+//         await user.save()
+//         user.hashed_password = undefined
+//         user.salt = undefined
+//         res.json(user)
+//     } catch (err) {
+//         return res.status(400).json({
+//             error: errorHandler.getErrorMessage(err)
+//         })
+//     }
+// }
+
 
 const remove = async (req, res) => {
     try {
