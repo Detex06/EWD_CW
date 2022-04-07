@@ -7,9 +7,8 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import ListItemText from '@material-ui/core/ListItemText'
 import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCartIcon'
+import BsFillCartPlusFill from '@material-ui/icons/BsFillCartPlusFill'
 import Person from '@material-ui/icons/Person'
-import Button from '@material-ui/core/Button'
 
 export default function Items(prop) {
     const [basket, setBasket] = useState([])
@@ -38,7 +37,7 @@ export default function Items(prop) {
 
                                 <ListItemSecondaryAction>
                                     <IconButton onlClick={basketAdd(item)}>
-                                        <AddShoppingCartIcon/>
+                                        <BsFillCartPlusFill/>
                                     </IconButton>
                                 </ListItemSecondaryAction>
                                 
