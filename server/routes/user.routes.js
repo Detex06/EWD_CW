@@ -5,8 +5,8 @@ import authCtrl from '../controllers/auth.controller'
 const router = express.Router()
 
 router.route('/api/')
-    .get(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.listBasket)
-    .put(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.updateBasket)
+    .get(userCtrl.listBasket)
+    .put(userCtrl.updateBasket)
 
 router.route('/api/users/admin/:userId')
   .get(authCtrl.requireSignin, authCtrl.hasAdminAuthorization, userCtrl.listadmin)

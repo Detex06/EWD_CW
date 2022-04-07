@@ -31,10 +31,7 @@ const Items = (prop) => {
 
                             <ListItemSecondaryAction>
                                 <IconButton>
-                                    <Button onClick={() => 
-                                    {
-                                        prop.basketAdd(item)
-                                    }}>Add To basket</Button>
+                                    <Button>Add To basket</Button>
                                 </IconButton>
                             </ListItemSecondaryAction>
 
