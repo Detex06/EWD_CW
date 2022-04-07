@@ -23,7 +23,8 @@ const listBasket = async (signal) => {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + credentials.t
-    })
+    }
+  })
     return await response.json()
   } catch(err) {
     console.log(err)
