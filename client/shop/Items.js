@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Item(item) {
-    const { item } = item;
+export default function Item(products) {
+    const { item } = products;
     return (
         <ListItem>
             <ListItemAvatar>
