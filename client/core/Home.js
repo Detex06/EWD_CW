@@ -127,6 +127,7 @@ export default function Home() {
                     console.log(JSON.stringify(item));
                     if (item.amount !== 0) {
                         return (
+                            
                             <ListItem>
                                 <ListItemAvatar>
                                     <Avatar>
@@ -134,13 +135,17 @@ export default function Home() {
                                     </Avatar>
                                 </ListItemAvatar>
                                 <ListItemText primary={item.name} secondary={"£" + item.price} />
-                                
+
                                 <ListItemSecondaryAction>
                                     <IconButton>
                                         <ArrowForward />
                                     </IconButton>
                                 </ListItemSecondaryAction>
+                                
+                                
+                                <Items name={item.name} price={item.price}></Items>
                             </ListItem>
+                            
                         )
                     }
                 })
