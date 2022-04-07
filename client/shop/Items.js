@@ -1,5 +1,5 @@
 import React from 'react'
-import Paper from '@material-ui/core/Paper'
+
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton'
 import ArrowForward from '@material-ui/icons/ArrowForward'
 import Person from '@material-ui/icons/Person'
 
-const Item = (prop) => {
+const Items = (prop) => {
     
     return (
         <List dense>
@@ -45,4 +45,4 @@ const Item = (prop) => {
     )
 }
 
-export default Item;
+export default Items;

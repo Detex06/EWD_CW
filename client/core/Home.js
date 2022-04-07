@@ -121,9 +121,15 @@ export default function Home() {
             <Typography variant="h6" className={classes.title}>
                 WELCOME TO THE SHOP
             </Typography>
-            
-            <Items items={items}></Items>
-            
+            <Grid container spacing={2} columns={16}>
+                <Grid item xs={8}>
+                    <Items items={items}></Items>
+                </Grid>
+                <Grid item xs={8}>
+                    <Items items={items}></Items>
+                </Grid>
+            </Grid>
+
         </Paper>
     )
 }
