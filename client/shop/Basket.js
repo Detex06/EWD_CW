@@ -120,22 +120,22 @@ function handleChange(event) {
 
 const basketAdd = (item) => {
 
-    console.log("ADD!!!!!!! " + JSON.stringify(item))
+    // console.log("ADD!!!!!!! " + JSON.stringify(item))
 
-    const user = {
-        basket: item
-    }
-    updateBasket({
-        userId: match.params.userId
-    }, {
-        t: jwt.token
-    }, user).then((data) => {
-        if (data && data.error) {
-            setBasket({ ...user, error: data.error })
-        } else {
-            setBasket({ ...user, basket: data.basket })
-        }
-    })
+    // const user = {
+    //     basket: item
+    // }
+    // updateBasket({
+    //     userId: match.params.userId
+    // }, {
+    //     t: jwt.token
+    // }, user).then((data) => {
+    //     if (data && data.error) {
+    //         setBasket({ ...user, error: data.error })
+    //     } else {
+    //         setBasket({ ...user, basket: data.basket })
+    //     }
+    // })
 
 
 }
