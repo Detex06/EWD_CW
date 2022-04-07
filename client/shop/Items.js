@@ -7,7 +7,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import ListItemText from '@material-ui/core/ListItemText'
 import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import ShoppingCartIcon from '@material-ui/core/ShoppingCart';
 import Person from '@material-ui/icons/Person'
 
 export default function Items(prop) {
