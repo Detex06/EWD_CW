@@ -133,7 +133,7 @@ export default function Home() {
                                         <Person />
                                     </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText primary={prop.item.name} secondary={"£" + prop.item.price} />
+                                <ListItemText primary={item.name} secondary={"£" + item.price} />
                                 <ListItemSecondaryAction>
                                     <IconButton>
                                         <ArrowForward />
