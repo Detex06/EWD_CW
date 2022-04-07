@@ -73,6 +73,9 @@ export default function Basket(prop) {
     // }
     console.log("LOADING BASKET");
     console.log(JSON.stringify(prop.basket))
+
+    
+
     return (
         
         <List dense>
