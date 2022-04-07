@@ -75,7 +75,7 @@ export default function Home() {
                     <Items items={items}></Items>
                 </Grid>
                 <Grid item xs={4}>
-                    <Basket></Basket>
+                    <Items items={items}></Items>
                 </Grid>
             </Grid>
 
