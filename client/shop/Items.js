@@ -9,7 +9,7 @@ const Item = (prop) => {
                     <Person />
                 </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={prop.name} secondary={"£" + prop.price} />
+            <ListItemText primary={prop.item.name} secondary={"£" + prop.item.price} />
             <ListItemSecondaryAction>
                 <IconButton>
                     <ArrowForward />
