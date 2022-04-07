@@ -10,15 +10,7 @@ import Items from '../shop/Items'
 import { listItems } from '../shop/api-item.js'
 
 import Paper from '@material-ui/core/Paper'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemAvatar from '@material-ui/core/ListItemAvatar'
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
-import ListItemText from '@material-ui/core/ListItemText'
-import Avatar from '@material-ui/core/Avatar'
-import IconButton from '@material-ui/core/IconButton'
-import ArrowForward from '@material-ui/icons/ArrowForward'
-import Person from '@material-ui/icons/Person'
+import Grid from '@material-ui/core/Grid'
 
 
 const useStyles = makeStyles(theme => ({
