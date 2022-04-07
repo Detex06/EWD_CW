@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Item(prop) {
+const Item = (prop) => {
     
     return (
         <ListItem>
