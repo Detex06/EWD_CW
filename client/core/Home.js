@@ -127,7 +127,7 @@ export default function Home() {
                     console.log(JSON.stringify(item));
                     if (item.amount !== 0) { 
                         return (
-                            <Items product={item}></Items>
+                            <Items item={item}></Items>
                             )
                     }
                 })

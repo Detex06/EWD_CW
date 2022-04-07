@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Item(product) {
-    const { item } = product;
+export default function Item(prop) {
+    
     return (
         <ListItem>
             <ListItemAvatar>
@@ -9,7 +9,7 @@ export default function Item(product) {
                     <Person />
                 </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={item.name} secondary={"£" + item.price} />
+            <ListItemText primary={prop.name} secondary={"£" + prop.price} />
             <ListItemSecondaryAction>
                 <IconButton>
                     <ArrowForward />
