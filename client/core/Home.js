@@ -11,7 +11,7 @@ import { listItems } from '../shop/api-item.js'
 
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
-
+import Box from '@material-ui/core/Box'
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -40,50 +40,15 @@ const useStyles = makeStyles(theme => ({
 
 //replae "myImg" with appropriate images latr
 /*
-//!!!!!!!!!!! OLD HOME START !!!!!!!!!!!!!!
-export default function Home() {
-    const classes = useStyles()
-    return (
-        <Card className={classes.card}>
-                    
-            <Link to="/users"> Users </Link>
-            <Typography variant="h6" className={classes.title}>
-                Home Page
-            </Typography>
-            <CardMedia className={classes.media} image={myImg} title="My Image" />
-            <Typography variant="body2" component="p" className={classes.credit} 
-                color="textSecondary">Photo of: Potato</Typography>
-            <CardContent>
-                <Typography variant="body1" component="p">
-                    Welcome to Lab 6 home page.
-                </Typography>
-            </CardContent>
-        </Card>
-        
-    )
-//!!!!!!!!!!! OLD HOME END !!!!!!!!!!!!!!
 
-
-                    return <Link to={"/shop/" + item._id} key={i}>
-                    </Link>
-
-
-                    useEffect(() => {
-        const abortController = new AbortController()
-        const signal = abortController.signal
-        list(signal).then((data) => {
-            if (data && data.error) {
-                console.log(data.error)
-            } else {
-                setItems(data)
-            }
-        })
-        return function cleanup() {
-            abortController.abort()
-        }
-    }, [])
-
-    
+    <Grid container spacing={2} columns={12}>
+                <Grid item xs={8}>
+                    <Items items={items}></Items>
+                </Grid>
+                <Grid item xs={4}>
+                    <Items items={items}></Items>
+                </Grid>
+            </Grid>
 */
 export default function Home() {
     const classes = useStyles()
@@ -113,15 +78,18 @@ export default function Home() {
             <Typography variant="h6" className={classes.title}>
                 WELCOME TO THE SHOP
             </Typography>
-            <Grid container spacing={2} columns={16}>
-                <Grid item xs={8}>
-                    <Items items={items}></Items>
-                </Grid>
-                <Grid item xs={8}>
-                    <Items items={items}></Items>
-                </Grid>
-            </Grid>
-
+            
+            <Box sx={{ width: 1 }}>
+                <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
+                    <Box gridColumn="span 8">
+                        <Items items={items}></Items>
+                    </Box>
+                    <Box gridColumn="span 4">
+                        <Items items={items}></Items>
+                    </Box>
+                </Box>
+            </Box>
+            
         </Paper>
     )
 }
