@@ -1,4 +1,4 @@
-import React from 'react'
+import React , { useState } from 'react'
 
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -12,6 +12,8 @@ import Person from '@material-ui/icons/Person'
 
 export default function Items(prop) {
     const [basket, setBasket] = useState([])
+
+    
 
     const basketAdd = (item) => {
         console.log("Added Item to Basket"+basket.lenght)
@@ -36,7 +38,7 @@ export default function Items(prop) {
                                 <ListItemText primary={item.name} secondary={"£" + item.price} />
 
                                 <ShoppingCartIcon>
-                                    <Button onlClick={basketAdd(item)}>
+                                    <Button onClick={basketAdd(item)}>
                                         Add
                                     </Button>
                                 </ShoppingCartIcon>
