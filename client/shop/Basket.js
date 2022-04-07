@@ -71,9 +71,12 @@ export default function Basket(prop) {
     // if (redirectToSignin) {
     //     return <Redirect to='/signin' />
     // }
+    console.log("LOADING BASKET");
+    console.log(JSON.stringify(prop.basket))
     return (
+        
         <List dense>
-
+            
             {prop.basket.map((item) => {
 
                 console.log("LOADING ITEMS");
