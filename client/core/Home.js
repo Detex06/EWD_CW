@@ -19,6 +19,7 @@ import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowForward from '@material-ui/icons/ArrowForward'
 import Person from '@material-ui/icons/Person'
+import Item from '../shop/Items'
 
 
 const useStyles = makeStyles(theme => ({
@@ -125,23 +126,10 @@ export default function Home() {
                 {items.map((item, i) => {
                     console.log("LOADING ITEMS");
                     console.log(JSON.stringify(item));
-                    if (item.amount == 0) { }
-                    else {
+                    if (item.amount !== 0) { 
                         return (
-                        <ListItem>
-                            <ListItemAvatar>
-                                <Avatar>
-                                    <Person />
-                                </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText primary={item.name} secondary={"£" + item.price} />
-                            <ListItemSecondaryAction>
-                                <IconButton>
-                                    <ArrowForward />
-                                </IconButton>
-                            </ListItemSecondaryAction>
-                        </ListItem>
-                        )
+                            Items(item)
+                            )
                     }
                 })
                 }
