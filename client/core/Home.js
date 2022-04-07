@@ -121,36 +121,9 @@ export default function Home() {
             <Typography variant="h6" className={classes.title}>
                 WELCOME TO THE SHOP
             </Typography>
-            <List dense>
-                {items.map((item, i) => {
-                    console.log("LOADING ITEMS");
-                    console.log(JSON.stringify(item));
-                    if (item.amount !== 0) {
-                        return (
-                            
-                            <ListItem>
-                                <ListItemAvatar>
-                                    <Avatar>
-                                        <Person />
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText primary={item.name} secondary={"£" + item.price} />
-
-                                <ListItemSecondaryAction>
-                                    <IconButton>
-                                        <ArrowForward />
-                                    </IconButton>
-                                </ListItemSecondaryAction>
-                                
-                                
-                                <Items name={item.name} price={item.price}></Items>
-                            </ListItem>
-                            
-                        )
-                    }
-                })
-                }
-            </List>
+            
+            <Items items={items}></Items>
+            
         </Paper>
     )
 }

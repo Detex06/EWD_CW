@@ -13,19 +13,35 @@ import Person from '@material-ui/icons/Person'
 const Item = (prop) => {
     
     return (
-        <ListItem>
-            <ListItemAvatar>
-                <Avatar>
-                    <Person />
-                </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary={prop.name} secondary={"£" + prop.price} />
-            <ListItemSecondaryAction>
-                <IconButton>
-                    <ArrowForward />
-                </IconButton>
-            </ListItemSecondaryAction>
-        </ListItem>
+        <List dense>
+                {prop.items.map((item) => {
+                    console.log("LOADING ITEMS");
+                    console.log(JSON.stringify(item));
+                    if (item.amount !== 0) {
+                        return (
+                            
+                            <ListItem>
+                                <ListItemAvatar>
+                                    <Avatar>
+                                        <Person />
+                                    </Avatar>
+                                </ListItemAvatar>
+                                <ListItemText primary={item.name} secondary={"£" + item.price} />
+
+                                <ListItemSecondaryAction>
+                                    <IconButton>
+                                        <ArrowForward />
+                                    </IconButton>
+                                </ListItemSecondaryAction>
+                                
+                                
+                            </ListItem>
+                            
+                        )
+                    }
+                })
+                }
+            </List>
     )
 }
 
