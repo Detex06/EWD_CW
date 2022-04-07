@@ -19,7 +19,6 @@ import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowForward from '@material-ui/icons/ArrowForward'
 import Person from '@material-ui/icons/Person'
-import Item from '../shop/Items'
 
 
 const useStyles = makeStyles(theme => ({
@@ -128,7 +127,7 @@ export default function Home() {
                     console.log(JSON.stringify(item));
                     if (item.amount !== 0) { 
                         return (
-                            <Items item={items}></Items>
+                            <Items product={item}></Items>
                             )
                     }
                 })
