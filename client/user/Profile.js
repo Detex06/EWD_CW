@@ -16,6 +16,7 @@ import DeleteUser from './DeleteUser'
 import auth from './../auth/auth-helper'
 import {read} from './api-user.js'
 import {Redirect, Link} from 'react-router-dom'
+import Basket from '../shop/Basket'
 
 const useStyles = makeStyles(theme => ({
   root: theme.mixins.gutters({
