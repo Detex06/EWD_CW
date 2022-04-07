@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 //replae "myImg" with appropriate images latr
 /*
 
-    <Grid container spacing={2} columns={12}>
+    <Grid container columnSpacing={2} columns={12}>
                 <Grid item xs={8}>
                     <Items items={items}></Items>
                 </Grid>
@@ -79,17 +79,15 @@ export default function Home() {
                 WELCOME TO THE SHOP
             </Typography>
             
-            <Box sx={{ width: 1 }}>
-                <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
-                    <Box gridColumn="span 8">
-                        <Items items={items}></Items>
-                    </Box>
-                    <Box gridColumn="span 4">
-                        <Items items={items}></Items>
-                    </Box>
-                </Box>
-            </Box>
-            
+            <Grid container columnSpacing={2} columns={12}>
+                <Grid item xs={8}>
+                    <Items items={items}></Items>
+                </Grid>
+                <Grid item xs={4}>
+                    <Items items={items}></Items>
+                </Grid>
+            </Grid>
+
         </Paper>
     )
 }
