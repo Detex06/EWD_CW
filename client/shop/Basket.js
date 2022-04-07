@@ -97,9 +97,7 @@ export default function Basket({ match }) {
 
                                 <ListItemSecondaryAction>
                                     <IconButton>
-                                        <Button onClick={() => {
-                                            basketAdd(item)
-                                        }}>Add To basket</Button>
+                                        <ArrowForward />
                                     </IconButton>
                                 </ListItemSecondaryAction>
 
