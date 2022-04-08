@@ -94,7 +94,7 @@ export default function Profile({ match }) {
             <Typography>
               User Basket
             </Typography>
-            <ListItemText primary={JSON.stringify(user.basket.1)}/>
+            <ListItemText primary={JSON.stringify(user.basket._1)}/>
           </ListItem>
           <Divider/>
           <ListItem>
