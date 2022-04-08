@@ -2,7 +2,8 @@ import mongoose from 'mongoose'
 import crypto from 'crypto'
 
 
-const BasketSchema = new mongoose.Schema({
+const BasketSchema = new mongoose.Schema([{
+    
     name: {
         type: String,
         trim: true
@@ -13,7 +14,7 @@ const BasketSchema = new mongoose.Schema({
     amount: {
         type: Number
     }
-})
+}])
 
 const UserSchema = new mongoose.Schema({
     name: {
