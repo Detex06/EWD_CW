@@ -62,6 +62,7 @@ export default function Profile({ match }) {
     }
     
     console.log(JSON.stringify(user))
+    console.log(JSON.stringify(JSON.parse(user.basket)))
     return (
       <Paper className={classes.root} elevation={4}>
         <Typography variant="h6" className={classes.title}>
@@ -94,7 +95,7 @@ export default function Profile({ match }) {
             <Typography>
               User Basket
             </Typography>
-            <ListItemText primary={JSON.parse(JSON.stringify(user.basket).name)}/>
+            <ListItemText primary={JSON.parse(user.basket)}/>
           </ListItem>
           <Divider/>
           <ListItem>
