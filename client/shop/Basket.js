@@ -34,7 +34,7 @@ import { values } from 'lodash'
 
 export default function Basket(prop) {
 
-    const total = 0;
+    total = 0;
     // const classes = useStyles()
     // const [user, setBasket] = useState({
     //     name: '',
@@ -96,7 +96,7 @@ export default function Basket(prop) {
                                     <Person />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText key={i} primary={item._id + " " + item.name} secondary={"£" + item.price + " x " + item.amount} />
+                            <ListItemText primary={item._id + " " + item.name} secondary={"£" + item.price + " x " + item.amount} />
 
                             <ListItemSecondaryAction>
                                 <IconButton>
