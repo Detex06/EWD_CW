@@ -32,10 +32,10 @@ import { values } from 'lodash'
 //     }
 // }))
 
-total = 0;
+
 
 export default function Basket(prop) {
-
+    var total = 0;
     
     // const classes = useStyles()
     // const [user, setBasket] = useState({
