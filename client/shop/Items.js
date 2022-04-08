@@ -10,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton'
 import ArrowForward from '@material-ui/icons/ArrowForward'
 import Button from '@material-ui/core/Button'
 import Person from '@material-ui/icons/Person'
+import Typography from '@material-ui/core/Typography'
 
 export default function Items(prop) {
     const [basket, setBasket] = useState([])
@@ -40,6 +41,7 @@ export default function Items(prop) {
 
                                 <ListItemSecondaryAction>
                                     <IconButton>
+                                        <Typography>Add</Typography>
                                         <ArrowForward />
                                     </IconButton>
                                 </ListItemSecondaryAction>
