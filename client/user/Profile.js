@@ -105,7 +105,7 @@ export default function Profile({ match }) {
             <ListItemText primary={"Profile edits:" + user.profileclicks}/>
           </ListItem>
         </List>
-        
+        <Basket basket={user.basket}></Basket>
       </Paper>
     )
   }

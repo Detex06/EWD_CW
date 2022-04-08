@@ -41,8 +41,7 @@ export default function Items(prop) {
 
                                 <ListItemSecondaryAction>
                                     <IconButton>
-                                        <Typography>Add</Typography>
-                                        <ArrowForward />
+                                        <Typography>Add to Basket</Typography>
                                     </IconButton>
                                 </ListItemSecondaryAction>
                                 
