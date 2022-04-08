@@ -105,7 +105,7 @@ export default function Profile({ match }) {
             <ListItemText primary={"Profile edits:" + user.profileclicks}/>
           </ListItem>
         </List>
-
+              
         <List dense>
             
             {JSON.parse(user.basket).map((item,i) => {
