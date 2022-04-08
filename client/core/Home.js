@@ -44,6 +44,18 @@ const useStyles = makeStyles(theme => ({
         price: '',
         amount: '',
     }
+
+
+
+    <Grid container columnSpacing={2} columns={12}>
+                <Grid item xs={8}>
+                    <Items items={items}></Items>
+                </Grid>
+                <Grid item xs={4}>
+                    <Items items={items}></Items>
+                </Grid>
+            </Grid>
+
 */
 export default function Home() {
     const classes = useStyles()
@@ -78,9 +90,6 @@ export default function Home() {
             
             <Grid container columnSpacing={2} columns={12}>
                 <Grid item xs={8}>
-                    <Items items={items}></Items>
-                </Grid>
-                <Grid item xs={4}>
                     <Items items={items}></Items>
                 </Grid>
             </Grid>
