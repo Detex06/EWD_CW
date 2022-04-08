@@ -108,7 +108,7 @@ export default function Profile({ match }) {
 
         <List dense>
             
-            {user.basket.map((item,i) => {
+            {JSON.parse(user.basket).map((item,i) => {
 
                 console.log("LOADING ITEMS "+i);
                 console.log(JSON.stringify(item));
