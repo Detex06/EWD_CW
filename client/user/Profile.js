@@ -107,6 +107,8 @@ export default function Profile({ match }) {
           </ListItem>
         </List>
               
+              
+        <Basket basket={user.basket}></Basket>
       </Paper>
     )
   }
