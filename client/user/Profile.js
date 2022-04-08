@@ -106,37 +106,7 @@ export default function Profile({ match }) {
           </ListItem>
         </List>
               
-        <List dense>
-            
-            {user.basket.map((item,i) => {
-
-                console.log("LOADING ITEMS "+i);
-                console.log(JSON.stringify(item));
-                if (item.amount !== 0) {
-                    total++
-                    return (
-
-                        <ListItem>
-                            <ListItemAvatar>
-                                <Avatar>
-                                    <Person />
-                                </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText primary={item._id + " " + item.name} secondary={"£" + item.price + " x " + item.amount} />
-
-                            <ListItemSecondaryAction>
-                                <IconButton>
-                                    <ArrowForward />
-                                </IconButton>
-                            </ListItemSecondaryAction>
-
-                        </ListItem>
-                    )
-                }
-            })
-            }
-            Total: £{total}
-        </List>
+        
       </Paper>
     )
   }

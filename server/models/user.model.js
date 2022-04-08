@@ -2,17 +2,17 @@ import mongoose from 'mongoose'
 import crypto from 'crypto'
 
 
-const BasketSchema = new mongoose.Schema ({
+const BasketSchema = new mongoose.Schema({
     name: {
         type: String,
         trim: true
-      },
-      price: {
+    },
+    price: {
         type: Number
-      },
-      amount: {
+    },
+    amount: {
         type: Number
-      }
+    }
 })
 
 const UserSchema = new mongoose.Schema({
@@ -30,16 +30,15 @@ const UserSchema = new mongoose.Schema({
         required: 'Email is required'
     },
     about: {
-      type: String,
-      trim: true,
+        type: String,
+        trim: true,
     },
-    basket: [BasketSchema]
-    ,
+    basket: [BasketSchema],
     profileclicks: {
-      type: Number,
-      default: 0,
-      min: 0,
-    }, 
+        type: Number,
+        default: 0,
+        min: 0,
+    },
     admin: {
         type: Boolean,
         default: false
