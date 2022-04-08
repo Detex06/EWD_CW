@@ -75,7 +75,7 @@ export default function Basket(prop) {
     console.log("LOADING BASKET");
     console.log(JSON.stringify(prop.user))
 
-    console.log( JSON.stringify(Object.keys(prop.basket)) )
+    console.log( JSON.stringify(prop.basket) )
 
 
     return (
