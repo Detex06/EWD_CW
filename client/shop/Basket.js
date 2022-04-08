@@ -82,7 +82,7 @@ export default function Basket(prop) {
         
         <List dense>
             
-            {Object.keys(prop.basket).map((item,i) => {
+            {prop.basket.map((item,i) => {
 
                 console.log("LOADING ITEMS "+i);
                 console.log(JSON.stringify(item));
