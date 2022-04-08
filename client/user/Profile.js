@@ -102,8 +102,10 @@ export default function Profile({ match }) {
 
       <Divider />
 
-      <Typography>
-        User Basket:
+      <Typography variant="h4">
+
+        User Basket
+
       </Typography>
       <Basket basket={user.basket}></Basket>
     </Paper>
