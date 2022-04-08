@@ -86,10 +86,12 @@ export default function Basket(prop) {
             
             {prop.basket?.map((item,i) => {
 
-                console.log("LOADING ITEMS "+i);
-                console.log(JSON.stringify(item));
+                
                 if (item.amount !== 0) {
                     total++
+                    
+                    console.log("LOADING ITEMS "+i);
+                    console.log(JSON.stringify(item));
                     return (
 
                         <ListItem>
@@ -102,7 +104,7 @@ export default function Basket(prop) {
 
                             <ListItemSecondaryAction>
                                 <IconButton>
-                                    <ArrowForward />
+                                    <Typography>PLS WORK</Typography>
                                 </IconButton>
                             </ListItemSecondaryAction>
 
