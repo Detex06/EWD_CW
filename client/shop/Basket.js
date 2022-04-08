@@ -73,17 +73,18 @@ export default function Basket(prop) {
     //     return <Redirect to='/signin' />
     // }
     console.log("LOADING BASKET");
-    console.log(JSON.stringify(prop.basket))
+    console.log(JSON.stringify(prop.user))
 
-    
+    console.log(JSON.stringify(prop.user.basket))
+
 
     return (
         
         <List dense>
             
-            {prop.basket.map((item) => {
+            {prop.user.basket.map((item,i) => {
 
-                console.log("LOADING ITEMS");
+                console.log("LOADING ITEMS "+i);
                 console.log(JSON.stringify(item));
                 if (item.amount !== 0) {
                     total++
