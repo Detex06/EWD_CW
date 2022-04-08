@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
         padding: `${theme.spacing(3)}px ${theme.spacing(2.5)}px ${theme.spacing(2)}px`,
         color: theme.palette.openTitle
     }
-    
+
 }))
 
 //replae "myImg" with appropriate images latr
@@ -64,7 +64,7 @@ export default function Home() {
         price: '',
         amount: '',
     }]);
-    
+
 
     useEffect(() => {
         const abortController = new AbortController()
@@ -80,16 +80,16 @@ export default function Home() {
             abortController.abort()
         }
     }, [])
-    
+
     console.log(JSON.stringify(items));
     return (
         <Paper className={classes.root} elevation={4}>
             <Typography variant="h6" className={classes.title}>
                 WELCOME TO THE SHOP
             </Typography>
-            
+
             <Grid container columnSpacing={2} columns={12}>
-                <Grid item xs={8}>
+                <Grid item xs={12}>
                     <Items items={items}></Items>
                 </Grid>
             </Grid>
