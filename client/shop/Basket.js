@@ -99,7 +99,7 @@ export default function Basket(prop) {
                                     <Person />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary={item._id + " n/" + item.name} secondary={"£" + item.price + " x " + item.amount} />
+                            <ListItemText primary={item.name} secondary={"£" + item.price + " x " + item.amount} />
 
                             <ListItemSecondaryAction>
                                 <IconButton>
