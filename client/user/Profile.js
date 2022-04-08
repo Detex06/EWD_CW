@@ -60,7 +60,7 @@ export default function Profile({ match }) {
     if (redirectToSignin) {
       return <Redirect to='/signin'/>
     }
-
+    
     console.log(JSON.stringify(user))
     return (
       <Paper className={classes.root} elevation={4}>
@@ -94,7 +94,7 @@ export default function Profile({ match }) {
             <Typography>
               User Basket
             </Typography>
-            <ListItemText primary={JSON.stringify(user.basket.name)}/>
+            <ListItemText primary={JSON.stringify(Object.keys(user.basket))}/>
           </ListItem>
           <Divider/>
           <ListItem>

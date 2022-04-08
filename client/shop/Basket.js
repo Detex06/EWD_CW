@@ -75,14 +75,14 @@ export default function Basket(prop) {
     console.log("LOADING BASKET");
     console.log(JSON.stringify(prop.user))
 
-    console.log(JSON.stringify(prop.user.basket))
+    console.log( JSON.stringify(Object.keys(prop.basket)) )
 
 
     return (
         
         <List dense>
             
-            {(prop.user).basket.map((item,i) => {
+            {Object.keys(prop.basket).map((item,i) => {
 
                 console.log("LOADING ITEMS "+i);
                 console.log(JSON.stringify(item));
@@ -96,7 +96,7 @@ export default function Basket(prop) {
                                     <Person />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary={item._id + " " + item.name} secondary={"£" + item.price + " x " + item.amount} />
+                            <ListItemText key={i} primary={item._id + " " + item.name} secondary={"£" + item.price + " x " + item.amount} />
 
                             <ListItemSecondaryAction>
                                 <IconButton>
