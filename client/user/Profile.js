@@ -61,8 +61,8 @@ export default function Profile({ match }) {
       return <Redirect to='/signin'/>
     }
     
-    console.log(JSON.stringify(user))
-    console.log(JSON.stringify(JSON.parse(user.basket)))
+    //console.log(JSON.stringify(user))
+    console.log(JSON.stringify(user.basket))
     return (
       <Paper className={classes.root} elevation={4}>
         <Typography variant="h6" className={classes.title}>
