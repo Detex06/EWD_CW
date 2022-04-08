@@ -79,7 +79,7 @@ export default function Basket(prop) {
 
     console.log( JSON.stringify(prop.basket) )
 
-
+    
     return (
         
         <List dense>
@@ -88,8 +88,7 @@ export default function Basket(prop) {
 
                 
                 if (item.amount !== 0) {
-                    total++
-                    
+                    total+=item.price
                     console.log("LOADING ITEMS "+i);
                     console.log(JSON.stringify(item));
                     return (
@@ -100,7 +99,7 @@ export default function Basket(prop) {
                                     <Person />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary={item._id + " " + item.name} secondary={"£" + item.price + " x " + item.amount} />
+                            <ListItemText primary={item._id + " n/" + item.name} secondary={"£" + item.price + " x " + item.amount} />
 
                             <ListItemSecondaryAction>
                                 <IconButton>
