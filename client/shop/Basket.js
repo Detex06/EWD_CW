@@ -88,7 +88,7 @@ export default function Basket(prop) {
 
                 
                 if (item.amount !== 0) {
-                    total+=item.price
+                    total+=item.price*item.amount
                     console.log("LOADING ITEMS "+i);
                     console.log(JSON.stringify(item));
                     return (

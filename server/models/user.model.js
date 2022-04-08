@@ -1,21 +1,6 @@
 import mongoose from 'mongoose'
 import crypto from 'crypto'
 
-
-const BasketSchema = new mongoose.Schema({
-
-    name: {
-        type: String,
-        trim: true
-    },
-    price: {
-        type: Number
-    },
-    amount: {
-        type: Number
-    }
-})
-
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,

@@ -103,7 +103,7 @@ export default function Profile({ match }) {
       <Divider />
 
       <Typography>
-        User Basket
+        User Basket:
       </Typography>
       <Basket basket={user.basket}></Basket>
     </Paper>
