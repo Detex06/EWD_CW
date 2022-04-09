@@ -1,10 +1,10 @@
 import User from '../models/user.model'
-import {basketModel} from '../models/basket.model'
+import basketModel from '../models/basket.model'
 import extend from 'lodash/extend'
 import errorHandler from './../helpers/dbErrorHandler'
 
 const create = async (req, res) => {
-    const user = new (req.body)
+    const user = new User(req.body)
     try {
         await user.save()
         return res.status(200).json({
