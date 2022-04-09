@@ -31,7 +31,7 @@ export default function Items(prop) {
                                 </ListItemAvatar>
                                 <ListItemText primary={item.name} secondary={"£" + item.price} />
                                 <ListItemSecondaryAction>
-                                    <IconButton onClick={}>
+                                    <IconButton>
                                         <Typography>Add to Basket</Typography>
                                     </IconButton>
                                 </ListItemSecondaryAction>
