@@ -1,5 +1,5 @@
 import User from '../models/user.model'
-import Basket from '../models/basket.model'
+import {basketModel} from '../models/basket.model'
 import extend from 'lodash/extend'
 import errorHandler from './../helpers/dbErrorHandler'
 
@@ -18,7 +18,7 @@ const create = async (req, res) => {
 }
 
 const addToBasket = async (req, res) => {
-    const basket= new (req.item)
+    const basket= new basketModel(req.item)
     
     try {
         let user = req.profile
@@ -97,7 +97,7 @@ const update = async (req, res) => {
 }
 
 const updateBasket = async (req, res) => {
-    const basket= new (req.item)
+    const basket= new basketModel(req.item)
 
     try {
         let user = req.profile
@@ -129,7 +129,7 @@ const remove = async (req, res) => {
 }
 
 const removeFromBasket = async (req, res) => {
-    const basket= new (req.item)
+    const basket= new basketModel(req.item)
 
     try {
         let user = req.profile

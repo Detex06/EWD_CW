@@ -45,17 +45,17 @@ export default function Basket(prop) {
 
     console.log( JSON.stringify(prop.basket) )
 
-    const addAndUpdate = (updateBasket,item) => {
+    const addAndUpdate = (updateItems,item) => {
         //add 1 to amount of the current ite and update the basket
         item.amount++
-        updateBasket(item)
+        updateItems(item)
     }
 
-    const removeAndUpdate = (updateBasket,removeItem, item) => {
+    const removeAndUpdate = (updateItems,removeItem, item) => {
         //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
         if(item-- > 0) {
             item.amount--
-            updateBasket(item)
+            updateItems(item)
         }
         else {
             removeItem(item)
@@ -84,10 +84,10 @@ export default function Basket(prop) {
                             <ListItemText primary={item.name} secondary={"£" + item.price + " x " + item.amount} />
 
                             <ListItemSecondaryAction>
-                                <IconButton onClick={addAndUpdate(prop.updateBasket,prop)}>
+                                <IconButton onClick={addAndUpdate(prop.updateItems,prop)}>
                                     <Typography>+</Typography>
                                 </IconButton>
-                                <IconButton onClick={removeAndUpdate(prop.updateBasket,prop.removeItem,item)}>
+                                <IconButton onClick={removeAndUpdate(prop.updateItems,prop.removeItem,item)}>
                                     <Typography>-</Typography>
                                 </IconButton>
                             </ListItemSecondaryAction>

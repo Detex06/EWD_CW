@@ -66,7 +66,7 @@ export default function Profile({ match }) {
     setValues({ ...user, [name]: event.target.value })
   }
 
-  const updateBasket = (item) => {
+  const updateItems = (item) => {
     const userContent = {
       basket: user.basket || undefined
     }
@@ -146,7 +146,7 @@ export default function Profile({ match }) {
         User Basket
 
       </Typography>
-      <Basket basket={user.basket} updateBasket={updateBasket} removeItem={removeItem}></Basket>
+      <Basket basket={user.basket} updateItems={updateItems} removeItem={removeItem}></Basket>
     </Paper>
   )
 }
