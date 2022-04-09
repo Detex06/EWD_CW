@@ -38,7 +38,7 @@ import { updateBasket } from '../user/api-user'
 
 export default function Basket(prop) {
     var total = 0;
-
+    var done = true
 
     console.log("USER DATA: " + JSON.stringify(prop.user))
 
@@ -48,24 +48,36 @@ export default function Basket(prop) {
 
     const addAndUpdate = (updateItems, item, user) => {
         //add 1 to amount of the current ite and update the basket
-        console.log("ADDING AMOUNT " + item.amount)
-        item.amount++
-        console.log(item.amount)
-        await updateItems(item, user)
+        if (done) { //used to make sure only one update function is running
+            done = false
+            console.log("ADDING AMOUNT " + item.amount)
+            item.amount++
+            console.log(item.amount)
+            updateItems(item, user)
+            done = true
+        }
     }
 
     const removeAndUpdate = (updateItems, removeItem, item, user) => {
         //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
-        if ( (item.amount-1) <= 0) {
-            removeItem(item, user)
+        if ((item.amount - 1) <= 0) {
+            if (done) {
+                done = false
+                removeItem(item, user)
+                done = true
+            }
         }
         else {
-            console.log("REMOVING AMOUNT " + item.amount)
-            item.amount--
-            console.log(item.amount)
-            await updateItems(item, user)
+            if (done) {
+                done = false
+                console.log("REMOVING AMOUNT " + item.amount)
+                item.amount--
+                console.log(item.amount)
+                updateItems(item, user)
+                done = true
+            }
         }
-        
+
     }
 
 
