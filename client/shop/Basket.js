@@ -71,7 +71,10 @@ export default function Basket(prop) {
             if (done) {
                 done = false
                 console.log("REMOVING AMOUNT " + item.amount)
-                item.amount--
+                item.name=""
+                item._id=""
+                item.price=""
+                item.amount=""
                 console.log(item.amount)
                 updateItems(item, user)
                 done = true
