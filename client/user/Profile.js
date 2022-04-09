@@ -49,7 +49,7 @@ export default function Profile({ match }) {
       } else {
         setUser(data)
       }
-    }, [])
+    })
 
     return function cleanup() {
       abortController.abort()
