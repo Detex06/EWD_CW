@@ -70,7 +70,7 @@ export default function Profile({ match }) {
     console.log("UPDATING BASKET")
 
     
-    console.log("USER DATA: "+JSON.stringify(prop.user))
+    console.log("USER DATA IN PROFILE: "+JSON.stringify(user))
 
     
     updateBasket({
