@@ -4,27 +4,23 @@ import authCtrl from '../controllers/auth.controller'
 
 const router = express.Router()
 
-// router.route('/api/')
-//     .get(userCtrl.listBasket)
-//     .put(userCtrl.updateBasket)
-
 router.route('/api/users/admin/:userId')
   .get(authCtrl.requireSignin, authCtrl.hasAdminAuthorization, userCtrl.listadmin)
 
 
 router.route('/api/users')
-    .get(userCtrl.list)
-    .post(userCtrl.create)
+  .get(userCtrl.list)
+  .post(userCtrl.create)
 
 router.route('/api/users/:userId')
-    .get(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.read)
-    .put(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.update, userCtrl.updateBasket)
-    .delete(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.remove, userCtrl.removeFromBasket)
+  .get(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.read)
+  .put(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.update)
+  .delete(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.remove)
 
 router.route('/api/user/:userId')
-.get(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.read)
-.put(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.updateBasket)
-.delete(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.removeFromBasket)
+  .get(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.read)
+  .put(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.updateBasket)
+  .delete(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.removeFromBasket)
 
 router.param('userId', userCtrl.userByID)
 

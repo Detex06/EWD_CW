@@ -16,6 +16,7 @@ const create = async (user) => {
 }
 
 const addToBasket = async (params, credentials, user, item) => {
+  console.log(JSON.stringify(user))
   try {
     let response = await fetch('/api/users/' + params.userId, {
       method: 'POST',
