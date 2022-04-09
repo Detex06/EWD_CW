@@ -66,10 +66,8 @@ export default function Profile({ match }) {
     setUser({ ...user, [name]: event.target.value })
   }
 
-  const updateItems = (item) => {
+  const updateItems = (item, user) => {
     console.log("UPDATING BASKET")
-
-    
     console.log("USER DATA IN PROFILE: "+JSON.stringify(user))
 
     
@@ -86,8 +84,8 @@ export default function Profile({ match }) {
     })
   }
 
-  const removeItem = (item) => {
-    console.log("UPDATING ITEM FROM BASKET")
+  const removeItem = (item, user) => {
+    console.log("REMOVING ITEM FROM BASKET")
     
     removeFromBasket({
       userId: match.params.userId
@@ -148,7 +146,7 @@ export default function Profile({ match }) {
         User Basket
 
       </Typography>
-      <Basket basket={user.basket} updateItems={updateItems} removeItem={removeItem}></Basket>
+      <Basket user={user} basket={user.basket} updateItems={updateItems} removeItem={removeItem}></Basket>
     </Paper>
   )
 }
