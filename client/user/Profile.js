@@ -67,6 +67,7 @@ export default function Profile({ match }) {
   }
 
   const updateItems = (item) => {
+    console.log("UPDATING BASKET")
     const userContent = {
       basket: user.basket || undefined
     }
@@ -84,6 +85,7 @@ export default function Profile({ match }) {
   }
 
   const removeItem = (item) => {
+    console.log("UPDATING ITEM FROM BASKET")
     const userContent = {
       basket: user.basket || undefined
     }

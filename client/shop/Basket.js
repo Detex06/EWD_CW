@@ -47,12 +47,14 @@ export default function Basket(prop) {
 
     const addAndUpdate = (updateItems,item) => {
         //add 1 to amount of the current ite and update the basket
+        console.log("ADDING AMOUNT")
         item.amount++
         updateItems(item)
     }
 
     const removeAndUpdate = (updateItems,removeItem, item) => {
         //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
+        console.log("REMOVING AMOUNT")
         if(item-- > 0) {
             item.amount--
             updateItems(item)
