@@ -21,6 +21,11 @@ router.route('/api/users/:userId')
     .put(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.update, userCtrl.updateBasket)
     .delete(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.remove, userCtrl.removeFromBasket)
 
+router.route('/api/user/:userId')
+.get(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.read)
+.put(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.updateBasket)
+.delete(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.removeFromBasket)
+
 router.param('userId', userCtrl.userByID)
 
 export default router
