@@ -86,7 +86,7 @@ export default function Basket(prop) {
                             <ListItemText primary={item.name} secondary={"£" + item.price + " x " + item.amount} />
 
                             <ListItemSecondaryAction>
-                                <IconButton onClick={addAndUpdate(prop.updateItems,prop)}>
+                                <IconButton onClick={addAndUpdate(prop.updateItems,item)}>
                                     <Typography>+</Typography>
                                 </IconButton>
                                 <IconButton onClick={removeAndUpdate(prop.updateItems,prop.removeItem,item)}>
