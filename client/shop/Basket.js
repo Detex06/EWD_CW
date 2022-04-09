@@ -44,26 +44,6 @@ export default function Basket(prop) {
 
     console.log("Basket Data: "+JSON.stringify(prop.basket) )
 
-    const addAndUpdate = (updateItems,item,user) => {
-        //add 1 to amount of the current ite and update the basket
-        console.log("ADDING AMOUNT "+item.amount)
-        item.amount++
-        console.log(item.amount)
-        updateItems(item,user)
-    }
-
-    const removeAndUpdate = (updateItems,removeItem, item,user) => {
-        //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
-        if(item-- > 0) {
-            console.log("REMOVING AMOUNT "+item.amount)
-            item.amount--
-            console.log(item.amount)
-            updateItems(item)
-        }
-        else {
-            removeItem(item,user)
-        }
-    }
 
     return (
         
@@ -119,28 +99,23 @@ export default function Basket(prop) {
 //     })
 // }
 
-const basketAdd = (item) => {
-
-    // console.log("ADD!!!!!!! " + JSON.stringify(item))
-
-    // const user = {
-    //     basket: item
-    // }
-    // updateBasket({
-    //     userId: match.params.userId
-    // }, {
-    //     t: jwt.token
-    // }, user).then((data) => {
-    //     if (data && data.error) {
-    //         setBasket({ ...user, error: data.error })
-    //     } else {
-    //         setBasket({ ...user, basket: data.basket })
-    //     }
-    // })
-
-
+const addAndUpdate = (updateItems,item,user) => {
+    //add 1 to amount of the current ite and update the basket
+    console.log("ADDING AMOUNT "+item.amount)
+    item.amount++
+    console.log(item.amount)
+    updateItems(item,user)
 }
 
-function basketRemove(item) {
-
+const removeAndUpdate = (updateItems,removeItem, item,user) => {
+    //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
+    if(item-- > 0) {
+        console.log("REMOVING AMOUNT "+item.amount)
+        item.amount--
+        console.log(item.amount)
+        updateItems(item)
+    }
+    else {
+        removeItem(item,user)
+    }
 }
