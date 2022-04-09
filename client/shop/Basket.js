@@ -47,16 +47,18 @@ export default function Basket(prop) {
 
     const addAndUpdate = (updateItems,item) => {
         //add 1 to amount of the current ite and update the basket
-        console.log("ADDING AMOUNT")
+        console.log("ADDING AMOUNT "+item.amount)
         item.amount++
+        console.log(item.amount)
         updateItems(item)
     }
 
     const removeAndUpdate = (updateItems,removeItem, item) => {
         //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
-        console.log("REMOVING AMOUNT")
         if(item-- > 0) {
+            console.log("REMOVING AMOUNT "+item.amount)
             item.amount--
+            console.log(item.amount)
             updateItems(item)
         }
         else {
@@ -73,7 +75,7 @@ export default function Basket(prop) {
                 
                 if (item.amount !== 0) {
                     total+=item.price*item.amount
-                    console.log("LOADING ITEMS "+i);
+                    console.log("LOADING ITEM "+i);
                     console.log(JSON.stringify(item));
                     return (
 
