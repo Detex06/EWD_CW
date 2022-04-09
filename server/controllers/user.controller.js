@@ -18,7 +18,7 @@ const create = async (req, res) => {
 }
 
 const addToBasket = async (req, res) => {
-    const basket= new Basket(req.item)
+    const basket= new (req.item)
     
     try {
         let user = req.profile
@@ -97,7 +97,7 @@ const update = async (req, res) => {
 }
 
 const updateBasket = async (req, res) => {
-    const basket= new Basket(req.item)
+    const basket= new (req.item)
 
     try {
         let user = req.profile
@@ -129,7 +129,7 @@ const remove = async (req, res) => {
 }
 
 const removeFromBasket = async (req, res) => {
-    const basket= new Basket(req.item)
+    const basket= new (req.item)
 
     try {
         let user = req.profile
