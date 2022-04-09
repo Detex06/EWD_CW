@@ -14,10 +14,12 @@ import Person from '@material-ui/icons/Person'
 import Divider from '@material-ui/core/Divider'
 import DeleteUser from '../user/DeleteUser'
 import auth from './../auth/auth-helper'
+import Items from '../shop/Items'
+import { listItems } from '../shop/api-item.js'
+import { updateBasket } from '../user/api-user'
 //import { read } from './api-user.js'
-import { Redirect, Link } from 'react-router-dom'
 //import { listBasket, updateBasket } from '../user/api-user'
-import { values } from 'lodash'
+
 
 // const useStyles = makeStyles(theme => ({
 //     root: theme.mixins.gutters({
@@ -37,49 +39,29 @@ import { values } from 'lodash'
 export default function Basket(prop) {
     var total = 0;
     
-    // const classes = useStyles()
-    // const [user, setBasket] = useState({
-    //     name: '',
-    //     password: '',
-    //     email: '',
-    //     about: '',
-    //     basket: [],
-    //     open: false,
-    //     error: '',
-    //     redirectToProfile: false
-    // })
-    // const [redirectToSignin, setRedirectToSignin] = useState(false)
-    // const jwt = auth.isAuthenticated()
 
-    // useEffect(() => {
-    //     const abortController = new AbortController()
-    //     const signal = abortController.signal
-
-    //     listBasket({
-    //         userId: match.params.userId
-    //     }, { t: jwt.token }, signal).then((data) => {
-    //         if (data && data.error) {
-    //             setBasket({ ...user, error: data.error })
-    //         } else {
-    //             setBasket({ ...user, basket: data.basket })
-    //         }
-    //     })
-
-    //     return function cleanup() {
-    //         abortController.abort()
-    //     }
-
-    // }, [match.params.userId])
-
-    // if (redirectToSignin) {
-    //     return <Redirect to='/signin' />
-    // }
     console.log("LOADING BASKET");
     console.log(JSON.stringify(prop.user))
 
     console.log( JSON.stringify(prop.basket) )
 
-    
+    const addAndUpdate = (updateBasket,item) => {
+        //add 1 to amount of the current ite and update the basket
+        item.amount++
+        updateBasket(item)
+    }
+
+    const removeAndUpdate = (updateBasket,removeItem, item) => {
+        //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
+        if(item-- > 0) {
+            item.amount--
+            updateBasket(item)
+        }
+        else {
+            removeItem(item)
+        }
+    }
+
     return (
         
         <List dense>
@@ -98,12 +80,15 @@ export default function Basket(prop) {
                                 <Avatar>
                                     <Person />
                                 </Avatar>
-                            </ListItemAvatar>
+                            </ListItemAvatar> 
                             <ListItemText primary={item.name} secondary={"£" + item.price + " x " + item.amount} />
 
                             <ListItemSecondaryAction>
-                                <IconButton>
-                                    <Typography>PLS WORK</Typography>
+                                <IconButton onClick={addAndUpdate(prop.updateBasket,prop)}>
+                                    <Typography>+</Typography>
+                                </IconButton>
+                                <IconButton onClick={removeAndUpdate(prop.updateBasket,prop.removeItem,item)}>
+                                    <Typography>-</Typography>
                                 </IconButton>
                             </ListItemSecondaryAction>
 

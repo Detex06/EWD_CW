@@ -12,17 +12,9 @@ import Button from '@material-ui/core/Button'
 import Person from '@material-ui/icons/Person'
 import Typography from '@material-ui/core/Typography'
 
+
+import Basket from '../shop/Basket'
 export default function Items(prop) {
-    const [basket, setBasket] = useState([])
-
-    
-
-    const basketAdd = (item) => {
-        console.log("Added Item to Basket"+basket.lenght)
-        console.log(JSON.stringify(basket))
-        setBasket([...basket,item])
-    } 
-
     return (
         <List dense>
                 {prop.items.map((item) => {
@@ -38,9 +30,8 @@ export default function Items(prop) {
                                     </Avatar>
                                 </ListItemAvatar>
                                 <ListItemText primary={item.name} secondary={"£" + item.price} />
-
                                 <ListItemSecondaryAction>
-                                    <IconButton>
+                                    <IconButton onClick={}>
                                         <Typography>Add to Basket</Typography>
                                     </IconButton>
                                 </ListItemSecondaryAction>

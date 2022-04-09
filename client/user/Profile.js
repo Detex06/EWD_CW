@@ -14,7 +14,7 @@ import Person from '@material-ui/icons/Person'
 import Divider from '@material-ui/core/Divider'
 import DeleteUser from './DeleteUser'
 import auth from './../auth/auth-helper'
-import { read } from './api-user.js'
+import { addToBasket, read, removeFromBasket, updateBasket } from './api-user.js'
 import { Redirect, Link } from 'react-router-dom'
 import Basket from '../shop/Basket'
 
@@ -59,6 +59,45 @@ export default function Profile({ match }) {
 
   if (redirectToSignin) {
     return <Redirect to='/signin' />
+  }
+
+
+  const handleChange = name => event => {
+    setValues({ ...user, [name]: event.target.value })
+  }
+
+  const updateBasket = (item) => {
+    const userContent = {
+      basket: user.basket || undefined
+    }
+    updateBasket({
+      userId: match.params.userId
+    }, {
+      t: jwt.token
+    }, userContent, item).then((data) => {
+      if (data && data.error) {
+        setUser({ ...user, error: data.error })
+      } else {
+        setUser({ ...user, userId: data._id, redirectToProfile: true })
+      }
+    })
+  }
+
+  const removeItem = (item) => {
+    const userContent = {
+      basket: user.basket || undefined
+    }
+    removeFromBasket({
+      userId: match.params.userId
+    }, {
+      t: jwt.token
+    }, userContent, item).then((data) => {
+      if (data && data.error) {
+        setUser({ ...user, error: data.error })
+      } else {
+        setUser({ ...user, userId: data._id, redirectToProfile: true })
+      }
+    })
   }
 
   //console.log(JSON.stringify(user))
@@ -107,7 +146,7 @@ export default function Profile({ match }) {
         User Basket
 
       </Typography>
-      <Basket basket={user.basket}></Basket>
+      <Basket basket={user.basket} updateBasket={updateBasket} removeItem={removeItem}></Basket>
     </Paper>
   )
 }

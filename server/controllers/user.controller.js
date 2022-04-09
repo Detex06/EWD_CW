@@ -1,9 +1,10 @@
 import User from '../models/user.model'
+import Basket from '../models/basket.model'
 import extend from 'lodash/extend'
 import errorHandler from './../helpers/dbErrorHandler'
 
 const create = async (req, res) => {
-    const user = new User(req.body)
+    const user = new (req.body)
     try {
         await user.save()
         return res.status(200).json({
@@ -16,16 +17,23 @@ const create = async (req, res) => {
     }
 }
 
-// const listBasket = async (req, res) => {
-//     try {
-//         let users = await User.find().select('name email about basket updated created')
-//         res.json(users)
-//     } catch (err) {
-//         return res.status(400).json({
-//             error: errorHandler.getErrorMessage(err)
-//         })
-//     }
-// }
+const addToBasket = async (req, res) => {
+    const basket= new Basket(req.item)
+    
+    try {
+        let user = req.profile
+        user = extend(user, req.body)
+        user.basket = [basket]
+        await user.save()
+        user.hashed_password = undefined
+        user.salt = undefined
+        res.json(user)
+    } catch (err) {
+        return res.status(400).json({
+            error: errorHandler.getErrorMessage(err)
+        })
+    }
+}
 
 const list = async (req, res) => {
     try {
@@ -88,20 +96,22 @@ const update = async (req, res) => {
     }
 }
 
-// const updateBasket = async (req, res) => {
-//     try {
-//         let user = req.profile
-//         user = extend(user, req.body)
-//         await user.save()
-//         user.hashed_password = undefined
-//         user.salt = undefined
-//         res.json(user)
-//     } catch (err) {
-//         return res.status(400).json({
-//             error: errorHandler.getErrorMessage(err)
-//         })
-//     }
-// }
+const updateBasket = async (req, res) => {
+    const basket= new Basket(req.item)
+
+    try {
+        let user = req.profile
+        user = extend(user, req.body)
+        await user.findOneAndUpdate({$addToSet: {basket: [basket]} })
+        user.hashed_password = undefined
+        user.salt = undefined
+        res.json(user)
+    } catch (err) {
+        return res.status(400).json({
+            error: errorHandler.getErrorMessage(err)
+        })
+    }
+}
 
 
 const remove = async (req, res) => {
@@ -118,14 +128,32 @@ const remove = async (req, res) => {
     }
 }
 
+const removeFromBasket = async (req, res) => {
+    const basket= new Basket(req.item)
+
+    try {
+        let user = req.profile
+        user = extend(user, req.body)
+        await user.findOneAndUpdate({$pull: {basket: [basket]} })
+        user.hashed_password = undefined
+        user.salt = undefined
+        res.json(user)
+    } catch (err) {
+        return res.status(400).json({
+            error: errorHandler.getErrorMessage(err)
+        })
+    }
+}
+
 export default {
     create,
     userByID,
     read,
-    //listBasket,
     list,
     listadmin,
     remove,
-    update
-    //updateBasket
+    update,
+    addToBasket,
+    updateBasket,
+    removeFromBasket
 }
