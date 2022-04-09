@@ -1,6 +1,5 @@
 import mongoose from 'mongoose'
 import crypto from 'crypto'
-import { BasketSchema } from '../models/basket.model'
 
 
 const UserSchema = new mongoose.Schema({
@@ -21,7 +20,18 @@ const UserSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
-    basket: [BasketSchema],
+    basket: [{
+        name: {
+            type: String,
+            trim: true
+        },
+        price: {
+            type: Number
+        },
+        amount: {
+            type: Number
+        }
+    }],
     profileclicks: {
         type: Number,
         default: 0,

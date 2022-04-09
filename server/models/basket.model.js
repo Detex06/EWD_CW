@@ -17,4 +17,4 @@ const BasketSchema = new mongoose.Schema({
 
 const basketModel = mongoose.model('Basket', BasketSchema);
 basketModel.createIndexes();
-export {basketModel,BasketSchema}
+export default basketModel
