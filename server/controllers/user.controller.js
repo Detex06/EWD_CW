@@ -97,7 +97,7 @@ const update = async (req, res) => {
 }
 
 const updateBasket = async (req, res) => {
-    const basket= new basketModel(req.item)
+    const basket= null //new basketModel(req.item)
 
     try {
         let user = req.profile
