@@ -68,7 +68,7 @@ export default function Profile({ match }) {
 
   const updateItems = (item, user) => {
     console.log("UPDATING BASKET")
-    console.log("USER DATA IN PROFILE: "+JSON.stringify(user))
+    console.log("USER DATA IN UPDATE: "+JSON.stringify(user))
 
     
     updateBasket({
@@ -86,6 +86,7 @@ export default function Profile({ match }) {
 
   const removeItem = (item, user) => {
     console.log("REMOVING ITEM FROM BASKET")
+    console.log("USER DATA IN REMOVE: "+JSON.stringify(user))
     
     removeFromBasket({
       userId: match.params.userId
