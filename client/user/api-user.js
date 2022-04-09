@@ -100,7 +100,7 @@ const update = async (params, credentials, user) => {
 
  const updateBasket = async (params, credentials, user, item) => {
   try {
-    let response = await fetch('/api/', {
+    let response = await fetch('/api/users/' + params.userId, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
