@@ -56,7 +56,7 @@ export default function Basket(prop) {
 
     const removeAndUpdate = (updateItems, removeItem, item, user) => {
         //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
-        if ( (item--) <= 0) {
+        if ( (item.amount--) <= 0) {
             removeItem(item, user)
         }
         else {

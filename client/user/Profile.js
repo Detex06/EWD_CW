@@ -104,7 +104,6 @@ export default function Profile({ match }) {
 
 
 
-  //console.log(JSON.stringify(user))
   console.log(JSON.stringify(user.basket))
   return (
     <Paper className={classes.root} elevation={4}>
