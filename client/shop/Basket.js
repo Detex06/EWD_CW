@@ -51,7 +51,7 @@ export default function Basket(prop) {
         console.log("ADDING AMOUNT " + item.amount)
         item.amount++
         console.log(item.amount)
-        updateItems(item, user)
+        await updateItems(item, user)
     }
 
     const removeAndUpdate = (updateItems, removeItem, item, user) => {
@@ -63,7 +63,7 @@ export default function Basket(prop) {
             console.log("REMOVING AMOUNT " + item.amount)
             item.amount--
             console.log(item.amount)
-            updateItems(item, user)
+            await updateItems(item, user)
         }
         
     }
