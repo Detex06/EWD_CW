@@ -63,19 +63,17 @@ export default function Profile({ match }) {
 
 
   const handleChange = name => event => {
-    setValues({ ...user, [name]: event.target.value })
+    setUser({ ...user, [name]: event.target.value })
   }
 
   const updateItems = (item) => {
     console.log("UPDATING BASKET")
-    const userContent = {
-      basket: user.basket || undefined
-    }
+    
     updateBasket({
       userId: match.params.userId
     }, {
       t: jwt.token
-    }, userContent, item).then((data) => {
+    }, user, item).then((data) => {
       if (data && data.error) {
         setUser({ ...user, error: data.error })
       } else {
@@ -86,14 +84,12 @@ export default function Profile({ match }) {
 
   const removeItem = (item) => {
     console.log("UPDATING ITEM FROM BASKET")
-    const userContent = {
-      basket: user.basket || undefined
-    }
+    
     removeFromBasket({
       userId: match.params.userId
     }, {
       t: jwt.token
-    }, userContent, item).then((data) => {
+    }, user, item).then((data) => {
       if (data && data.error) {
         setUser({ ...user, error: data.error })
       } else {
