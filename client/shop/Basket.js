@@ -40,10 +40,9 @@ export default function Basket(prop) {
     var total = 0;
     
 
-    console.log("LOADING BASKET");
-    console.log(JSON.stringify(prop.user))
+    console.log("USER DATA: "+JSON.stringify(prop.user))
 
-    console.log( JSON.stringify(prop.basket) )
+    console.log("Basket Data: "+JSON.stringify(prop.basket) )
 
     const addAndUpdate = (updateItems,item) => {
         //add 1 to amount of the current ite and update the basket

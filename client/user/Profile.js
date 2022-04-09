@@ -68,6 +68,10 @@ export default function Profile({ match }) {
 
   const updateItems = (item) => {
     console.log("UPDATING BASKET")
+
+    
+    console.log("USER DATA: "+JSON.stringify(prop.user))
+
     
     updateBasket({
       userId: match.params.userId
