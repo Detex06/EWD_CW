@@ -18,8 +18,8 @@ const create = async (req, res) => {
 }
 
 const addToBasket = async (req, res) => {
-    const basket= new basketModel(req.item)
-    
+    const basket = new basketModel(req.item)
+
     try {
         let user = req.profile
         user = extend(user, req.body)
@@ -48,14 +48,14 @@ const list = async (req, res) => {
 
 const listadmin = async (req, res) => {
     try {
-      let users = await User.find().select('name email about basket updated created admin')
-      res.json(users)
+        let users = await User.find().select('name email about basket updated created admin')
+        res.json(users)
     } catch (err) {
-      return res.status(400).json({
-        error: errorHandler.getErrorMessage(err)
-      })
+        return res.status(400).json({
+            error: errorHandler.getErrorMessage(err)
+        })
     }
-  }
+}
 
 const userByID = async (req, res, next, id) => {
     try {
@@ -97,12 +97,12 @@ const update = async (req, res) => {
 }
 
 const updateBasket = async (req, res) => {
-    const basket= null //new basketModel(req.item)
+    const basket = null //new basketModel(req.item)
 
     try {
         let user = req.profile
         user = extend(user, req.body)
-        await user.findOneAndDelete({$addToSet: {basket: [basket]} })
+        await user.findOneAndDelete({ $addToSet: { basket: [basket] } })
         user.hashed_password = undefined
         user.salt = undefined
         res.json(user)
@@ -129,12 +129,12 @@ const remove = async (req, res) => {
 }
 
 const removeFromBasket = async (req, res) => {
-    const basket= new basketModel(req.item)
+    const basket = new basketModel(req.item)
 
     try {
         let user = req.profile
         user = extend(user, req.body)
-        await user.findOneAndUpdate({$pull: { $in: [basket]} })
+        await user.findOneAndUpdate({ $pull: { basket: { $in: [basket] } } })
         user.hashed_password = undefined
         user.salt = undefined
         res.json(user)
