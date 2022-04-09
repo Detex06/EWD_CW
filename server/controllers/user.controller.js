@@ -102,7 +102,7 @@ const updateBasket = async (req, res) => {
     try {
         let user = req.profile
         user = extend(user, req.body)
-        await user.findOneAndUpdate({$addToSet: {basket: [basket]} })
+        await user.findOneAndDelete({$addToSet: {basket: [basket]} })
         user.hashed_password = undefined
         user.salt = undefined
         res.json(user)
@@ -134,7 +134,7 @@ const removeFromBasket = async (req, res) => {
     try {
         let user = req.profile
         user = extend(user, req.body)
-        await user.basket.findOneAndUpdate( {$pull: {basket: [basket]} })
+        await user.findOneAndUpdate( {$addToSet: {basket: [basket]} })
         user.hashed_password = undefined
         user.salt = undefined
         res.json(user)
