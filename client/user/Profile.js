@@ -49,7 +49,7 @@ export default function Profile({ match }) {
       } else {
         setUser(data)
       }
-    })
+    }, [])
 
     return function cleanup() {
       abortController.abort()
@@ -66,40 +66,7 @@ export default function Profile({ match }) {
     setUser({ ...user, [name]: event.target.value })
   }
 
-  const updateItems = (item, user) => {
-    console.log("UPDATING BASKET")
-    console.log("USER DATA IN UPDATE: "+JSON.stringify(user))
 
-    
-    updateBasket({
-      userId: match.params.userId
-    }, {
-      t: jwt.token
-    }, user, item).then((data) => {
-      if (data && data.error) {
-        setUser({ ...user, error: data.error })
-      } else {
-        setUser({ ...user, userId: data._id, redirectToProfile: true })
-      }
-    })
-  }
-
-  const removeItem = (item, user) => {
-    console.log("REMOVING ITEM FROM BASKET")
-    console.log("USER DATA IN REMOVE: "+JSON.stringify(user))
-    
-    removeFromBasket({
-      userId: match.params.userId
-    }, {
-      t: jwt.token
-    }, user, item).then((data) => {
-      if (data && data.error) {
-        setUser({ ...user, error: data.error })
-      } else {
-        setUser({ ...user, userId: data._id, redirectToProfile: true })
-      }
-    })
-  }
 
   //console.log(JSON.stringify(user))
   console.log(JSON.stringify(user.basket))
@@ -150,4 +117,39 @@ export default function Profile({ match }) {
       <Basket user={user} basket={user.basket} updateItems={updateItems} removeItem={removeItem}></Basket>
     </Paper>
   )
+}
+
+const updateItems = (item, user) => {
+  console.log("UPDATING BASKET")
+  console.log("USER DATA IN UPDATE: " + JSON.stringify(user))
+
+
+  updateBasket({
+    userId: match.params.userId
+  }, {
+    t: jwt.token
+  }, user, item).then((data) => {
+    if (data && data.error) {
+      setUser({ ...user, error: data.error })
+    } else {
+      setUser({ ...user, userId: data._id, redirectToProfile: true })
+    }
+  })
+}
+
+const removeItem = (item, user) => {
+  console.log("REMOVING ITEM FROM BASKET")
+  console.log("USER DATA IN REMOVE: " + JSON.stringify(user))
+
+  removeFromBasket({
+    userId: match.params.userId
+  }, {
+    t: jwt.token
+  }, user, item).then((data) => {
+    if (data && data.error) {
+      setUser({ ...user, error: data.error })
+    } else {
+      setUser({ ...user, userId: data._id, redirectToProfile: true })
+    }
+  })
 }
