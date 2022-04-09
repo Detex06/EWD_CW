@@ -14,7 +14,7 @@ const create = async (user) => {
   }
 }
 
-const addToBasket = async (params, credentials, item, user) => {
+const addToBasket = async (params, credentials, user, item) => {
   try {
     let response = await fetch('/api/users/' + params.userId, {
       method: 'POST',
@@ -130,7 +130,7 @@ const remove = async (params, credentials) => {
   }
 }
 
-const removeFromBasket = async (params, credentials) => {
+const removeFromBasket = async (params, credentials, user, item) => {
   try {
     let response = await fetch('/api/users/' + params.userId, {
       method: 'DELETE',
