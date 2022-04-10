@@ -76,7 +76,7 @@ export default function Profile({ match }) {
       if (data && data.error) {
         setUser({ ...user, error: data.error })
       } else {
-        setUser({ ...user, userId: data._id, redirectToProfile: true })
+        setUser(user)
       }
     })
   }
@@ -93,7 +93,7 @@ export default function Profile({ match }) {
       if (data && data.error) {
         setUser({ ...user, error: data.error })
       } else {
-        setUser({ ...user, userId: data._id, redirectToProfile: true })
+        setUser(user)
       }
     })
   }
