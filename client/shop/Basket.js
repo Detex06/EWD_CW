@@ -48,7 +48,7 @@ export default function Basket(prop) {
 
 
 
-    const add = (updateItems, item, user) => {
+    const addasd = (updateItems, item, user) => {
         //add 1 to amount of the current ite and update the basket
         if (done) { //used to make sure only one update function is running
             done = false
@@ -60,13 +60,21 @@ export default function Basket(prop) {
         }
     }
 
-    const remove = (updateItems, removeItem, item, user) => {
+    const add = (item) => {
+        item.amount++
+        return (<Redirect to={'/user/' + values.userId} />)
+    }
+    const remove = (item) => {
+        1 < item.amount ? item.amount-- : 1
+        return (<Redirect to={'/user/' + values.userId} />)
+    }
+
+    const removeasd = (updateItems, removeItem, item, user) => {
         //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
         removeItem(item, user)
     }
     const update = (updateItems, user) => {
         updateItems(user)
-        return (<Redirect to={'/user/' + prop.user.userId} />)
     }
 
 
@@ -94,13 +102,13 @@ export default function Basket(prop) {
 
                             <ListItemSecondaryAction>
 
-                                <IconButton onClick={() => item.amount++}>
+                                <IconButton onClick={() => add(item) }>
                                     <Typography>+</Typography>
                                 </IconButton>
 
                                 <Typography>{item.amount}</Typography>
 
-                                <IconButton onClick={() => 1 < item.amount ? item.amount-- : 1}>
+                                <IconButton onClick={() => 1 < item.amount ? item.amount-- : 1 }>
                                     <Typography>-</Typography>
                                 </IconButton>
 
