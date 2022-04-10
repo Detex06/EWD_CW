@@ -95,7 +95,7 @@ return (
                                 <Person />
                             </Avatar>
                         </ListItemAvatar>
-                        <ListItemText id="basket" onChange={handleChange(prop.user, 'amount', prop.setUser)} primary={item.name} secondary={"£" + item.price + " x " + item.amount + " = " + item.price * item.amount} />
+                        <ListItemText id="basket" primary={item.name} secondary={"£" + item.price + " x " + item.amount + " = " + item.price * item.amount} />
 
                         <ListItemSecondaryAction>
 
