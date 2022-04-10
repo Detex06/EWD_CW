@@ -12,7 +12,7 @@ import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import { Redirect, Link } from 'react-router-dom'
 import auth from './../auth/auth-helper'
-import { read, updateBasket } from './api-user.js'
+import { read, updateBasket } from '../user/api-user.js'
 
 const useStyles = makeStyles(theme => ({
     root: {
