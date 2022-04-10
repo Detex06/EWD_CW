@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 export default function Profile({ match }) {
   const classes = useStyles()
   const [user, setUser] = useState({})
-  const [redirectToProfile,setRedirectToProfile] = useState(false)
+  const [sedirectToSignin,setRedirectToSignin] = useState(false)
   const jwt = auth.isAuthenticated()
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function Profile({ match }) {
 
 
 
-  const updateItems = (item, user) => {
+  const updateItems = (user) => {
     console.log("UPDATING BASKET")
     console.log("USER DATA IN UPDATE: " + JSON.stringify(user))
 
@@ -72,7 +72,7 @@ export default function Profile({ match }) {
       userId: match.params.userId
     }, {
       t: jwt.token
-    }, user, item).then((data) => {
+    }, user).then((data) => {
       if (data && data.error) {
         setUser({ ...user, error: data.error })
       } else {
@@ -102,7 +102,9 @@ export default function Profile({ match }) {
     setUser({ ...user, [name]: event.target.value })
   }
 
-
+  if (sedirectToSignin) {
+    return (<Redirect to={'/user/' + values.userId} />)
+  }
 
   console.log(JSON.stringify(user.basket))
   return (

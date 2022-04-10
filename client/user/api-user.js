@@ -98,7 +98,7 @@ const update = async (params, credentials, user) => {
   }
 }
 
- const updateBasket = async (params, credentials, user, item) => {
+ const updateBasket = async (params, credentials, user) => {
   try {
     let response = await fetch('/api/users/' + params.userId, {
       method: 'PUT',
@@ -107,8 +107,7 @@ const update = async (params, credentials, user) => {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + credentials.t
       },
-      body: JSON.stringify(user),
-      item: JSON.stringify(item)
+      body: JSON.stringify(user)
     })
     return await response.json()
   } catch(err) {

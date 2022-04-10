@@ -97,12 +97,13 @@ const update = async (req, res) => {
 }
 
 const updateBasket = async (req, res) => {
-    const basket = new basketModel(req.item)
+    
 
     try {
         let user = req.profile
         user = extend(user, req.body)
-        await user.findOneAndUpdate({ $addToSet: { basket: [basket] } })
+        //const basket = new basketModel(user.basket)
+        await user.save()//user.findOneAndUpdate({ $addToSet: { basket: [basket] } })
         user.hashed_password = undefined
         user.salt = undefined
         res.json(user)

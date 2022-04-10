@@ -61,8 +61,8 @@ export default function Basket(prop) {
         //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
         removeItem(item, user)
     }
-    const update = (updateItems, item, user) => {
-        updateItems(item, user)
+    const update = (updateItems, user) => {
+        updateItems(user)
     }
 
 
@@ -90,13 +90,13 @@ export default function Basket(prop) {
 
                             <ListItemSecondaryAction>
 
-                                <IconButton onClick={() => item.amount++}>
+                                <IconButton onChange={handleChange} onClick={() => item.amount++}>
                                     <Typography>+</Typography>
                                 </IconButton>
 
                                 <Typography>{item.amount}</Typography>
 
-                                <IconButton onClick={() => 1 < item.amount ? item.amount-- : 1}>
+                                <IconButton onChange={handleChange} onClick={() => 1 < item.amount ? item.amount-- : 1}>
                                     <Typography>-</Typography>
                                 </IconButton>
 
@@ -109,11 +109,11 @@ export default function Basket(prop) {
             })
             }
             Total: £{total}
-            <IconButton onClick={() => update(prop.updateItems, prop.removeItem, item, prop.user)}>
+            <IconButton onClick={() => update(prop.updateItems, prop.user)}>
                 <Typography>Save Basket</Typography>
             </IconButton>
             <Divider />
-            <IconButton onClick={() => update(prop.updateItems, prop.removeItem, item, prop.user)}>
+            <IconButton onClick={() => update(prop.updateItems, prop.user)}>
                 <Typography>Buy</Typography>
             </IconButton>
         </List>
