@@ -62,11 +62,11 @@ export default function Basket(prop) {
 
     const add = (item,user) => {
         item.amount++
-        return (<Redirect to={'/user/' + user.userId} />)
+        return (<Redirect to={'/user/' + user._id} />)
     }
     const remove = (item,user) => {
         1 < item.amount ? item.amount-- : 1
-        return (<Redirect to={'/user/' + user.userId} />)
+        return (<Redirect to={'/user/' + user._id} />)
     }
 
     const removeasd = (updateItems, removeItem, item, user) => {
