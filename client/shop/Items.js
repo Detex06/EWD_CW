@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography'
 import Basket from '../shop/Basket'
 import auth from './../auth/auth-helper'
 import { Redirect, Link } from 'react-router-dom'
+import {read, updateBasket } from './api-user.js'
 
 
 
@@ -83,7 +84,7 @@ export default function Items(prop) {
 
     return (
         <List dense>
-            {prop.items.map((item) => {
+            {prop.items?.map((item) => {
                 console.log("LOADING ITEMS");
                 console.log(JSON.stringify(item));
                 if (item.amount !== 0) {

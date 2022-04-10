@@ -33,25 +33,6 @@ import { Link } from 'react-router-dom'
 export default function Basket(prop) {
     var total = 0;
 
-
-    console.log("USER DATA: " + JSON.stringify(prop.user))
-
-    console.log("Basket Data: " + JSON.stringify(prop.basket))
-
-
-
-    const addasd = (updateItems, item, user) => {
-        //add 1 to amount of the current ite and update the basket
-        if (done) { //used to make sure only one update function is running
-            done = false
-            console.log("ADDING AMOUNT " + item.amount)
-            item.amount++
-            console.log(item.amount)
-            updateItems(item, user)
-            done = true
-        }
-    }
-
     const addOne = (item) => {
         item.amount++
 
@@ -61,7 +42,6 @@ export default function Basket(prop) {
     }
 
     const removeEntireItem = (updateItems, item, user) => {
-        //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
         
         const index = user.basket.indexOf(item);
         if (index > -1) {
