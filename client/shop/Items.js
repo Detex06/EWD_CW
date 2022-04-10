@@ -32,16 +32,17 @@ export default function Items(prop) {
         const abortController = new AbortController()
         const signal = abortController.signal
 
-        readHome({
-            userId: match.params.userId
-        }, { t: jwt.token }, signal).then((data) => {
-            if (data && data.error) {
-                console.log("User not logged in")
-            } else {
-                setUser(data)
-            }
-        })
-
+        const fetchData = async () => {
+            await readHome({
+                userId: match.params.userId
+            }, { t: jwt.token }, signal).then((data) => {
+                if (data && data.error) {
+                    console.log("User not logged in")
+                } else {
+                    setUser(data)
+                }
+            })
+        }
 
 
         return function cleanup() {
