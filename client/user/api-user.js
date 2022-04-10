@@ -83,7 +83,7 @@ const read = async (params, credentials, signal) => {
 
 const readHome = async (params, credentials, signal) => {
   try {
-    let response = await fetch('/api/userInItems', {
+    let response = await fetch('/api/', {
       method: 'GET',
       signal: signal,
       headers: {
