@@ -60,15 +60,15 @@ export default function Basket(prop) {
         }
     }
 
-    const add = (item, user) => {
+    const add = (item) => {
         item.amount++
 
 }
-const remove = (item, user) => {
+const remove = (item) => {
     1 < item.amount ? item.amount-- : 1
 }
 
-const removeasd = (updateItems, removeItem, item, user) => {
+const removeEntireItem = (removeItem, item, user) => {
     //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
     removeItem(item, user)
 }
@@ -101,14 +101,18 @@ return (
                         <ListItemSecondaryAction>
 
                             <Link to={"/user/" + auth.isAuthenticated().user._id}>
-                                <IconButton onClick={() => add(item, prop.user)}>
+                                <IconButton onClick={() => addOne(item)}>
                                     <Typography>+</Typography>
                                 </IconButton>
 
                                 <Typography>{item.amount}</Typography>
 
-                                <IconButton onClick={() => remove(item, prop.user)}>
+                                <IconButton onClick={() => removeOne(item)}>
                                     <Typography>-</Typography>
+                                </IconButton>
+
+                                <IconButton onClick={() => removeEntireItem(item, prop.user)}>
+                                    <Typography>Remove</Typography>
                                 </IconButton>
                             </Link>
 
@@ -123,6 +127,7 @@ return (
         <IconButton onClick={() => update(prop.updateItems, prop.user)}>
             <Typography>Save Basket</Typography>
         </IconButton>
+        
         <Divider />
         <IconButton onClick={() => update(prop.updateItems, prop.user)}>
             <Typography>Buy</Typography>

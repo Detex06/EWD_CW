@@ -135,10 +135,12 @@ const removeFromBasket = async (req, res) => {
     try {
         let user = req.profile
         //user = extend(user, req.body)
-        await user.updateOne({ $pull: { basket: basket._id  } },{"multi":true})
-        user.hashed_password = undefined
-        user.salt = undefined
-        res.json(user)
+        //await user.updateOne({ $pull: { basket: basket._id  } },{"multi":true})
+        let deletedUser = await user.basket.remove(basket)
+        deletedUser.hashed_password = undefined
+        deletedUser.salt = undefined
+        //res.json(user)
+        console.log(JSON.stringify(deletedUser))
     } catch (err) {
         return res.status(400).json({
             error: errorHandler.getErrorMessage(err)
