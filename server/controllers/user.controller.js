@@ -133,11 +133,15 @@ const remove = async (req, res) => {
 const removeFromBasket = async (req, res) => {
 
     const basket = new basketModel(req.item)
+
+    console.log("BASKET !!!"+JSON.stringify(basket))
+
     try {
         let user = req.profile
         user = extend(user, req.body)
-        //user.basket = user.basket.remove(basket)
-        await user.update({},{ $pull: { basket: basket } }, false,true )
+        console.log("USER !!! "+JSON.stringify(user.basket))
+        user.basket = user.basket.remove(basket)
+        await user.save()
         user.hashed_password = undefined
         user.salt = undefined
         res.json(user)
