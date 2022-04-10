@@ -5,7 +5,6 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
 import myImg from './../assets/images/myimage.png'
-import { Link } from 'react-router-dom'
 import Items from '../shop/Items'
 import { listItems } from '../shop/api-item.js'
 
@@ -14,7 +13,6 @@ import Grid from '@material-ui/core/Grid'
 import { Redirect, Link } from 'react-router-dom'
 import auth from './../auth/auth-helper'
 import { read, updateBasket } from './api-user.js'
-import { Redirect, Link } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
     root: {
