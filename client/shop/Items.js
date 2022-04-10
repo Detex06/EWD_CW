@@ -84,7 +84,7 @@ export default function Items(prop) {
         updateItems(user)
     }
 
-    console.log("CHECKING USER DATA LOADED "+JSON.stringify(user))
+    console.log("CHECKING USER DATA LOADED "+JSON.stringify(auth.isAuthenticated().user))
     
     console.log("CHECKING ITEMS LOADED "+JSON.stringify(prop.items))
 
@@ -102,7 +102,7 @@ export default function Items(prop) {
                             </ListItemAvatar>
                             <ListItemText primary={item.name} secondary={"£" + item.price} />
                             <ListItemSecondaryAction>
-                                <IconButton onClick={() => addItem( item, user)}>
+                                <IconButton onClick={() => addItem( item, auth.isAuthenticated().user)}>
                                         <Typography>Add to Basket</Typography>
                                     </IconButton>
                             </ListItemSecondaryAction>
