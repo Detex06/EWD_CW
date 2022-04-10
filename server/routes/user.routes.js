@@ -1,11 +1,13 @@
 import express from 'express'
 import userCtrl from '../controllers/user.controller'
 import authCtrl from '../controllers/auth.controller'
+import itemCtrl from '../controllers/item.controller'
 
 const router = express.Router()
 
 router.route('/api/')
   .get(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.read)
+  .get(itemCtrl.listItems)
 
 router.route('/api/users/admin/:userId')
   .get(authCtrl.requireSignin, authCtrl.hasAdminAuthorization, userCtrl.listadmin)
