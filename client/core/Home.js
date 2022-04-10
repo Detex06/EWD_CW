@@ -66,13 +66,17 @@ export default function Home({match}) {
         const abortController = new AbortController()
         const signal = abortController.signal
 
-        listItems(signal).then((data) => {
+        const fetchData = async () => {
+        await listItems(signal).then((data) => {
             if (data && data.error) {
                 setItems(data)
             } else {
                 setItems(data)
             }
         })
+    }
+
+    fetchData().catch(console.error)
 
 
     }, [])

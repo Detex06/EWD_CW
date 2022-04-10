@@ -12,34 +12,39 @@ import Typography from '@material-ui/core/Typography'
 import Basket from '../shop/Basket'
 import auth from './../auth/auth-helper'
 import { Redirect, Link } from 'react-router-dom'
-import {readHome, updateBasket } from '../user/api-user.js'
+import { readHome, updateBasket } from '../user/api-user.js'
 
 
 
 export default function Items(prop) {
-    
-    var match= prop.match
+
+    var match = prop.match
 
 
     const [user, setUser] = useState({
-        
+
     })
     const [setdirectToSignin, setRedirectToSignin] = useState(false)
     const jwt = auth.isAuthenticated()
-    
+
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
 
-        readHome({
-            userId: match.params.userId
-        }, { t: jwt.token }, signal).then((data) => {
-            if (data && data.error) {
-                console.log("User not logged in")
-            } else {
-                setUser(data)
-            }
-        })
+        const fetchData = async () => {
+            await readHome({
+                userId: match.params.userId
+            }, { t: jwt.token }, signal).then((data) => {
+                if (data && data.error) {
+                    console.log("User not logged in")
+                } else {
+                    setUser(data)
+                }
+            })
+        }
+
+        fetchData.catch(console.error)
+
         return function cleanup() {
             abortController.abort()
         }
@@ -64,7 +69,7 @@ export default function Items(prop) {
             }
         })
     }
-    
+
 
     if (setdirectToSignin) {
         return (<Redirect to={'/user/' + user.userId} />)
@@ -84,11 +89,11 @@ export default function Items(prop) {
         updateItems(user)
     }
 
-    console.log("CHECKING USER DATA LOADED "+JSON.stringify(auth.isAuthenticated().user))
-    
-    console.log("CHECKING USER DATA LOADED "+JSON.stringify(user))
-    
-    console.log("CHECKING ITEMS LOADED "+JSON.stringify(prop.items))
+    console.log("CHECKING USER DATA LOADED " + JSON.stringify(auth.isAuthenticated().user))
+
+    console.log("CHECKING USER DATA LOADED " + JSON.stringify(user))
+
+    console.log("CHECKING ITEMS LOADED " + JSON.stringify(prop.items))
 
     return (
         <List dense>
@@ -104,9 +109,9 @@ export default function Items(prop) {
                             </ListItemAvatar>
                             <ListItemText primary={item.name} secondary={"£" + item.price} />
                             <ListItemSecondaryAction>
-                                <IconButton onClick={() => addItem( item, auth.isAuthenticated().user)}>
-                                        <Typography>Add to Basket</Typography>
-                                    </IconButton>
+                                <IconButton onClick={() => addItem(item, auth.isAuthenticated().user)}>
+                                    <Typography>Add to Basket</Typography>
+                                </IconButton>
                             </ListItemSecondaryAction>
 
 
