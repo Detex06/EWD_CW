@@ -136,7 +136,7 @@ const removeFromBasket = async (req, res) => {
     try {
         let user = req.profile
         user = extend(user, req.body)
-        user.basket = user.basket.filter(basket)
+        user.basket = user.basket.remove(basket)
         await user.save()//user.findOneAndUpdate({ $addToSet: { basket: [basket] } })
         user.hashed_password = undefined
         user.salt = undefined
