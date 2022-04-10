@@ -89,19 +89,6 @@ export default function Items(prop) {
         console.log("BASKET AFTER " + JSON.stringify(user.basket))
         updateItems(user)
 
-        res.cookie("t", token, {
-            expire: new Date() + 9999
-        })
-
-        newJwt = JSON.parse({
-            user: {
-                _id: user._id,
-                name: user.name,
-                email: user.email,
-                basket: user.basket
-            }
-        })
-        auth.authenticate(newJwt)
     }
 
     console.log("CHECKING USER DATA LOADED " + JSON.stringify(auth.isAuthenticated().user))
