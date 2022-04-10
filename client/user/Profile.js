@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 export default function Profile({ match }) {
   const classes = useStyles()
   const [user, setUser] = useState({})
-  const [redirectToSignin, setRedirectToSignin] = useState(false)
+  const [redirectToProfile,setRedirectToProfile] = useState(false)
   const jwt = auth.isAuthenticated()
 
   useEffect(() => {
@@ -57,8 +57,8 @@ export default function Profile({ match }) {
 
   }, [match.params.userId])
 
-  if (redirectToSignin) {
-    return <Redirect to='/signin' />
+  if (values.redirectToProfile) {
+    return (<Redirect to={'/user/' + user.userId} />)
   }
 
 
