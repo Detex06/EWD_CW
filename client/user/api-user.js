@@ -156,7 +156,5 @@ export {
   read,
   update,
   remove,
-  addToBasket,
-  updateBasket,
-  removeFromBasket
+  updateBasket
 }
