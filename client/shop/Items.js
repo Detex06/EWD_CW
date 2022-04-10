@@ -29,7 +29,7 @@ export default function Items(prop) {
         const abortController = new AbortController()
         const signal = abortController.signal
 
-        read({
+        readHome({
             userId: match.params.userId
         }, { t: jwt.token }, signal).then((data) => {
             if (data && data.error) {
