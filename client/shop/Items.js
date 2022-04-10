@@ -13,6 +13,7 @@ import Basket from '../shop/Basket'
 import auth from './../auth/auth-helper'
 import { Redirect, Link } from 'react-router-dom'
 import { readHome, updateBasket } from '../user/api-user.js'
+import { json } from 'body-parser'
 
 
 
@@ -88,15 +89,18 @@ export default function Items(prop) {
         console.log("BASKET AFTER " + JSON.stringify(user.basket))
         updateItems(user)
 
-        newJwt = {
-            token,
+        res.cookie("t", token, {
+            expire: new Date() + 9999
+        })
+
+        newJwt = json({
             user: {
                 _id: user._id,
                 name: user.name,
                 email: user.email,
                 basket: user.basket
             }
-        }
+        })
         auth.authenticate(newJwt)
     }
 
