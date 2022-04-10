@@ -1,6 +1,6 @@
 const listItems = async (signal) => {
     try {
-      let response = await fetch('/api/', {
+      let response = await fetch('/api/items', {
         method: 'GET',
         signal: signal,
       })
