@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography'
 import Basket from '../shop/Basket'
 import auth from './../auth/auth-helper'
 import { Redirect, Link } from 'react-router-dom'
-import {read, updateBasket } from '../user/api-user.js'
+import {readHome, updateBasket } from '../user/api-user.js'
 
 
 
