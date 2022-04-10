@@ -57,7 +57,7 @@ export default function Profile({ match }) {
 
   }, [match.params.userId])
 
-  if (values.redirectToProfile) {
+  if (redirectToProfile) {
     return (<Redirect to={'/user/' + user.userId} />)
   }
 
