@@ -40,7 +40,6 @@ import { Redirect } from 'react-router-dom'
 export default function Basket(prop) {
     var total = 0;
 
-    
 
     console.log("USER DATA: " + JSON.stringify(prop.user))
 
@@ -60,79 +59,76 @@ export default function Basket(prop) {
         }
     }
 
-    const add = (item,user) => {
+    const add = (item, user) => {
         item.amount++
-        return (<Redirect to={'/user/' + user._id} />)
-    }
-    const remove = (item,user) => {
-        1 < item.amount ? item.amount-- : 1
-        return (<Redirect to={'/user/' + user._id} />)
-    }
 
-    const removeasd = (updateItems, removeItem, item, user) => {
-        //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
-        removeItem(item, user)
-    }
-    const update = (updateItems, user) => {
-        updateItems(user)
-    }
+}
+const remove = (item, user) => {
+    1 < item.amount ? item.amount-- : 1
+}
 
-    const handleChange = (user,name,setUser) => event => {
-        setUser({ ...user, [name]: event.target.value })
-      }
-
-    return (
-
-        <List dense>
-
-            {prop.user.basket?.map((item, i) => {
+const removeasd = (updateItems, removeItem, item, user) => {
+    //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
+    removeItem(item, user)
+}
+const update = (updateItems, user) => {
+    updateItems(user)
+}
 
 
-                if (item.amount !== 0) {
-                    total += item.price * item.amount
-                    console.log("LOADING ITEM " + i);
-                    console.log(JSON.stringify(item));
-                    return (
+return (
 
-                        <ListItem>
-                            <ListItemAvatar>
-                                <Avatar>
-                                    <Person />
-                                </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText id="basket" onChange={handleChange(prop.user,'amount',prop.setUser)} primary={item.name} secondary={"£" + item.price + " x " + item.amount + " = " + item.price*item.amount} />
+    <List dense>
 
-                            <ListItemSecondaryAction>
+        {prop.user.basket?.map((item, i) => {
 
-                                <IconButton onClick={() => add(item,prop.user) }>
+
+            if (item.amount !== 0) {
+                total += item.price * item.amount
+                console.log("LOADING ITEM " + i);
+                console.log(JSON.stringify(item));
+                return (
+
+                    <ListItem>
+                        <ListItemAvatar>
+                            <Avatar>
+                                <Person />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText id="basket" onChange={handleChange(prop.user, 'amount', prop.setUser)} primary={item.name} secondary={"£" + item.price + " x " + item.amount + " = " + item.price * item.amount} />
+
+                        <ListItemSecondaryAction>
+
+                            <Link to={"/user/" + auth.isAuthenticated().user._id}>
+                                <IconButton onClick={() => add(item, prop.user)}>
                                     <Typography>+</Typography>
                                 </IconButton>
 
                                 <Typography>{item.amount}</Typography>
 
-                                <IconButton onClick={() => remove(item,prop.user) }>
+                                <IconButton onClick={() => remove(item, prop.user)}>
                                     <Typography>-</Typography>
                                 </IconButton>
+                            </Link>
 
+                        </ListItemSecondaryAction>
 
-                            </ListItemSecondaryAction>
-
-                        </ListItem>
-                    )
-                }
-            })
+                    </ListItem>
+                )
             }
-            Total: £{total}
-            <IconButton onClick={() => update(prop.updateItems, prop.user)}>
-                <Typography>Save Basket</Typography>
-            </IconButton>
-            <Divider />
-            <IconButton onClick={() => update(prop.updateItems, prop.user)}>
-                <Typography>Buy</Typography>
-            </IconButton>
-        </List>
+        })
+        }
+        Total: £{total}
+        <IconButton onClick={() => update(prop.updateItems, prop.user)}>
+            <Typography>Save Basket</Typography>
+        </IconButton>
+        <Divider />
+        <IconButton onClick={() => update(prop.updateItems, prop.user)}>
+            <Typography>Buy</Typography>
+        </IconButton>
+    </List>
 
-    )
+)
 }
 
 //onChange={handleChange} name="basket" value={item} 
