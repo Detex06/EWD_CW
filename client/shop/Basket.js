@@ -111,7 +111,7 @@ return (
                                     <Typography>-</Typography>
                                 </IconButton>
 
-                                <IconButton onClick={() => removeEntireItem(item, prop.user)}>
+                                <IconButton onClick={() => removeEntireItem(prop.removeItem,item, prop.user)}>
                                     <Typography>Remove</Typography>
                                 </IconButton>
                             </Link>
@@ -123,6 +123,9 @@ return (
             }
         })
         }
+        
+        <Divider />
+
         Total: £{total}
         <IconButton onClick={() => update(prop.updateItems, prop.user)}>
             <Typography>Save Basket</Typography>

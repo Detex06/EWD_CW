@@ -147,7 +147,7 @@ export default function Profile({ match }) {
         User Basket
 
       </Typography>
-      <Basket user={user} setUser={setUser} updateItems={updateItems} removeItem={removeItem}></Basket>
+      <Basket user={user} updateItems={updateItems} removeItem={removeItem}></Basket>
     </Paper>
   )
 }
