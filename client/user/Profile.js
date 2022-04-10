@@ -57,11 +57,6 @@ export default function Profile({ match }) {
 
   }, [match.params.userId])
 
-  if (redirectToProfile) {
-    return (<Redirect to={'/user/' + user.userId} />)
-  }
-
-
 
   const updateItems = (user) => {
     console.log("UPDATING BASKET")
@@ -103,7 +98,7 @@ export default function Profile({ match }) {
   }
 
   if (sedirectToSignin) {
-    return (<Redirect to={'/user/' + values.userId} />)
+    return (<Redirect to={'/user/' + user.userId} />)
   }
 
   console.log(JSON.stringify(user.basket))
