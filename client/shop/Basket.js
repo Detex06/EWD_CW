@@ -64,7 +64,7 @@ export default function Basket(prop) {
         item.amount++
 
     }
-    const removeOne = (item) => {
+    const removeOne = (item,user) => {
         
         console.log(user.basket.find(item))
 
