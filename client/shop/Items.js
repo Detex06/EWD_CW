@@ -43,7 +43,7 @@ export default function Items(prop) {
             })
         }
 
-        fetchData.catch(console.error)
+        fetchData
 
         return function cleanup() {
             abortController.abort()

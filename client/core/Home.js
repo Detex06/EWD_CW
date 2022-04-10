@@ -76,7 +76,7 @@ export default function Home({match}) {
         })
     }
 
-    fetchData().catch(console.error)
+    fetchData()
 
 
     }, [])
