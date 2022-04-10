@@ -82,6 +82,13 @@ export default function Home({match}) {
             }
         })
 
+
+    }, [])
+
+    useEffect(() => {
+        const abortController = new AbortController()
+        const signal = abortController.signal
+
         read({
             userId: match.params.userId
         }, { t: jwt.token }, signal).then((data) => {
@@ -94,7 +101,12 @@ export default function Home({match}) {
         return function cleanup() {
             abortController.abort()
         }
+
+
     }, [match.params.userId])
+    
+
+
 
     if (sedirectToSignin) {
         return (<Redirect to={'/user/' + user.userId} />)
