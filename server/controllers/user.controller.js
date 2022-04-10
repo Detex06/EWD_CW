@@ -137,7 +137,7 @@ const removeFromBasket = async (req, res) => {
         let user = req.profile
         user = extend(user, req.body)
         //user.basket = user.basket.remove(basket)
-        await user.update({email: user.email},{ $pull: { basket: basket } }, {new:true} )
+        await user.update({},{ $pull: { basket: basket } }, false,true )
         user.hashed_password = undefined
         user.salt = undefined
         console.log("!!! DELETEING THIS: "+JSON.stringify(user))
