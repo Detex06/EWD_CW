@@ -76,7 +76,7 @@ export default function Home({match}) {
 
         listItems(signal).then((data) => {
             if (data && data.error) {
-                console.log(data.error)
+                setItems(data)
             } else {
                 setItems(data)
             }
