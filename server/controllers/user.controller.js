@@ -140,8 +140,7 @@ const removeFromBasket = async (req, res) => {
         await user.update({},{ $pull: { basket: basket } }, false,true )
         user.hashed_password = undefined
         user.salt = undefined
-        console.log("!!! DELETEING THIS: "+JSON.stringify(user))
-        res.json(basket)
+        res.json(user)
     } catch (err) {
         return res.status(400).json({
             error: errorHandler.getErrorMessage(err)
