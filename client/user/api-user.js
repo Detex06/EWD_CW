@@ -134,7 +134,7 @@ const remove = async (params, credentials) => {
 const removeFromBasket = async (params, credentials, user, item) => {
   try {
     let response = await fetch('/api/users/' + params.userId, {
-      method: 'PUT',
+      method: 'DELETE',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
