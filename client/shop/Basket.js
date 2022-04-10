@@ -38,7 +38,6 @@ import { updateBasket } from '../user/api-user'
 
 export default function Basket(prop) {
     var total = 0;
-    var done = true
 
     console.log("USER DATA: " + JSON.stringify(prop.user))
 
@@ -60,25 +59,12 @@ export default function Basket(prop) {
 
     const removeAndUpdate = (updateItems, removeItem, item, user) => {
         //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
-        if ((item.amount - 1) <= 0) {
-            if (done) {
-                done = false
-                removeItem(item, user)
-                done = true
-            }
-        }
-        else {
-            if (done) {
-                done = false
-                console.log("REMOVING AMOUNT " + item.amount)
-                item.amount--
-                console.log(item.amount)
-                updateItems(item, user)
-                done = true
-            }
-        }
-
+        removeItem(item, user)
     }
+    const update = (updateItems, item, user) => {
+        updateItems(item, user)
+    }
+
 
 
     return (
@@ -103,12 +89,15 @@ export default function Basket(prop) {
                             <ListItemText primary={item.name} secondary={"£" + item.price + " x " + item.amount} />
 
                             <ListItemSecondaryAction>
-                                <IconButton onClick={() => addAndUpdate(prop.updateItems, item, prop.user)}>
-                                    <Typography>+</Typography>
-                                </IconButton>
-                                <IconButton onClick={() => removeAndUpdate(prop.updateItems, prop.removeItem, item, prop.user)}>
+
+                                <IconButton onClick={() =>  1<item.amount? item--: 1 }>
                                     <Typography>-</Typography>
                                 </IconButton>
+                                <Typography>{item.amount}</Typography>
+                                <IconButton onClick={() => item.amount++}>
+                                    <Typography>+</Typography>
+                                </IconButton>
+
                             </ListItemSecondaryAction>
 
                         </ListItem>
@@ -117,6 +106,9 @@ export default function Basket(prop) {
             })
             }
             Total: £{total}
+            <IconButton onClick={() => update(prop.updateItems, prop.removeItem, item, prop.user)}>
+                <Typography>Save Basket</Typography>
+            </IconButton>
         </List>
 
     )
