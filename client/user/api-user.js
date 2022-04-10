@@ -18,7 +18,7 @@ const create = async (user) => {
 const addToBasket = async (params, credentials, user, item) => {
   console.log(JSON.stringify(user))
   try {
-    let response = await fetch('/api/users/' + params.userId, {
+    let response = await fetch('/api/user/' + params.userId, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -100,7 +100,7 @@ const update = async (params, credentials, user) => {
 
  const updateBasket = async (params, credentials, user) => {
   try {
-    let response = await fetch('/api/users/' + params.userId, {
+    let response = await fetch('/api/user/' + params.userId, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
@@ -133,7 +133,7 @@ const remove = async (params, credentials) => {
 
 const removeFromBasket = async (params, credentials, user, item) => {
   try {
-    let response = await fetch('/api/users/' + params.userId, {
+    let response = await fetch('/api/user/' + params.userId, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
