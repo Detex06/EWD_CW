@@ -124,7 +124,6 @@ return (
         })
         }
         
-        <Divider />
 
         Total: £{total}
         <IconButton onClick={() => update(prop.updateItems, prop.user)}>

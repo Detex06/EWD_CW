@@ -102,7 +102,6 @@ const updateBasket = async (req, res) => {
     try {
         let user = req.profile
         user = extend(user, req.body)
-        //const basket = new basketModel(user.basket)
         await user.save()//user.findOneAndUpdate({ $addToSet: { basket: [basket] } })
         user.hashed_password = undefined
         user.salt = undefined
@@ -127,26 +126,44 @@ const remove = async (req, res) => {
             error: errorHandler.getErrorMessage(err)
         })
     }
-}
 
-const removeFromBasket = async (req, res) => {
-    const basket = new basketModel(req.item)
 
-    try {
-        let user = req.profile
-        //user = extend(user, req.body)
-        //await user.updateOne({ $pull: { basket: basket._id  } },{"multi":true})
-        let deletedUser = await user.basket.remove(basket)
-        deletedUser.hashed_password = undefined
-        deletedUser.salt = undefined
-        //res.json(user)
-        console.log(JSON.stringify(deletedUser))
-    } catch (err) {
-        return res.status(400).json({
-            error: errorHandler.getErrorMessage(err)
-        })
-    }
-}
+    const removeFromBasket = async (req, res) => {
+    
+        const basket = new basketModel(req.item)
+        try {
+            let user = req.profile
+            user = extend(user, req.body)
+            user.basket= user.basket.filter(basket)
+            await user.save()//user.findOneAndUpdate({ $addToSet: { basket: [basket] } })
+            user.hashed_password = undefined
+            user.salt = undefined
+            res.json(user)
+        } catch (err) {
+            return res.status(400).json({
+                error: errorHandler.getErrorMessage(err)
+            })
+        }
+    }}
+
+// const removeFromBasket = async (req, res) => {
+//     const basket = new basketModel(req.item)
+
+//     try {
+//         let user = req.profile
+//         //user = extend(user, req.body)
+//         //await user.updateOne({ $pull: { basket: basket._id  } },{"multi":true})
+//         let deletedUser = await user.basket.filter(basket)
+//         deletedUser.hashed_password = undefined
+//         deletedUser.salt = undefined
+//         //res.json(user)
+//         console.log(JSON.stringify(deletedUser))
+//     } catch (err) {
+//         return res.status(400).json({
+//             error: errorHandler.getErrorMessage(err)
+//         })
+//     }
+// }
 
 export default {
     create,
