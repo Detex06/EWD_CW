@@ -13,20 +13,23 @@ import Person from '@material-ui/icons/Person'
 import Typography from '@material-ui/core/Typography'
 import Basket from '../shop/Basket'
 
-const addItem = (updateItems, item, user) => {
-    //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
-    
-    
-    console.log("BASKET BEFORE "+JSON.stringify(user.basket) )
-    const index = user.basket.indexOf(item);
-    if (index === -1) {
-        user.basket = user.basket.concat(item);
-    }
-    console.log("BASKET AFTER "+JSON.stringify(user.basket) )
-    updateItems(user)
-}
+
 
 export default function Items(prop) {
+
+    const addItem = (updateItems, item, user) => {
+        //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
+        
+        
+        console.log("BASKET BEFORE "+JSON.stringify(user.basket) )
+        const index = user.basket.indexOf(item);
+        if (index === -1) {
+            user.basket = user.basket.concat(item);
+        }
+        console.log("BASKET AFTER "+JSON.stringify(user.basket) )
+        updateItems(user)
+    }
+
     return (
         <List dense>
             {prop.items.map((item) => {
