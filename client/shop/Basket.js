@@ -90,13 +90,13 @@ export default function Basket(prop) {
 
                             <ListItemSecondaryAction>
 
-                                <IconButton onChange={handleChange} onClick={() => item.amount++}>
+                                <IconButton onClick={() => item.amount++}>
                                     <Typography>+</Typography>
                                 </IconButton>
 
                                 <Typography>{item.amount}</Typography>
 
-                                <IconButton onChange={handleChange} onClick={() => 1 < item.amount ? item.amount-- : 1}>
+                                <IconButton onClick={() => 1 < item.amount ? item.amount-- : 1}>
                                     <Typography>-</Typography>
                                 </IconButton>
 
