@@ -5,9 +5,6 @@ import itemCtrl from '../controllers/item.controller'
 
 const router = express.Router()
 
-router.route('/api/')
-  .get(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.readHome)
-
 router.route('/api/userInItems')
   .get(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.readHome)
 
