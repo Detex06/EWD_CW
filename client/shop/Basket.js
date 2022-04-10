@@ -60,13 +60,13 @@ export default function Basket(prop) {
         }
     }
 
-    const add = (item) => {
+    const add = (item,user) => {
         item.amount++
-        return (<Redirect to={'/user/' + values.userId} />)
+        return (<Redirect to={'/user/' + user.userId} />)
     }
-    const remove = (item) => {
+    const remove = (item,user) => {
         1 < item.amount ? item.amount-- : 1
-        return (<Redirect to={'/user/' + values.userId} />)
+        return (<Redirect to={'/user/' + user.userId} />)
     }
 
     const removeasd = (updateItems, removeItem, item, user) => {
@@ -102,13 +102,13 @@ export default function Basket(prop) {
 
                             <ListItemSecondaryAction>
 
-                                <IconButton onClick={() => add(item) }>
+                                <IconButton onClick={() => add(item,prop.user) }>
                                     <Typography>+</Typography>
                                 </IconButton>
 
                                 <Typography>{item.amount}</Typography>
 
-                                <IconButton onClick={() => 1 < item.amount ? item.amount-- : 1 }>
+                                <IconButton onClick={() => remove(item,prop.user) }>
                                     <Typography>-</Typography>
                                 </IconButton>
 
