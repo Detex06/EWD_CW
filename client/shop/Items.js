@@ -18,14 +18,14 @@ import Basket from '../shop/Basket'
 export default function Items(prop) {
 
     const addItem = (updateItems, item, user) => {
-        
-        
-        console.log("BASKET BEFORE "+JSON.stringify(user.basket) )
+
+
+        console.log("BASKET BEFORE " + JSON.stringify(user.basket))
         const index = user.basket.indexOf(item);
         if (index === -1) {
             user.basket = user.basket.concat(item);
         }
-        console.log("BASKET AFTER "+JSON.stringify(user.basket) )
+        console.log("BASKET AFTER " + JSON.stringify(user.basket))
         updateItems(user)
     }
 
@@ -44,10 +44,13 @@ export default function Items(prop) {
                                 </Avatar>
                             </ListItemAvatar>
                             <ListItemText primary={item.name} secondary={"£" + item.price} />
-                            <ListItemSecondaryAction>
-                                <IconButton onClick={() => addItem(prop.updateBasket, item, prop.user)}>
-                                    <Typography>Add to Basket</Typography>
-                                </IconButton>
+                            <ListItemSecondaryAction> {
+                                auth.isAuthenticated().user && auth.isAuthenticated().user._id == user._id &&
+                                (
+                                    <IconButton onClick={() => addItem(prop.updateBasket, item, prop.user)}>
+                                        <Typography>Add to Basket</Typography>
+                                    </IconButton>)
+                            }
                             </ListItemSecondaryAction>
 
 
