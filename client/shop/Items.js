@@ -33,7 +33,7 @@ export default function Items(prop) {
         const signal = abortController.signal
 
         const fetchData = async () => {
-            await read({
+            await readHome({
                 userId: match.params.userId
             }, { t: jwt.token }, signal).then((data) => {
                 if (data && data.error) {
