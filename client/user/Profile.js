@@ -55,6 +55,7 @@ export default function Profile({ match }) {
       abortController.abort()
     }
 
+
   }, [match.params.userId])
 
 
@@ -146,7 +147,7 @@ export default function Profile({ match }) {
         User Basket
 
       </Typography>
-      <Basket user={user} basket={user.basket} updateItems={updateItems} removeItem={removeItem}></Basket>
+      <Basket user={user} setUser={setUser} updateItems={updateItems} removeItem={removeItem}></Basket>
     </Paper>
   )
 }
