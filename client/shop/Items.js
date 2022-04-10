@@ -97,13 +97,10 @@ export default function Items(prop) {
                                 </Avatar>
                             </ListItemAvatar>
                             <ListItemText primary={item.name} secondary={"£" + item.price} />
-                            <ListItemSecondaryAction> {
-                                auth.isAuthenticated().user && auth.isAuthenticated().user._id == user._id &&
-                                (
-                                    <IconButton onClick={() => addItem( item, user)}>
+                            <ListItemSecondaryAction>
+                                <IconButton onClick={() => addItem( item, user)}>
                                         <Typography>Add to Basket</Typography>
-                                    </IconButton>)
-                            }
+                                    </IconButton>
                             </ListItemSecondaryAction>
 
 
