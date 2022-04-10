@@ -66,7 +66,7 @@ export default function Basket(prop) {
     }
     const removeOne = (item,user) => {
         
-        console.log(user.basket.find(item))
+        console.log(user.basket.includes(item))
 
         1 < item.amount ? item.amount-- : 1
     }
