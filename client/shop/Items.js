@@ -18,7 +18,6 @@ import Basket from '../shop/Basket'
 export default function Items(prop) {
 
     const addItem = (updateItems, item, user) => {
-        //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
         
         
         console.log("BASKET BEFORE "+JSON.stringify(user.basket) )
