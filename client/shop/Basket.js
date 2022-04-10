@@ -85,7 +85,7 @@ export default function Basket(prop) {
 
         <List dense>
 
-            {prop.basket?.map((item, i) => {
+            {prop.user.basket?.map((item, i) => {
 
 
                 if (item.amount !== 0) {
