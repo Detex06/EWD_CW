@@ -65,6 +65,9 @@ export default function Basket(prop) {
 
     }
     const removeOne = (item) => {
+        
+        console.log(user.basket.find(item))
+
         1 < item.amount ? item.amount-- : 1
     }
 
@@ -73,8 +76,7 @@ export default function Basket(prop) {
         removeItem(item, user)
     }
     const update = (updateItems, user) => {
-        var item = {"name":"Apple","price":15.99,"amount":3,"_id":"62520d2abd81be5bea39a505"}
-        console.log(user.basket.find(item))
+
         updateItems(user)
     }
 
@@ -109,7 +111,7 @@ export default function Basket(prop) {
 
                                     <Typography>{item.amount}</Typography>
 
-                                    <IconButton onClick={() => removeOne(item)}>
+                                    <IconButton onClick={() => removeOne(item, prop.user)}>
                                         <Typography>-</Typography>
                                     </IconButton>
 
