@@ -60,11 +60,7 @@ const useStyles = makeStyles(theme => ({
 */
 export default function Home({match}) {
     const classes = useStyles()
-    const [items, setItems] = useState([{
-        name: '',
-        price: '',
-        amount: '',
-    }]);
+    const [items, setItems] = useState([]);
 
     useEffect(() => {
         const abortController = new AbortController()

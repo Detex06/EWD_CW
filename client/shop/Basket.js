@@ -103,7 +103,7 @@ export default function Basket(prop) {
             }
 
 
-            Total: £{total}
+            Total: £ {total!=null? total: 0}
             <IconButton onClick={() => update(prop.updateItems, prop.user)}>
                 <Typography>Save Basket</Typography>
             </IconButton>

@@ -21,7 +21,9 @@ export default function Items(prop) {
     var match= prop.match
 
 
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({
+        
+    })
     const [setdirectToSignin, setRedirectToSignin] = useState(false)
     const jwt = auth.isAuthenticated()
     
