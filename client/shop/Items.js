@@ -16,8 +16,52 @@ import auth from './../auth/auth-helper'
 
 
 export default function Items(prop) {
+    
+    var match= prop.match
 
-    const addItem = (updateItems, item, user) => {
+    const [user, setUser] = useState({})
+    const [sedirectToSignin, setRedirectToSignin] = useState(false)
+    const jwt = auth.isAuthenticated()
+    
+    useEffect(() => {
+        const abortController = new AbortController()
+        const signal = abortController.signal
+
+        read({
+            userId: match.params.userId
+        }, { t: jwt.token }, signal).then((data) => {
+            if (data && data.error) {
+                console.log("User not logged in")
+            } else {
+                setUser(data)
+            }
+        })
+        return function cleanup() {
+            abortController.abort()
+        }
+
+
+    }, [params.userId])
+
+    const updateItems = (user) => {
+        console.log("UPDATING BASKET")
+        console.log("USER DATA IN UPDATE: " + JSON.stringify(user))
+
+
+        updateBasket({
+            userId: match.params.userId
+        }, {
+            t: jwt.token
+        }, user).then((data) => {
+            if (data && data.error) {
+                setUser({ ...user, error: data.error })
+            } else {
+                setUser(user)
+            }
+        })
+    }
+
+    const addItem = (item, user) => {
 
 
         console.log("BASKET BEFORE " + JSON.stringify(user.basket))
@@ -47,7 +91,7 @@ export default function Items(prop) {
                             <ListItemSecondaryAction> {
                                 auth.isAuthenticated().user && auth.isAuthenticated().user._id == user._id &&
                                 (
-                                    <IconButton onClick={() => addItem(prop.updateBasket, item, prop.user)}>
+                                    <IconButton onClick={() => addItem( item, prop.user)}>
                                         <Typography>Add to Basket</Typography>
                                     </IconButton>)
                             }

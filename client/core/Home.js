@@ -66,10 +66,6 @@ export default function Home({match}) {
         amount: '',
     }]);
 
-    const [user, setUser] = useState({})
-    const [sedirectToSignin, setRedirectToSignin] = useState(false)
-    const jwt = auth.isAuthenticated()
-
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
@@ -85,50 +81,12 @@ export default function Home({match}) {
 
     }, [])
 
-    useEffect(() => {
-        const abortController = new AbortController()
-        const signal = abortController.signal
-
-        read({
-            userId: match.params.userId
-        }, { t: jwt.token }, signal).then((data) => {
-            if (data && data.error) {
-                console.log("User not logged in")
-            } else {
-                setUser(data)
-            }
-        })
-        return function cleanup() {
-            abortController.abort()
-        }
-
-
-    }, [match.params.userId])
     
 
 
 
     if (sedirectToSignin) {
         return (<Redirect to={'/user/' + user.userId} />)
-    }
-
-
-    const updateItems = (user) => {
-        console.log("UPDATING BASKET")
-        console.log("USER DATA IN UPDATE: " + JSON.stringify(user))
-
-
-        updateBasket({
-            userId: match.params.userId
-        }, {
-            t: jwt.token
-        }, user).then((data) => {
-            if (data && data.error) {
-                setUser({ ...user, error: data.error })
-            } else {
-                setUser(user)
-            }
-        })
     }
 
     console.log(JSON.stringify(items));
@@ -140,7 +98,7 @@ export default function Home({match}) {
 
             <Grid container columnSpacing={2} columns={12}>
                 <Grid item xs={12}>
-                    <Items items={items} user={user} updateItems={updateItems}></Items>
+                    <Items items={items} user={user} match={match}></Items>
                 </Grid>
             </Grid>
 
