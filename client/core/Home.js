@@ -83,12 +83,6 @@ export default function Home({match}) {
 
     
 
-
-
-    if (sedirectToSignin) {
-        return (<Redirect to={'/user/' + user.userId} />)
-    }
-
     console.log(JSON.stringify(items));
     return (
         <Paper className={classes.root} elevation={4}>

@@ -20,7 +20,7 @@ export default function Items(prop) {
     var match= prop.match
 
     const [user, setUser] = useState({})
-    const [sedirectToSignin, setRedirectToSignin] = useState(false)
+    const [setdirectToSignin, setRedirectToSignin] = useState(false)
     const jwt = auth.isAuthenticated()
     
     useEffect(() => {
@@ -60,6 +60,13 @@ export default function Items(prop) {
             }
         })
     }
+    
+
+    if (setdirectToSignin) {
+        return (<Redirect to={'/user/' + user.userId} />)
+    }
+
+
 
     const addItem = (item, user) => {
 
