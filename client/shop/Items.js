@@ -19,6 +19,7 @@ export default function Items(prop) {
     
     var match= prop.match
 
+
     const [user, setUser] = useState({})
     const [setdirectToSignin, setRedirectToSignin] = useState(false)
     const jwt = auth.isAuthenticated()
@@ -98,7 +99,7 @@ export default function Items(prop) {
                             <ListItemSecondaryAction> {
                                 auth.isAuthenticated().user && auth.isAuthenticated().user._id == user._id &&
                                 (
-                                    <IconButton onClick={() => addItem( item, prop.user)}>
+                                    <IconButton onClick={() => addItem( item, user)}>
                                         <Typography>Add to Basket</Typography>
                                     </IconButton>)
                             }
