@@ -73,7 +73,8 @@ export default function Basket(prop) {
         removeItem(item, user)
     }
     const update = (updateItems, user) => {
-        console.log(user.basket.indexOf({"name":"Apple","price":15.99,"amount":3,"_id":"62520d2abd81be5bea39a505"}) )
+        var item = {"name":"Apple","price":15.99,"amount":3,"_id":"62520d2abd81be5bea39a505"}
+        console.log(user.basket.find(item))
         updateItems(user)
     }
 
