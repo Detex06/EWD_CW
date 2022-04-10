@@ -82,11 +82,11 @@ export default function Items(prop) {
         updateItems(user)
     }
 
+    console.log("CHECKING USER DATA LOADED "+JSON.stringify(user))
+
     return (
         <List dense>
             {prop.items?.map((item) => {
-                console.log("LOADING ITEMS");
-                console.log(JSON.stringify(item));
                 if (item.amount !== 0) {
                     return (
 
