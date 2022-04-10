@@ -64,11 +64,18 @@ export default function Basket(prop) {
         item.amount++
 
     }
-    const removeOne = (item,user) => {
-        
+    const removeOne = (item, user) => {
+
         console.log(user.basket.indexOf(item))
 
+        const index = user.basket.indexOf(item);
+        if (index > -1) {
+            user.basket.splice(index, 1);
+        }
+
         1 < item.amount ? item.amount-- : 1
+        
+        console.log("REMOVED ???"+JSON.stringify(user.basket))
     }
 
     const removeEntireItem = (removeItem, item, user) => {
