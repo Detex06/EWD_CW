@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button'
 import Person from '@material-ui/icons/Person'
 import Typography from '@material-ui/core/Typography'
 import Basket from '../shop/Basket'
-
+import auth from './../auth/auth-helper'
 
 
 export default function Items(prop) {
