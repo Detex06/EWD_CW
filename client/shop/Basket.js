@@ -39,6 +39,8 @@ import { updateBasket } from '../user/api-user'
 export default function Basket(prop) {
     var total = 0;
 
+    
+
     console.log("USER DATA: " + JSON.stringify(prop.user))
 
     console.log("Basket Data: " + JSON.stringify(prop.basket))
@@ -63,6 +65,7 @@ export default function Basket(prop) {
     }
     const update = (updateItems, user) => {
         updateItems(user)
+        return (<Redirect to={'/user/' + prop.user.userId} />)
     }
 
 
@@ -86,7 +89,7 @@ export default function Basket(prop) {
                                     <Person />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary={item.name} secondary={"£" + item.price + " x " + item.amount} />
+                            <ListItemText primary={item.name} secondary={"£" + item.price + " x " + item.amount + " = " + item.price*item.amount} />
 
                             <ListItemSecondaryAction>
 
