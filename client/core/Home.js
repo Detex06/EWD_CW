@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => ({
             </Grid>
 
 */
-export default function Home() {
+export default function Home({match}) {
     const classes = useStyles()
     const [items, setItems] = useState([{
         name: '',
