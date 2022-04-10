@@ -83,6 +83,8 @@ export default function Items(prop) {
     }
 
     console.log("CHECKING USER DATA LOADED "+JSON.stringify(user))
+    
+    console.log("CHECKING ITEMS LOADED "+JSON.stringify(prop.items))
 
     return (
         <List dense>
