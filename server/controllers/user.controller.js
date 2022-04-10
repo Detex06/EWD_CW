@@ -97,7 +97,7 @@ const update = async (req, res) => {
 }
 
 const updateBasket = async (req, res) => {
-    
+
 
     try {
         let user = req.profile
@@ -126,26 +126,27 @@ const remove = async (req, res) => {
             error: errorHandler.getErrorMessage(err)
         })
     }
+}
 
 
-    const removeFromBasket = async (req, res) => {
-    
-        const basket = new basketModel(req.item)
-        try {
-            let user = req.profile
-            user = extend(user, req.body)
-            user.basket= user.basket.filter(basket)
-            await user.save()//user.findOneAndUpdate({ $addToSet: { basket: [basket] } })
-            user.hashed_password = undefined
-            user.salt = undefined
-            res.json(user)
-        } catch (err) {
-            return res.status(400).json({
-                error: errorHandler.getErrorMessage(err)
-            })
-        }
-    }}
 
+const removeFromBasket = async (req, res) => {
+
+    const basket = new basketModel(req.item)
+    try {
+        let user = req.profile
+        user = extend(user, req.body)
+        user.basket = user.basket.filter(basket)
+        await user.save()//user.findOneAndUpdate({ $addToSet: { basket: [basket] } })
+        user.hashed_password = undefined
+        user.salt = undefined
+        res.json(user)
+    } catch (err) {
+        return res.status(400).json({
+            error: errorHandler.getErrorMessage(err)
+        })
+    }
+}
 // const removeFromBasket = async (req, res) => {
 //     const basket = new basketModel(req.item)
 
