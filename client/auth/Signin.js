@@ -50,8 +50,7 @@ export default function Signin(props) {
   const clickSubmit = () => {
     const user = {
       email: values.email || undefined,
-      password: values.password || undefined,
-      basket: values.basket || undefined
+      password: values.password || undefined
     }
 
     signin(user).then((data) => {
