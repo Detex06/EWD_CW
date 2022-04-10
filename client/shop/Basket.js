@@ -64,26 +64,21 @@ export default function Basket(prop) {
         item.amount++
 
     }
-    const removeOne = (item, user) => {
+    const removeOne = (item) => {
+        1 < item.amount ? item.amount-- : 1
+    }
 
-        console.log(user.basket.indexOf(item))
-
+    const removeEntireItem = (updateItems, item, user) => {
+        //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
+        
         const index = user.basket.indexOf(item);
         if (index > -1) {
             user.basket.splice(index, 1);
         }
 
-        1 < item.amount ? item.amount-- : 1
-        
-        console.log("REMOVED ???"+JSON.stringify(user.basket))
-    }
-
-    const removeEntireItem = (removeItem, item, user) => {
-        //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
-        removeItem(item, user)
+        updateItems(user)
     }
     const update = (updateItems, user) => {
-
         updateItems(user)
     }
 
@@ -118,11 +113,11 @@ export default function Basket(prop) {
 
                                     <Typography>{item.amount}</Typography>
 
-                                    <IconButton onClick={() => removeOne(item, prop.user)}>
+                                    <IconButton onClick={() => removeOne(item)}>
                                         <Typography>-</Typography>
                                     </IconButton>
 
-                                    <IconButton onClick={() => removeEntireItem(prop.removeItem, item, prop.user)}>
+                                    <IconButton onClick={() => removeEntireItem(prop.updateBasket, item, prop.user)}>
                                         <Typography>Remove</Typography>
                                     </IconButton>
                                 </Link>

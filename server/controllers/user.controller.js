@@ -17,23 +17,23 @@ const create = async (req, res) => {
     }
 }
 
-const addToBasket = async (req, res) => {
-    const basket = new basketModel(req.item)
+// const addToBasket = async (req, res) => {
+//     const basket = new basketModel(req.item)
 
-    try {
-        let user = req.profile
-        user = extend(user, req.body)
-        user.basket = [basket]
-        await user.save()
-        user.hashed_password = undefined
-        user.salt = undefined
-        res.json(user)
-    } catch (err) {
-        return res.status(400).json({
-            error: errorHandler.getErrorMessage(err)
-        })
-    }
-}
+//     try {
+//         let user = req.profile
+//         user = extend(user, req.body)
+//         user.basket = [basket]
+//         await user.save()
+//         user.hashed_password = undefined
+//         user.salt = undefined
+//         res.json(user)
+//     } catch (err) {
+//         return res.status(400).json({
+//             error: errorHandler.getErrorMessage(err)
+//         })
+//     }
+// }
 
 const list = async (req, res) => {
     try {
@@ -102,7 +102,7 @@ const updateBasket = async (req, res) => {
     try {
         let user = req.profile
         user = extend(user, req.body)
-        await user.save()//user.findOneAndUpdate({ $addToSet: { basket: [basket] } })
+        await user.save()
         user.hashed_password = undefined
         user.salt = undefined
         res.json(user)
@@ -130,39 +130,21 @@ const remove = async (req, res) => {
 
 
 
-const removeFromBasket = async (req, res) => {
-
-    const basket = new basketModel(req.item)
-
-    console.log("BASKET !!!"+JSON.stringify(basket))
-
-    try {
-        let user = req.profile
-        user = extend(user, req.body)
-        console.log("USER !!! "+JSON.stringify(user.basket))
-        user.basket = user.basket.remove(basket)
-        await user.save()
-        user.hashed_password = undefined
-        user.salt = undefined
-        res.json(user)
-    } catch (err) {
-        return res.status(400).json({
-            error: errorHandler.getErrorMessage(err)
-        })
-    }
-}
 // const removeFromBasket = async (req, res) => {
+
 //     const basket = new basketModel(req.item)
+
+//     console.log("BASKET !!!"+JSON.stringify(basket))
 
 //     try {
 //         let user = req.profile
-//         //user = extend(user, req.body)
-//         //await user.updateOne({ $pull: { basket: basket._id  } },{"multi":true})
-//         let deletedUser = await user.basket.filter(basket)
-//         deletedUser.hashed_password = undefined
-//         deletedUser.salt = undefined
-//         //res.json(user)
-//         console.log(JSON.stringify(deletedUser))
+//         user = extend(user, req.body)
+//         console.log("USER !!! "+JSON.stringify(user.basket))
+//         user.basket = user.basket.remove(basket)
+//         await user.save()
+//         user.hashed_password = undefined
+//         user.salt = undefined
+//         res.json(user)
 //     } catch (err) {
 //         return res.status(400).json({
 //             error: errorHandler.getErrorMessage(err)
@@ -178,7 +160,5 @@ export default {
     listadmin,
     remove,
     update,
-    addToBasket,
-    updateBasket,
-    removeFromBasket
+    updateBasket
 }

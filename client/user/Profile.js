@@ -77,22 +77,6 @@ export default function Profile({ match }) {
     })
   }
 
-  const removeItem = (item, user) => {
-    console.log("REMOVING ITEM FROM BASKET")
-    console.log("USER DATA IN REMOVE: " + JSON.stringify(user))
-
-    removeFromBasket({
-      userId: match.params.userId
-    }, {
-      t: jwt.token
-    }, user, item).then((data) => {
-      if (data && data.error) {
-        setUser({ ...user, error: data.error })
-      } else {
-        setUser(user)
-      }
-    })
-  }
 
   const handleChange = name => event => {
     setUser({ ...user, [name]: event.target.value })
@@ -147,7 +131,7 @@ export default function Profile({ match }) {
         User Basket
 
       </Typography>
-      <Basket user={user} updateItems={updateItems} removeItem={removeItem}></Basket>
+      <Basket user={user} updateItems={updateItems}></Basket>
     </Paper>
   )
 }

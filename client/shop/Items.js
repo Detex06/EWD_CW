@@ -1,4 +1,4 @@
-import React , { useState } from 'react'
+import React, { useState } from 'react'
 
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -11,39 +11,51 @@ import ArrowForward from '@material-ui/icons/ArrowForward'
 import Button from '@material-ui/core/Button'
 import Person from '@material-ui/icons/Person'
 import Typography from '@material-ui/core/Typography'
-
-
 import Basket from '../shop/Basket'
+
+const addItem = (updateItems, item, user) => {
+    //if after removing 1 the item amount will be more than 0 remove 1, else remove the item
+    
+    
+    console.log("BASKET BEFORE "+JSON.stringify(user.basket) )
+    const index = user.basket.indexOf(item);
+    if (index === -1) {
+        user.basket = user.basket.concat(item);
+    }
+    console.log("BASKET AFTER "+JSON.stringify(user.basket) )
+    updateItems(user)
+}
+
 export default function Items(prop) {
     return (
         <List dense>
-                {prop.items.map((item) => {
-                    console.log("LOADING ITEMS");
-                    console.log(JSON.stringify(item));
-                    if (item.amount !== 0) {
-                        return (
-                            
-                            <ListItem>
-                                <ListItemAvatar>
-                                    <Avatar>
-                                        <Person />
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText primary={item.name} secondary={"£" + item.price} />
-                                <ListItemSecondaryAction>
-                                    <IconButton>
-                                        <Typography>Add to Basket</Typography>
-                                    </IconButton>
-                                </ListItemSecondaryAction>
-                                
-                                
-                            </ListItem>
-                            
-                        )
-                    }
-                })
+            {prop.items.map((item) => {
+                console.log("LOADING ITEMS");
+                console.log(JSON.stringify(item));
+                if (item.amount !== 0) {
+                    return (
+
+                        <ListItem>
+                            <ListItemAvatar>
+                                <Avatar>
+                                    <Person />
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText primary={item.name} secondary={"£" + item.price} />
+                            <ListItemSecondaryAction>
+                                <IconButton onClick={() => addItem(prop.updateBasket, item, prop.user)}>
+                                    <Typography>Add to Basket</Typography>
+                                </IconButton>
+                            </ListItemSecondaryAction>
+
+
+                        </ListItem>
+
+                    )
                 }
-            </List>
+            })
+            }
+        </List>
     )
 }
 
