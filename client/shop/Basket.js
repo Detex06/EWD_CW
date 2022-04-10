@@ -17,6 +17,7 @@ import auth from './../auth/auth-helper'
 import Items from '../shop/Items'
 import { listItems } from '../shop/api-item.js'
 import { updateBasket } from '../user/api-user'
+import { Redirect } from 'react-router-dom'
 //import { read } from './api-user.js'
 //import { listBasket, updateBasket } from '../user/api-user'
 
