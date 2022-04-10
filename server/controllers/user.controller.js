@@ -78,6 +78,12 @@ const read = (req, res) => {
     return res.json(req.profile)
 }
 
+const readHome = (req, res) => {
+    req.profile.hashed_password = undefined
+    req.profile.salt = undefined
+    return res.json(req.profile)
+}
+
 const update = async (req, res) => {
     try {
         let user = req.profile
@@ -159,5 +165,6 @@ export default {
     listadmin,
     remove,
     update,
-    updateBasket
+    updateBasket,
+    readHome
 }
