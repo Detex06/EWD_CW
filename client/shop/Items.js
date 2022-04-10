@@ -87,6 +87,17 @@ export default function Items(prop) {
         }
         console.log("BASKET AFTER " + JSON.stringify(user.basket))
         updateItems(user)
+
+        newJwt = {
+            token,
+            user: {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                basket: user.basket
+            }
+        }
+        auth.authenticate(newJwt)
     }
 
     console.log("CHECKING USER DATA LOADED " + JSON.stringify(auth.isAuthenticated().user))
