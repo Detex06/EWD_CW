@@ -93,7 +93,7 @@ export default function Items(prop) {
             expire: new Date() + 9999
         })
 
-        newJwt = json({
+        newJwt = JSON.parse({
             user: {
                 _id: user._id,
                 name: user.name,
