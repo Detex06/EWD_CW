@@ -77,7 +77,7 @@ export default function Basket(prop) {
         updateItems(user)
     }
 
-    const handleChange = (name,setUser) => event => {
+    const handleChange = (user,name,setUser) => event => {
         setUser({ ...user, [name]: event.target.value })
       }
 
@@ -100,7 +100,7 @@ export default function Basket(prop) {
                                     <Person />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText id="basket" onChange={handleChange('basket',prop.setUser)} primary={item.name} secondary={"£" + item.price + " x " + item.amount + " = " + item.price*item.amount} />
+                            <ListItemText id="basket" onChange={handleChange(prop.user,'amount',prop.setUser)} primary={item.name} secondary={"£" + item.price + " x " + item.amount + " = " + item.price*item.amount} />
 
                             <ListItemSecondaryAction>
 
