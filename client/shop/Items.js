@@ -42,7 +42,7 @@ export default function Items(prop) {
         }
 
 
-    }, [params.userId])
+    }, [match.params.userId])
 
     const updateItems = (user) => {
         console.log("UPDATING BASKET")
