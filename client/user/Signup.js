@@ -48,7 +48,8 @@ export default function Signup() {
     password: '',
     email: '',
     open: false,
-    error: ''
+    error: '',
+    basket: []
   })
 
   const handleChange = name => event => {
@@ -59,7 +60,8 @@ export default function Signup() {
     const user = {
       name: values.name || undefined,
       email: values.email || undefined,
-      password: values.password || undefined
+      password: values.password || undefined,
+      basket: []
     }
     create(user).then((data) => {
       if (data.error) {

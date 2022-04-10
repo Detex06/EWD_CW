@@ -43,7 +43,8 @@ export default function Signin(props) {
       email: '',
       password: '',
       error: '',
-      redirectToReferrer: false
+      redirectToReferrer: false,
+      basket: []
   })
 
   const clickSubmit = () => {
