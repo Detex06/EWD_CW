@@ -32,19 +32,17 @@ export default function Items(prop) {
         const abortController = new AbortController()
         const signal = abortController.signal
 
-        const fetchData = async () => {
-            await readHome({
-                userId: match.params.userId
-            }, { t: jwt.token }, signal).then((data) => {
-                if (data && data.error) {
-                    console.log("User not logged in")
-                } else {
-                    setUser(data)
-                }
-            })
-        }
+        readHome({
+            userId: match.params.userId
+        }, { t: jwt.token }, signal).then((data) => {
+            if (data && data.error) {
+                console.log("User not logged in")
+            } else {
+                setUser(data)
+            }
+        })
 
-        fetchData
+
 
         return function cleanup() {
             abortController.abort()
@@ -111,7 +109,7 @@ export default function Items(prop) {
                             </ListItemAvatar>
                             <ListItemText primary={item.name} secondary={"£" + item.price} />
                             <ListItemSecondaryAction>
-                                <IconButton onClick={() => addItem(item, auth.isAuthenticated().user)}>
+                                <IconButton onClick={() => addItem(item, user)}>
                                     <Typography>Add to Basket</Typography>
                                 </IconButton>
                             </ListItemSecondaryAction>

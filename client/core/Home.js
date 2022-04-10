@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => ({
             </Grid>
 
 */
-export default function Home({match}) {
+export default function Home({ match }) {
     const classes = useStyles()
     const [items, setItems] = useState([]);
 
@@ -66,22 +66,19 @@ export default function Home({match}) {
         const abortController = new AbortController()
         const signal = abortController.signal
 
-        const fetchData = async () => {
-        await listItems(signal).then((data) => {
+        listItems(signal).then((data) => {
             if (data && data.error) {
                 setItems(data)
             } else {
                 setItems(data)
             }
         })
-    }
 
-    fetchData()
 
 
     }, [])
 
-    
+
 
     console.log(JSON.stringify(items));
     return (
