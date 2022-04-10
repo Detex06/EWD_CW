@@ -73,6 +73,7 @@ export default function Home({match}) {
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
+
         listItems(signal).then((data) => {
             if (data && data.error) {
                 console.log(data.error)
@@ -85,7 +86,7 @@ export default function Home({match}) {
             userId: match.params.userId
         }, { t: jwt.token }, signal).then((data) => {
             if (data && data.error) {
-                setRedirectToSignin(true)
+                console.log("User not logged in")
             } else {
                 setUser(data)
             }
