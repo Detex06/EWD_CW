@@ -2,6 +2,7 @@ import User from '../models/user.model'
 import jwt from 'jsonwebtoken'
 import expressJwt from 'express-jwt'
 import config from './../../config/config'
+import Basket from '../../client/shop/Basket'
 
 const signin = async (req, res) => {
     try {
@@ -28,7 +29,8 @@ const signin = async (req, res) => {
             user: {
                 _id: user._id,
                 name: user.name,
-                email: user.email
+                email: user.email,
+                basket: user.basket
             }
         })
     } catch (err) {
