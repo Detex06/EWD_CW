@@ -1,50 +1,26 @@
 [
     {
-        "_id": {
-            "$oid": "624cb49c885716f10adf30ba"
-        },
+        "_id": "624cb49c885716f10adf30ba",
         "name": "Apple",
-        "price": {
-            "$numberDouble": "15.99"
-        },
-        "amount": {
-            "$numberLong": "10"
-        }
+        "price": 15.99,
+        "amount": 10
     },
     {
-        "_id": {
-            "$oid": "624cb5d2885716f10adf30bc"
-        },
+        "_id": "624cb5d2885716f10adf30bc",
         "name": "Banana",
-        "price": {
-            "$numberDouble": "19.99"
-        },
-        "amount": {
-            "$numberLong": "10"
-        }
+        "price": 19.99,
+        "amount": 10
     },
     {
-        "_id": {
-            "$oid": "624cb6b7885716f10adf30bd"
-        },
+        "_id": "624cb6b7885716f10adf30bd",
         "name": "Orange",
-        "price": {
-            "$numberDecimal": "10.99"
-        },
-        "amount": {
-            "$numberLong": "10"
-        }
+        "price": 10.99,
+        "amount": 10
     },
     {
-        "_id": {
-            "$oid": "624e1fe3e3e61c558b0b7ffd"
-        },
+        "_id": "624e1fe3e3e61c558b0b7ffd",
         "name": "Grapes",
-        "price": {
-            "$numberDouble": "12.99"
-        },
-        "amount": {
-            "$numberLong": "1"
-        }
+        "price": 12.99,
+        "amount": 1
     }
 ]

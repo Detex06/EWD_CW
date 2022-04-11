@@ -83,7 +83,7 @@ export default function Comments() {
                 }
             })
             
-            redirectToComments= true
+            window.location.reload()
         }
         else {
             alert("SUBMITTING COMMENTED FAILED: BAD WORD DETECTED")

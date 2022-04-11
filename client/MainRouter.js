@@ -14,17 +14,17 @@ import CommentsAdmin from './comment/CommentsAdmin'
 
 const MainRouter = () => {
     return (<div>
-        <Menu/>
+        <Menu />
         <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/comments" component={Comments}/>
-            <Route path="/comments/admin" component={CommentsAdmin}/>
-            <Route path="/users" component={Users}/>
-        <Route path="/signup" component={Signup}/>
-        <Route path="/signin" component={Signin}/>
-        <PrivateRoute path="/user/edit/:userId" component={EditProfile}/>
-        <Route path="/user/:userId" component={Profile}/>
-        <Route path="/useradmin/:userId" component={UserAdmin}/>
+            <Route path="/comments" component={Comments} />
+            <Route path="/commentsadmin" component={CommentsAdmin} />
+            <Route path="/users" component={Users} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/signin" component={Signin} />
+            <PrivateRoute path="/user/edit/:userId" component={EditProfile} />
+            <Route path="/user/:userId" component={Profile} />
+            <Route path="/useradmin/:userId" component={UserAdmin} />
         </Switch>
     </div>)
 }

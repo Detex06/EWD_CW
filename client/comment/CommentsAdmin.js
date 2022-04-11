@@ -10,7 +10,7 @@ import ListItem from '@material-ui/core/ListItem'
 import IconButton from '@material-ui/core/IconButton'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import ListItemText from '@material-ui/core/ListItemText'
-import { createComment, listComments, listCommentsAdmin } from './api-comment'
+import { listCommentsAdmin, removeComment } from './api-comment'
 
 
 const useStyles = makeStyles(theme => ({
@@ -26,8 +26,7 @@ const useStyles = makeStyles(theme => ({
 
 }))
 
-export default function CommentsAdmin({ match }) {
-    var redirectToComments = false
+export default function Comments({ match }) {
     const classes = useStyles()
     const [comments, setComments] = useState([]);
     const jwt = auth.isAuthenticated()
@@ -51,24 +50,19 @@ export default function CommentsAdmin({ match }) {
     }, [match.params.userId])
 
 
-    if (redirectToComments) {
-        redirectToComments = false
-        return (<Redirect to={'/comments/admin'} />)
-    }
-
-
     const removeThisComment = (comment) => {
 
         removeComment({
             userId: props.userId
-        }, { t: jwt.token }).then((data) => {
+        }, { t: jwt.token }, comment).then((data) => {
             if (data && data.error) {
                 console.log(data.error)
             } else {
-                auth.clearJWT(() => console.log('deleted'))
-                redirectToComments = true
+                setComments(data)
             }
         })
+
+        window.location.reload()
     }
 
 

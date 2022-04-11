@@ -29,7 +29,7 @@ const listComments = async (signal) => {
 const listCommentsAdmin = async (params, credentials, signal) => {
     console.log("listing the comments for admin")
     try {
-        let response = await fetch('/api/comments/admin/' + params.userId, {
+        let response = await fetch('/api/commentsadmin/' + params.userId, {
             method: 'GET',
             signal: signal,
             headers: {
@@ -63,7 +63,7 @@ const updateComment = async (params, credentials, comment) => {
 }
 
 
-const removeComment = async (params, credentials) => {
+const removeComment = async (params, credentials, comment) => {
     try {
         let response = await fetch('/api/comments/admin/' + params.userId, {
             method: 'DELETE',
@@ -71,7 +71,8 @@ const removeComment = async (params, credentials) => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + credentials.t
-            }
+            },
+            body: JSON.stringify(comment)
         })
         return await response.json()
     } catch (err) {
