@@ -9,12 +9,16 @@ import Profile from './user/Profile'
 import EditProfile from './user/EditProfile'
 import Menu from './core/Menu'
 import UserAdmin from './user/UsersAdmin'
+import Comments from './comment/CommentsMain'
+import CommentsAdmin from './comment/CommentsAdmin'
 
 const MainRouter = () => {
     return (<div>
         <Menu/>
         <Switch>
             <Route exact path="/" component={Home} />
+            <Route path="/comments" component={Comments}/>
+            <Route path="/comments/admin" component={CommentsAdmin}/>
             <Route path="/users" component={Users}/>
         <Route path="/signup" component={Signup}/>
         <Route path="/signin" component={Signin}/>

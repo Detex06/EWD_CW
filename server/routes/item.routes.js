@@ -6,7 +6,6 @@ const router = express.Router()
 
 router.route('/api/items')
     .get(itemCtrl.listItems)
-//     //.post(itemCtrl.create)
 
 
 export default router

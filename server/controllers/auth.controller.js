@@ -2,7 +2,6 @@ import User from '../models/user.model'
 import jwt from 'jsonwebtoken'
 import expressJwt from 'express-jwt'
 import config from './../../config/config'
-import Basket from '../../client/shop/Basket'
 
 const signin = async (req, res) => {
     try {
