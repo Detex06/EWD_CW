@@ -62,8 +62,8 @@ export default function Comments() {
     }, [])
 
     
-    console.log(JSON.stringify(comments.name))
-    console.log(JSON.stringify(comments.comment))
+    console.log(JSON.stringify(values.name))
+    console.log(JSON.stringify(values.comment))
 
     const clickSubmit = () => {
         var badWordDetected = false
@@ -130,7 +130,7 @@ export default function Comments() {
                 multiline
                 rows="2"
                 value={values.comment}
-                onChange={handleChange('comments')}
+                onChange={handleChange('comment')}
                 margin="normal"
             /><br />
 
