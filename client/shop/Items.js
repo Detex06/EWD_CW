@@ -72,9 +72,9 @@ export default function Items(prop) {
     }
 
 
-    if (setdirectToSignin) {
-        return (<Redirect to={'/user/' + user.userId} />)
-    }
+    // if (setdirectToSignin) {
+    //     return (<Redirect to={'/user/' + user.userId} />)
+    // }
 
 
 
