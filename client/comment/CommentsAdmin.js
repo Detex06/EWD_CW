@@ -69,7 +69,7 @@ export default function Comments({ match }) {
             }
         })
 
-        window.location.reload()
+        //window.location.reload()
     }
 
 
