@@ -19,29 +19,25 @@ import { readHome, updateBasket } from '../user/api-user.js'
 export default function Items(prop) {
 
     var match = prop.match
-
-
     const [user, setUser] = useState({
 
     })
-    const [setdirectToSignin, setRedirectToSignin] = useState(false)
+    //const [setdirectToSignin, setRedirectToSignin] = useState(false)
     const jwt = auth.isAuthenticated()
 
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
 
-        const fetchData = async () => {
-            await readHome({
-                userId: match.params.userId
-            }, { t: jwt.token }, signal).then((data) => {
-                if (data && data.error) {
-                    console.log("User not logged in")
-                } else {
-                    setUser(data)
-                }
-            })
-        }
+        readHome({
+            userId: match.params.userId
+        }, { t: jwt.token }, signal).then((data) => {
+            if (data && data.error) {
+                console.log("User not logged in")
+            } else {
+                setUser(data)
+            }
+        })
 
 
         return function cleanup() {
@@ -55,6 +51,10 @@ export default function Items(prop) {
         console.log("UPDATING BASKET")
         console.log("USER DATA IN UPDATE: " + JSON.stringify(user))
 
+        const index = user.basket.indexOf(item);
+        if (index === -1) {
+            user.basket.push(item);
+        }
 
         updateBasket({
             userId: match.params.userId
