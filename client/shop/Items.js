@@ -29,7 +29,7 @@ export default function Items(prop) {
         const abortController = new AbortController()
         const signal = abortController.signal
 
-        readHome({
+        read({
             userId: match.params.userId
         }, { t: jwt.token }, signal).then((data) => {
             if (data && data.error) {
@@ -46,6 +46,8 @@ export default function Items(prop) {
 
 
     }, [match.params.userId])
+
+    console.log(JSON.stringify(user))
 
     const updateItems = (user) => {
         console.log("UPDATING BASKET")
