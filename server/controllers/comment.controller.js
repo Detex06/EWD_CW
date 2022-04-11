@@ -57,7 +57,7 @@ const removeComment = async (req, res) => {
         //let comments = await Comment.find().select('name comment created')
         //let deletedComment = await comments.remove(req.body)
         await comments.findOneAndRemove(req.comment)
-        res.json(deletedComment)
+        res.json(comments)
     } catch (err) {
         return res.status(400).json({
             error: errorHandler.getErrorMessage(err)
