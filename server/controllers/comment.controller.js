@@ -42,7 +42,7 @@ const updateComment = async (req, res) => {
     
     const comment = new Comment(req.body)
     try {
-        await comments.save()
+        await comment.save()
         res.json(comment)
     } catch (err) {
         return res.status(400).json({
@@ -56,7 +56,7 @@ const removeComment = async (req, res) => {
     try {
         //let comments = await Comment.find().select('name comment created')
         //let deletedComment = await comments.remove(req.body)
-        let comments = req.body
+        let comments = new Comment(req.body)
         await comments.save()
         res.json(comments)
     } catch (err) {

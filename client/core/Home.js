@@ -13,6 +13,7 @@ import Grid from '@material-ui/core/Grid'
 import { Redirect, Link } from 'react-router-dom'
 import auth from './../auth/auth-helper'
 import { read, updateBasket } from '../user/api-user.js'
+var itemsList = require('./../shop/itemList.json');
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -60,23 +61,23 @@ const useStyles = makeStyles(theme => ({
 */
 export default function Home({ match }) {
     const classes = useStyles()
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(itemsList);
 
-    useEffect(() => {
-        const abortController = new AbortController()
-        const signal = abortController.signal
+    // useEffect(() => {
+    //     const abortController = new AbortController()
+    //     const signal = abortController.signal
 
-        listItems(signal).then((data) => {
-            if (data && data.error) {
-                setItems(data)
-            } else {
-                setItems(data)
-            }
-        })
+    //     listItems(signal).then((data) => {
+    //         if (data && data.error) {
+    //             setItems(data)
+    //         } else {
+    //             setItems(data)
+    //         }
+    //     })
 
 
 
-    }, [])
+    // }, [])
 
     
     console.log(match.params.userId)

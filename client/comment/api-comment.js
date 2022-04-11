@@ -70,8 +70,7 @@ const removeComment = async (params, credentials, comments,comment) => {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + credentials.t
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(comments),
             comment: JSON.stringify(comment)
