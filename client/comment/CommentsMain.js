@@ -7,7 +7,6 @@ import Paper from '@material-ui/core/Paper'
 import { Redirect, Link } from 'react-router-dom'
 import auth from '../auth/auth-helper'
 import { createComment, listComments } from './api-comment'
-import TextField from '@material-ui/core/TextField'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -111,7 +110,7 @@ export default function Comments() {
             </CardActions>
 
             <Divier />
-            
+
             <Typography variant="h6" className={classes.title}>
                 Comments: 
             </Typography>
