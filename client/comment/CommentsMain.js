@@ -9,6 +9,7 @@ import auth from '../auth/auth-helper'
 import IconButton from '@material-ui/core/IconButton'
 import { createComment, listComments } from './api-comment'
 import Button from '@material-ui/core/Button'
+import CommentsList from './CommentsList'
 
 const useStyles = makeStyles(theme => ({
     root: {
