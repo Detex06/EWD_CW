@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function Comments() {
-    
+    redirectToComments = false
     const badWordList = ["crap"]
 
     const classes = useStyles()
@@ -63,13 +63,8 @@ export default function Comments() {
 
     const clickSubmit = () => {
         var badWordDetected = false
-        
-        
-        console.log(JSON.stringify(values.name))
-        console.log(JSON.stringify(values.comment))
 
         badWordList.forEach( badWord => {
-            console.log(badWord)
             if (values.comment.includes(badWord)) {
                 badWordDetected = true
             }
@@ -85,8 +80,15 @@ export default function Comments() {
                     setCommentValues(values)
                 } else {
                     setCommentValues(values)
+                    redirectToComments= true
                 }
             })
+
+
+            if (redirectToComments) {
+                redirectToComments = false
+                return (<Redirect to={'/comments/admin'} />)
+            }
         }
         else {
             alert("SUBMITTING COMMENTED FAILED: BAD WORD DETECTED")
