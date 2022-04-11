@@ -9,7 +9,7 @@ router.route('/api/comments')
     .get(commentCtrl.listComments)
     .post(commentCtrl.createComment)
 
-router.route('/api/commentsadmin/:userId')
+router.route('/api/comments/admin/:userId')
     .get(authCtrl.requireSignin, authCtrl.hasAdminAuthorization, commentCtrl.listCommentsAdmin)
     .put(authCtrl.requireSignin, authCtrl.hasAdminAuthorization, commentCtrl.updateComment)
     .delete(authCtrl.requireSignin, authCtrl.hasAdminAuthorization, commentCtrl.removeComment)
