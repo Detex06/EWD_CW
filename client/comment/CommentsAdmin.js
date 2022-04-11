@@ -55,7 +55,7 @@ export default function Comments({ match }) {
         console.log("BEFORE "+JSON.stringify(comments))
         const index = comments.indexOf(comment);
         if (index > -1) {
-            comments.basket.splice(index, 1);
+            comments.splice(index, 1);
         }
         console.log("AFTER "+JSON.stringify(comments))
 
