@@ -52,9 +52,16 @@ export default function Comments({ match }) {
 
     const removeThisComment = (comment) => {
 
+        console.log("BEFORE "+JSON.stringify(comments))
+        const index = comments.indexOf(comment);
+        if (index > -1) {
+            comments.basket.splice(index, 1);
+        }
+        console.log("AFTER "+JSON.stringify(comments))
+
         removeComment({
             userId: match.params.userId
-        }, { t: jwt.token }, comments,comment).then((data) => {
+        }, { t: jwt.token }, comments).then((data) => {
             if (data && data.error) {
                 console.log(data.error)
             } else {
