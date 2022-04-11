@@ -6,7 +6,7 @@ const createComment = async (comment) => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(user)
+            body: JSON.stringify(comment)
         })
         return await response.json()
     } catch (err) {

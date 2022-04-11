@@ -61,10 +61,6 @@ export default function Comments() {
         }
     }, [])
 
-    
-    console.log(JSON.stringify(values.name))
-    console.log(JSON.stringify(values.comment))
-
     const clickSubmit = () => {
         var badWordDetected = false
         
@@ -86,9 +82,9 @@ export default function Comments() {
             }
             createComment(comment).then((data) => {
                 if (data && data.error) {
-                    setCommentValues({ ...values, error: data.error })
+                    setCommentValues(values)
                 } else {
-                    setCommentValues({ ...values, error: "" })
+                    setCommentValues(values)
                 }
             })
         }
