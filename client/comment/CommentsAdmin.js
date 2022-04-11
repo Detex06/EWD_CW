@@ -10,7 +10,7 @@ import ListItem from '@material-ui/core/ListItem'
 import IconButton from '@material-ui/core/IconButton'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import ListItemText from '@material-ui/core/ListItemText'
-import { listCommentsAdmin, removeComment } from './api-comment'
+import { listComments, listCommentsAdmin, removeComment } from './api-comment'
 
 
 const useStyles = makeStyles(theme => ({
@@ -40,7 +40,7 @@ export default function Comments({ match }) {
         console.log(jwt.token)
         console.log(signal)
         
-        listCommentsAdmin({ userId: match.params.userId }, { t: jwt.token }, signal).then((data) => {
+        listComments({ userId: match.params.userId }, { t: jwt.token }, signal).then((data) => {
             if (data && data.error) {
                 console.error()
             } else {
