@@ -85,7 +85,7 @@ export default function Comments() {
                 WELCOME TO THE COMMENTS PAGE
             </Typography>
 
-            <Divier />
+            <Divider />
 
             <TextField
                 id="name"
@@ -109,7 +109,7 @@ export default function Comments() {
                 <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Submit Comment</Button>
             </CardActions>
 
-            <Divier />
+            <Divider />
 
             <Typography variant="h6" className={classes.title}>
                 Comments: 
