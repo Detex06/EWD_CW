@@ -78,7 +78,6 @@ export default function Comments() {
     const badWordList = ["crap"]
 
 
-    console.log(JSON.stringify(items));
     return (
         <Paper className={classes.root} elevation={4}>
             <Typography variant="h6" className={classes.title}>

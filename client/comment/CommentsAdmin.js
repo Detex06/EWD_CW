@@ -76,7 +76,6 @@ export default function CommentsAdmin({ match }) {
         setComments({ ...comments, [name]: event.target.value })
     }
 
-    console.log(JSON.stringify(items));
     return (
         <Paper className={classes.root} elevation={4}>
             <Typography variant="h6" className={classes.title}>
