@@ -80,15 +80,10 @@ export default function Comments() {
                     setCommentValues(values)
                 } else {
                     setCommentValues(values)
-                    redirectToComments= true
                 }
             })
-
-
-            if (redirectToComments) {
-                redirectToComments = false
-                return (<Redirect to={'/comments/admin'} />)
-            }
+            
+            redirectToComments= true
         }
         else {
             alert("SUBMITTING COMMENTED FAILED: BAD WORD DETECTED")
@@ -96,14 +91,18 @@ export default function Comments() {
 
     }
 
+    
+    
 
     const handleChange = name => event => {
         setCommentValues({ ...values, [name]: event.target.value })
         console.log(event.target.value)
     }
 
-
-
+    if (redirectToComments) {
+        redirectToComments = false
+        return (<Redirect to={'/comments/'} />)
+    }
     return (
         <Paper className={classes.root} elevation={4}>
             <Typography variant="h6" className={classes.title}>
