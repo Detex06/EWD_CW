@@ -38,13 +38,13 @@ export default function Comments({ match }) {
 
         console.log(match.params.userId)
         
-        // listCommentsAdmin({ userId: match.params.userId }, { t: jwt.token }, signal).then((data) => {
-        //     if (data && data.error) {
-        //         console.error()
-        //     } else {
-        //         setComments(data)
-        //     }
-        // })
+        listCommentsAdmin({ userId: match.params.userId }, { t: jwt.token }, signal).then((data) => {
+            if (data && data.error) {
+                console.error()
+            } else {
+                setComments(data)
+            }
+        })
 
         return function cleanup() {
             abortController.abort()
