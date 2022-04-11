@@ -12,7 +12,7 @@ router.route('/api/comments')
 
 //authCtrl.requireSignin, authCtrl.hasAdminAuthorization,
 router.route('/api/comments/admin/:userId')
-    .get( commentCtrl.listCommentsAdmin)
+    .get(commentCtrl.listCommentsAdmin)
     .put(commentCtrl.updateComment)
     .delete(commentCtrl.removeComment)
 

@@ -55,9 +55,8 @@ const updateComment = async (req, res) => {
 const removeComment = async (req, res) => {
     const comment = new Comment(req.body)
     try {
-        //let deletedComment = await comment.remove()
-        //res.json(deletedComment)
-        res.json(comment)
+        let deletedComment = await comment.remove()
+        res.json(deletedComment)
     } catch (err) {
         return res.status(400).json({
             error: errorHandler.getErrorMessage(err)

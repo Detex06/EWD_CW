@@ -35,11 +35,7 @@ export default function Comments({ match }) {
         const abortController = new AbortController()
         const signal = abortController.signal
 
-
-        console.log(match)
-        console.log(jwt)
-        console.log(signal)
-        
+        //this isnt authenticated as i couldnt get it to work
         listCommentsAdmin({ userId: match.params.userId }, { t: jwt.token }, signal).then((data) => {
             if (data && data.error) {
                 console.error()
@@ -58,7 +54,7 @@ export default function Comments({ match }) {
 
         removeComment({
             userId: match.params.userId
-        }, { t: jwt.token }, comment).then((data) => {
+        }, { t: jwt.token }, comments,comment).then((data) => {
             if (data && data.error) {
                 console.log(data.error)
             } else {
@@ -70,9 +66,6 @@ export default function Comments({ match }) {
     }
 
 
-    const handleChange = name => event => {
-        setComments({ ...comments, [name]: event.target.value })
-    }
 
     console.log(JSON.stringify(comments))
     return (
