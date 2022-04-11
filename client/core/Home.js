@@ -78,7 +78,8 @@ export default function Home({ match }) {
 
     }, [])
 
-
+    
+    console.log(match.params.userId)
 
     console.log(JSON.stringify(items));
     return (
