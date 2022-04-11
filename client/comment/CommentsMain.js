@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function Comments() {
-    redirectToComments = false
+    var redirectToComments = false
     const badWordList = ["crap"]
 
     const classes = useStyles()
