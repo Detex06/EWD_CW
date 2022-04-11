@@ -54,7 +54,7 @@ const updateComment = async (req, res) => {
 
 const removeComment = async (req, res) => {
     try {
-        //let comments = await Comment.find().select('name comment created')
+        let comments = await Comment.find().select('name comment created')
         //let deletedComment = await comments.remove(req.body)
         await comments.findOneAndRemove(req.comment)
         res.json(comments)
