@@ -67,7 +67,7 @@ const updateComment = async (params, credentials, comment) => {
 const removeComment = async (params, credentials, comments,comment) => {
     try {
         let response = await fetch('/api/comments/admin/' + params.userId, {
-            method: 'DELETE',
+            method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
