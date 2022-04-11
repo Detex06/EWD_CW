@@ -29,7 +29,7 @@ const listComments = async (req, res) => {
 
 const listCommentsAdmin = async (req, res) => {
     try {
-        let comments = await Comment.find().select('name comment created admin')
+        let comments = await Comment.find().select('name comment created')
         res.json(comments)
     } catch (err) {
         return res.status(400).json({

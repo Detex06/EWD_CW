@@ -37,7 +37,7 @@ export default function Comments({ match }) {
 
         listCommentsAdmin({ userId: match.params.userId }, { t: jwt.token }, signal).then((data) => {
             if (data && data.error) {
-                setComments(data)
+                console.error()
             } else {
                 setComments(data)
             }
@@ -49,7 +49,8 @@ export default function Comments({ match }) {
 
     }, [match.params.userId])
 
-
+    console.log(match.params.userId)
+    
     const removeThisComment = (comment) => {
 
         removeComment({
@@ -69,7 +70,8 @@ export default function Comments({ match }) {
     const handleChange = name => event => {
         setComments({ ...comments, [name]: event.target.value })
     }
-
+    
+    console.log(JSON.stringify(comments))
     return (
         <Paper className={classes.root} elevation={4}>
             <Typography variant="h6" className={classes.title}>
