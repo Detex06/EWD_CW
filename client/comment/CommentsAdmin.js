@@ -36,7 +36,7 @@ export default function Comments({ match }) {
         const signal = abortController.signal
 
 
-        console.log(match.params.userId)
+        console.log(match)
         console.log(jwt.token)
         console.log(signal)
         
