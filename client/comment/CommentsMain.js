@@ -39,7 +39,7 @@ export default function Comments() {
 
     const classes = useStyles()
     const [comments, setComments] = useState([]);
-    const [values, setValues] = useState({
+    const [values, setCommentValues] = useState({
         name: '',
         comment: ''
       })
@@ -86,9 +86,9 @@ export default function Comments() {
             }
             createComment(comment).then((data) => {
                 if (data && data.error) {
-                    setValues({ ...values, error: data.error })
+                    setCommentValues({ ...values, error: data.error })
                 } else {
-                    setValues({ ...values, error: "" })
+                    setCommentValues({ ...values, error: "" })
                 }
             })
         }
