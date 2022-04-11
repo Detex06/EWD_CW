@@ -57,7 +57,7 @@ export default function Comments({ match }) {
     const removeThisComment = (comment) => {
 
         removeComment({
-            userId: userId
+            userId: match.params.userId
         }, { t: jwt.token }, comment).then((data) => {
             if (data && data.error) {
                 console.log(data.error)
