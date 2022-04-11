@@ -76,7 +76,8 @@ export default function Comments() {
 
 
     const handleChange = name => event => {
-        setComments({ ...comments, [name]: event.target.value })
+        //setComments({ ...comments, [name]: event.target.value })
+        console.log(event.target.value)
     }
 
     const badWordList = ["crap"]
