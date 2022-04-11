@@ -28,7 +28,7 @@ const listComments = async (signal) => {
 
 const listCommentsAdmin = async (params, credentials, signal) => {
     console.log("listing the comments for admin")
-    console.log(""+params.userId+" "+credentials.t+" "+signal)
+    console.log(""+JSON.stringify(params.userId)+" "+JSON.stringify(credentials.t)+" "+signal)
     try {
         let response = await fetch('/api/comments/admin/' + params.userId, {
             method: 'GET',
