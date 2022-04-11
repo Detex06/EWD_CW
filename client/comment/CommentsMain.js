@@ -48,8 +48,13 @@ export default function Comments() {
 
     const clickSubmit = () => {
         var badWordDetected = false
+        
+        
+        console.log(JSON.stringify(comments.name))
+        console.log(JSON.stringify(comments.comment))
 
         badWordList.forEach(function (badWord) {
+            console.log(word)
             if (comments.comment.includes(badWord)) {
                 badWordDetected = true
             }
