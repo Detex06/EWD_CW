@@ -42,7 +42,7 @@ const updateComment = async (req, res) => {
     
     const comment = new Comment(req.body)
     try {
-        await comment.save()
+        await comments.save()
         res.json(comment)
     } catch (err) {
         return res.status(400).json({
@@ -53,9 +53,9 @@ const updateComment = async (req, res) => {
 
 
 const removeComment = async (req, res) => {
-    const comment = new Comment(req.body)
     try {
-        let deletedComment = await comment.remove()
+        let comments = req.body
+        let deletedComment = await comments.remove(req.comment)
         res.json(deletedComment)
     } catch (err) {
         return res.status(400).json({
