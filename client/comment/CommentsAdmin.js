@@ -15,7 +15,6 @@ import { createComment, listComments, listCommentsAdmin } from './api-comment'
 
 const useStyles = makeStyles(theme => ({
     root: {
-        maxWidth: 600,
         margin: 'auto',
         marginTop: theme.spacing(5),
         marginBottom: theme.spacing(5)

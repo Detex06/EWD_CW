@@ -13,7 +13,6 @@ import CommentsList from './CommentsList'
 
 const useStyles = makeStyles(theme => ({
     root: {
-        maxWidth: 600,
         margin: 'auto',
         marginTop: theme.spacing(5),
         marginBottom: theme.spacing(5)
@@ -26,6 +25,9 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function Comments() {
+    
+    const badWordList = ["crap"]
+
     const classes = useStyles()
     const [comments, setComments] = useState([]);
 
@@ -53,8 +55,8 @@ export default function Comments() {
         console.log(JSON.stringify(comments.name))
         console.log(JSON.stringify(comments.comment))
 
-        badWordList.forEach(function (badWord) {
-            console.log(word)
+        badWordList.forEach( badWord => {
+            console.log(badWord)
             if (comments.comment.includes(badWord)) {
                 badWordDetected = true
             }
@@ -85,7 +87,6 @@ export default function Comments() {
         console.log(event.target.value)
     }
 
-    const badWordList = ["crap"]
 
 
     return (
