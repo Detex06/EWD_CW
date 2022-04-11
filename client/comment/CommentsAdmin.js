@@ -40,7 +40,7 @@ export default function Comments({ match }) {
         console.log(jwt.token)
         console.log(signal)
         
-        listComments({ userId: match.params.userId }, { t: jwt.token }, signal).then((data) => {
+        listCommentsAdmin({ userId: match.params.userId }, { t: jwt.token }, signal).then((data) => {
             if (data && data.error) {
                 console.error()
             } else {
