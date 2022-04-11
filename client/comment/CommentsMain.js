@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
+import TextField from '@material-ui/core/TextField'
 import Divider from '@material-ui/core/Divider'
 import Paper from '@material-ui/core/Paper'
 import { Redirect, Link } from 'react-router-dom'
 import auth from '../auth/auth-helper'
 import { createComment, listComments } from './api-comment'
+import TextField from '@material-ui/core/TextField'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -84,6 +86,8 @@ export default function Comments() {
                 WELCOME TO THE COMMENTS PAGE
             </Typography>
 
+            <Divier />
+
             <TextField
                 id="name"
                 label="name"
@@ -107,7 +111,10 @@ export default function Comments() {
             </CardActions>
 
             <Divier />
-
+            
+            <Typography variant="h6" className={classes.title}>
+                Comments: 
+            </Typography>
             <CommentsList comments={comments}></CommentsList>
 
 

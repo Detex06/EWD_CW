@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
-import myImg from './../assets/images/myimage.png'
 import Divider from '@material-ui/core/Divider'
 import Paper from '@material-ui/core/Paper'
-import Grid from '@material-ui/core/Grid'
 import { Redirect, Link } from 'react-router-dom'
 import auth from '../auth/auth-helper'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
+import ListItemText from '@material-ui/core/ListItemText'
 import { createComment, listComments, listCommentsAdmin } from './api-comment'
 
 const useStyles = makeStyles(theme => ({
@@ -58,18 +57,18 @@ export default function CommentsAdmin({ match }) {
 
 
     const removeThisComment = (comment) => {
-        
+
         removeComment({
             userId: props.userId
-          }, {t: jwt.token}).then((data) => {
+        }, { t: jwt.token }).then((data) => {
             if (data && data.error) {
-              console.log(data.error)
+                console.log(data.error)
             } else {
-              auth.clearJWT(() => console.log('deleted'))
-              redirectToComments= true
+                auth.clearJWT(() => console.log('deleted'))
+                redirectToComments = true
             }
-          })
-      }
+        })
+    }
 
 
     const handleChange = name => event => {
@@ -89,10 +88,11 @@ export default function CommentsAdmin({ match }) {
                     return (
                         <ListItem>
                             <ListItemText primary={comment.name} secondary={comment.comment} />
-
-                            <IconButton onClick={() => removeThisComment(comment)}>
-                                <Typography>Remove Comment</Typography>
-                            </IconButton>
+                            <ListItemSecondaryAction>
+                                <IconButton onClick={() => removeThisComment(comment)}>
+                                    <Typography>Remove Comment</Typography>
+                                </IconButton>
+                            </ListItemSecondaryAction>
                         </ListItem>
                     )
 
