@@ -6,6 +6,7 @@ import Divider from '@material-ui/core/Divider'
 import Paper from '@material-ui/core/Paper'
 import { Redirect, Link } from 'react-router-dom'
 import auth from '../auth/auth-helper'
+import IconButton from '@material-ui/core/IconButton'
 import { createComment, listComments } from './api-comment'
 
 const useStyles = makeStyles(theme => ({
@@ -105,9 +106,9 @@ export default function Comments() {
                 margin="normal"
             /><br />
 
-            <CardActions>
+            <IconButton>
                 <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Submit Comment</Button>
-            </CardActions>
+            </IconButton>
 
             <Divider />
 
