@@ -20,6 +20,15 @@ const useStyles = makeStyles(theme => ({
     title: {
         padding: `${theme.spacing(3)}px ${theme.spacing(2.5)}px ${theme.spacing(2)}px`,
         color: theme.palette.openTitle
+    },
+    textField: {
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
+      width: 300
+    },
+    submit: {
+      margin: 'auto',
+      marginBottom: theme.spacing(2)
     }
 
 }))
@@ -30,6 +39,10 @@ export default function Comments() {
 
     const classes = useStyles()
     const [comments, setComments] = useState([]);
+    const [values, setValues] = useState({
+        name: '',
+        comment: ''
+      })
 
     useEffect(() => {
         const abortController = new AbortController()
@@ -48,30 +61,34 @@ export default function Comments() {
         }
     }, [])
 
+    
+    console.log(JSON.stringify(comments.name))
+    console.log(JSON.stringify(comments.comment))
+
     const clickSubmit = () => {
         var badWordDetected = false
         
         
-        console.log(JSON.stringify(comments.name))
-        console.log(JSON.stringify(comments.comment))
+        console.log(JSON.stringify(values.name))
+        console.log(JSON.stringify(values.comment))
 
         badWordList.forEach( badWord => {
             console.log(badWord)
-            if (comments.comment.includes(badWord)) {
+            if (values.comment.includes(badWord)) {
                 badWordDetected = true
             }
         })
 
         if (!badWordDetected) {
             const comment = {
-                name: comments.name || undefined,
-                comment: comments.comment || undefined
+                name: values.name || undefined,
+                comment: values.comment || undefined
             }
             createComment(comment).then((data) => {
                 if (data && data.error) {
-                    setComments({ ...comments, error: data.error })
+                    setValues({ ...values, error: data.error })
                 } else {
-                    setComments({ ...comments, error: "" })
+                    setValues({ ...values, error: "" })
                 }
             })
         }
@@ -100,7 +117,8 @@ export default function Comments() {
             <TextField
                 id="name"
                 label="name"
-                value={comments.name}
+                className={classes.textField}
+                value={values.name}
                 onChange={handleChange('name')}
                 margin="normal"
             /><br />
@@ -108,9 +126,10 @@ export default function Comments() {
             <TextField
                 id="multiline-flexible"
                 label="comment"
+                className={classes.textField}
                 multiline
                 rows="2"
-                value={comments.comment}
+                value={values.comment}
                 onChange={handleChange('comments')}
                 margin="normal"
             /><br />
