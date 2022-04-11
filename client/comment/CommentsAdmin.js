@@ -36,7 +36,6 @@ export default function Comments({ match }) {
         const signal = abortController.signal
 
 
-        console.log(match.params.userId)
 
         listCommentsAdmin({ userId: match.params.userId }, { t: jwt.token }, signal).then((data) => {
             if (data && data.error) {
@@ -50,9 +49,11 @@ export default function Comments({ match }) {
             abortController.abort()
         }
 
-    }, [match.params.userId])
+    }, [])
 
 
+    console.log(match.params.userId)
+    
     const removeThisComment = (comment) => {
 
         removeComment({
