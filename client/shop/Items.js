@@ -27,7 +27,7 @@ export default function Items(prop) {
     console.log(jwt)
     console.log(jwt.token)
 
-    if (!jwt.token == null || !jwt.token == undefined || !jwt.token == NaN) {
+    if (jwt!==null || !jwt==undefined || !jwt==false) {
         useEffect(() => {
             const abortController = new AbortController()
             const signal = abortController.signal
@@ -80,7 +80,7 @@ export default function Items(prop) {
 
 const addItem = (item, user) => {
 
-    if (!user == null || !user == undefined || !user == NaN) {
+    if (user !== null || user !== undefined || user !== NaN) {
         console.log("BASKET BEFORE " + JSON.stringify(user.basket))
         const index = user.basket.indexOf(item);
         if (index === -1) {
@@ -94,8 +94,6 @@ const addItem = (item, user) => {
         alert("Adding to basket failed: need user to login")
     }
 }
-
-console.log("CHECKING USER DATA LOADED " + JSON.stringify(auth.isAuthenticated().user))
 
 console.log("CHECKING USER DATA LOADED " + JSON.stringify(user))
 
