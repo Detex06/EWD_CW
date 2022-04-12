@@ -22,8 +22,9 @@ export default function Items(prop) {
     const [user, setUser] = useState({})
     var jwt = auth.isAuthenticated()
 
+    console.log(JSON.stringify(jwt))
 
-    if ( !jwt == null && !jwt == undefined || !jwt == false) {
+    if ( jwt !== null && jwt !== undefined && jwt !== false) {
         useEffect(() => {
             const abortController = new AbortController()
             const signal = abortController.signal
