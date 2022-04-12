@@ -47,7 +47,7 @@ export default function Items(prop) {
 
     console.log(JSON.stringify(user))
 
-    const updateItems = (user) => {
+    const updateItems = (item,user) => {
         console.log("UPDATING BASKET")
         console.log("USER DATA IN UPDATE: " + JSON.stringify(user))
 
