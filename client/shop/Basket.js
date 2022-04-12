@@ -93,12 +93,13 @@ export default function Basket(prop) {
                                         <Typography>Remove</Typography>
                                     </IconButton>
                                 </Link>
-
+                                
                             </ListItemSecondaryAction>
-
+                            
                         </ListItem>
                     )
                 }
+                <Divider />
             })
             }
 
