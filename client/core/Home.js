@@ -33,7 +33,7 @@ export default function Home() {
 
             <Grid container columnSpacing={2} columns={12}>
                 <Grid item xs={12}>
-                    <ItemsAdmin items={items} ></ItemsAdmin>
+                    <Items items={items} ></Items>
                 </Grid>
             </Grid>
 
