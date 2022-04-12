@@ -23,7 +23,7 @@ export default function Items(prop) {
     var jwt = auth.isAuthenticated()
 
 
-    if (!jwt == null || !jwt == undefined || !jwt == false) {
+    //if (!jwt == null || !jwt == undefined || !jwt == false) {
         useEffect(() => {
             const abortController = new AbortController()
             const signal = abortController.signal
@@ -46,7 +46,7 @@ export default function Items(prop) {
 
         }, [auth.isAuthenticated().user._id])
 
-    }
+    //}
 
     console.log(JSON.stringify(user))
 
@@ -79,7 +79,7 @@ export default function Items(prop) {
 
     const addItem = (item, user) => {
 
-        if (user.basket != null || user.basket != undefined || user.basket != NaN) {
+        if (user.basket !== null && user.basket !== undefined && user.basket !== NaN) {
             console.log("BASKET BEFORE " + JSON.stringify(user.basket))
             item.amount=1
             const index = user.basket.indexOf(item.name);
