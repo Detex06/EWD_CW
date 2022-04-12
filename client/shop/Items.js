@@ -27,7 +27,7 @@ export default function Items(prop) {
     console.log(jwt)
     console.log(jwt.token)
 
-    if (jwt!=null || jwt!=undefined || jwt!=false) {
+    if ( auth.isAuthenticated().user._id!=undefined|| jwt!=null || jwt!=undefined || jwt!=false) {
         useEffect(() => {
             const abortController = new AbortController()
             const signal = abortController.signal
