@@ -47,8 +47,6 @@ export default function Basket(prop) {
         if (index > -1) {
             user.basket.splice(index, 1);
         }
-
-        updateItems(user)
     }
     const update = (updateItems, user) => {
         updateItems(user)
@@ -96,17 +94,18 @@ export default function Basket(prop) {
                                 
                             </ListItemSecondaryAction>
                             
+                            <Divider />
                         </ListItem>
+                        
                     )
                 }
-                <Divider />
             })
             }
 
 
             Total: £ {total!=null || total!=NaN? total: 0}
             <IconButton onClick={() => update(prop.updateItems, prop.user)}>
-                <Typography>Save Basket</Typography>
+                <Typography>Save Changes</Typography>
             </IconButton>
 
             <Divider />

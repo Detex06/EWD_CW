@@ -20,12 +20,8 @@ export default function Items(prop) {
 
 
     const [user, setUser] = useState({})
-    //const [setdirectToSignin, setRedirectToSignin] = useState(false)
     var jwt = auth.isAuthenticated()
 
-    // console.log("!!!!!!!!!")
-    // console.log(auth.isAuthenticated())
-    // console.log(auth.isAuthenticated().user)
 
     if (!jwt == null || !jwt == undefined || !jwt == false) {
         useEffect(() => {
@@ -69,6 +65,8 @@ export default function Items(prop) {
                 setUser(user)
             }
         })
+
+        window.location.reload()
     }
 
 
