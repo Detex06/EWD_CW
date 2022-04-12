@@ -25,7 +25,7 @@ export default function Items(prop) {
 
     console.log("!!!!!!!!!")
     console.log(auth.isAuthenticated())
-    console.log(auth.isAuthenticated().user._id)
+    console.log(auth.isAuthenticated().user)
 
     if (!jwt == null || !jwt == undefined || !jwt == false) {
         useEffect(() => {
