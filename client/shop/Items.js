@@ -53,89 +53,82 @@ export default function Items(prop) {
 
     console.log(JSON.stringify(user))
 
-    const updateItems = (item, user) => {
+    const updateItems = (user) => {
         console.log("UPDATING BASKET")
         console.log("USER DATA IN UPDATE: " + JSON.stringify(user))
 
-        if (!jwt == null || !jwt == undefined || !jwt == NaN) {
-
-            const index = user.basket.indexOf(item);
-            if (index === -1) {
-                user.basket.push(item);
+        updateBasket({
+            userId: auth.isAuthenticated().user._id
+        }, {
+            t: jwt.token
+        }, user).then((data) => {
+            if (data && data.error) {
+                setUser({ ...user, error: data.error })
+            } else {
+                setUser(user)
             }
-
-            updateBasket({
-                userId: auth.isAuthenticated().user._id
-            }, {
-                t: jwt.token
-            }, user).then((data) => {
-                if (data && data.error) {
-                    setUser({ ...user, error: data.error })
-                } else {
-                    setUser(user)
-                }
-            })
-        }
+        })
     }
 
 
-    // if (setdirectToSignin) {
-    //     return (<Redirect to={'/user/' + user.userId} />)
-    // }
+
+// if (setdirectToSignin) {
+//     return (<Redirect to={'/user/' + user.userId} />)
+// }
 
 
 
-    const addItem = (item, user) => {
+const addItem = (item, user) => {
 
-        if (!user == null || !user == undefined || !user == NaN) {
-            console.log("BASKET BEFORE " + JSON.stringify(user.basket))
-            const index = user.basket.indexOf(item);
-            if (index === -1) {
-                user.basket = user.basket.concat(item);
-            }
-            console.log("BASKET AFTER " + JSON.stringify(user.basket))
-            updateItems(user)
-
+    if (!user == null || !user == undefined || !user == NaN) {
+        console.log("BASKET BEFORE " + JSON.stringify(user.basket))
+        const index = user.basket.indexOf(item);
+        if (index === -1) {
+            user.basket = user.basket.concat(item);
         }
-        else {
-            alert("Adding to basket failed: need user to login")
-        }
+        console.log("BASKET AFTER " + JSON.stringify(user.basket))
+        updateItems(user)
+
     }
-
-    console.log("CHECKING USER DATA LOADED " + JSON.stringify(auth.isAuthenticated().user))
-
-    console.log("CHECKING USER DATA LOADED " + JSON.stringify(user))
-
-    console.log("CHECKING ITEMS LOADED " + JSON.stringify(prop.items))
-
-    return (
-        <List dense>
-            {prop.items?.map((item) => {
-                if (item.amount !== 0) {
-                    return (
-
-                        <ListItem>
-                            <ListItemAvatar>
-                                <Avatar>
-                                    <Person />
-                                </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText primary={item.name} secondary={"£" + item.price} />
-                            <ListItemSecondaryAction>
-                                <IconButton onClick={() => addItem(item, user)}>
-                                    <Typography>Add to Basket</Typography>
-                                </IconButton>
-                            </ListItemSecondaryAction>
-
-
-                        </ListItem>
-
-                    )
-                }
-            })
-            }
-        </List>
-    )
+    else {
+        alert("Adding to basket failed: need user to login")
+    }
 }
 
+console.log("CHECKING USER DATA LOADED " + JSON.stringify(auth.isAuthenticated().user))
 
+console.log("CHECKING USER DATA LOADED " + JSON.stringify(user))
+
+console.log("CHECKING ITEMS LOADED " + JSON.stringify(prop.items))
+
+return (
+    <List dense>
+        {prop.items?.map((item) => {
+            if (item.amount !== 0) {
+                return (
+
+                    <ListItem>
+                        <ListItemAvatar>
+                            <Avatar>
+                                <Person />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary={item.name} secondary={"£" + item.price} />
+                        <ListItemSecondaryAction>
+                            <IconButton onClick={() => addItem(item, user)}>
+                                <Typography>Add to Basket</Typography>
+                            </IconButton>
+                        </ListItemSecondaryAction>
+
+
+                    </ListItem>
+
+                )
+            }
+        })
+        }
+    </List>
+)
+
+
+    }
