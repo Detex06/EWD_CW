@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton'
 import Person from '@material-ui/icons/Person'
 import Typography from '@material-ui/core/Typography'
 import auth from './../auth/auth-helper'
-import { read, updateBasket } from '../user/api-user.js'
+import { readAdmin } from '../user/api-user.js'
 
 
 
@@ -59,7 +59,6 @@ export default function Items(prop) {
         <List dense>
             {prop.items?.map((item) => {
                 if (item.amount !== 0) {
-                    
                     return (
                         <ListItem>
                             <ListItemAvatar>
