@@ -118,17 +118,4 @@ export default function Basket(prop) {
     )
 }
 
-//onChange={handleChange} name="basket" value={item} 
-
-// function handleChange(event) {
-//     const { name, value } = event.target;
-
-//     setBasket(oldBasket => {
-//         return {
-//             ...oldBasket,
-//             [name]: value
-//         }
-//     })
-// }
-
 

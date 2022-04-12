@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import ItemsAdmin from '../shop/ItemsAdmin'
+import Items from '../shop/Items'
 
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
@@ -28,7 +28,7 @@ export default function Home() {
     return (
         <Paper className={classes.root} elevation={4}>
             <Typography variant="h6" className={classes.title}>
-                WELCOME TO THE SHOP
+                WELCOME TO THE ADMIN SHOP
             </Typography>
 
             <Grid container columnSpacing={2} columns={12}>

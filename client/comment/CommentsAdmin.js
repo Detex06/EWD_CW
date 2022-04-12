@@ -50,6 +50,7 @@ export default function Comments({ match }) {
 
     }, [match.params.userId])
 
+    //not working
     const removeThisComment = (comment) => {
 
         console.log("BEFORE "+JSON.stringify(comments))
@@ -73,8 +74,6 @@ export default function Comments({ match }) {
     }
 
 
-
-    console.log(JSON.stringify(comments))
     return (
         <Paper className={classes.root} elevation={4}>
             <Typography variant="h6" className={classes.title}>

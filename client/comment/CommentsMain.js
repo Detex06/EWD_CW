@@ -96,7 +96,7 @@ export default function Comments() {
 
     const handleChange = name => event => {
         setCommentValues({ ...values, [name]: event.target.value })
-        console.log(event.target.value)
+        
     }
 
     if (redirectToComments) {

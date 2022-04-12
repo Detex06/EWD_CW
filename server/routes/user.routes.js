@@ -4,8 +4,11 @@ import authCtrl from '../controllers/auth.controller'
 
 const router = express.Router()
 
-router.route('/api/userInItems')
-  .get(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.readHome)
+router.route('/api/')
+  .get(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.read)
+
+router.route('/api/admin/:userId')
+  .get(authCtrl.requireSignin, authCtrl.hasAdminAuthorization, userCtrl.readAdmin)
 
 router.route('/api/users/admin/:userId')
   .get(authCtrl.requireSignin, authCtrl.hasAdminAuthorization, userCtrl.listadmin)

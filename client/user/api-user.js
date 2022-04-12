@@ -15,25 +15,6 @@ const create = async (user) => {
   }
 }
 
-// const addToBasket = async (params, credentials, user, item) => {
-//   console.log(JSON.stringify(user))
-//   try {
-//     let response = await fetch('/api/user/' + params.userId, {
-//       method: 'POST',
-//       headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json',
-//         'Authorization': 'Bearer ' + credentials.t
-//       },
-//       body: JSON.stringify(user),
-//       item: JSON.stringify(item)
-//     })
-//     return await response.json()
-//   } catch(err) {
-//     console.log(err)
-//   }
-// }
-
 const list = async (signal) => {
   try {
     let response = await fetch('/api/users/', {
@@ -81,9 +62,9 @@ const read = async (params, credentials, signal) => {
   }
 }
 
-const readHome = async (params, credentials, signal) => {
+const readAdmin = async (params, credentials, signal) => {
   try {
-    let response = await fetch('/api/userInItems', {
+    let response = await fetch('/api/admin/'+params.userId, {
       method: 'GET',
       signal: signal,
       headers: {
@@ -148,23 +129,6 @@ const remove = async (params, credentials) => {
   }
 }
 
-// const removeFromBasket = async (params, credentials, user, item) => {
-//   try {
-//     let response = await fetch('/api/user/' + params.userId, {
-//       method: 'DELETE',
-//       headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json',
-//         'Authorization': 'Bearer ' + credentials.t
-//       },
-//       body: JSON.stringify(user),
-//       item: JSON.stringify(item)
-//     })
-//     return await response.json()
-//   } catch(err) {
-//     console.log(err)
-//   }
-// }
 
 export {
   create,
@@ -174,5 +138,5 @@ export {
   update,
   remove,
   updateBasket,
-  readHome
+  readAdmin
 }

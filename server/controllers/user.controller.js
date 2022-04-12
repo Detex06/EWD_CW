@@ -16,23 +16,6 @@ const create = async (req, res) => {
     }
 }
 
-// const addToBasket = async (req, res) => {
-//     const basket = new basketModel(req.item)
-
-//     try {
-//         let user = req.profile
-//         user = extend(user, req.body)
-//         user.basket = [basket]
-//         await user.save()
-//         user.hashed_password = undefined
-//         user.salt = undefined
-//         res.json(user)
-//     } catch (err) {
-//         return res.status(400).json({
-//             error: errorHandler.getErrorMessage(err)
-//         })
-//     }
-// }
 
 const list = async (req, res) => {
     try {
@@ -78,7 +61,7 @@ const read = (req, res) => {
     return res.json(req.profile)
 }
 
-const readHome = (req, res) => {
+const readAdmin = (req, res) => {
     req.profile.hashed_password = undefined
     req.profile.salt = undefined
     return res.json(req.profile)
@@ -134,29 +117,6 @@ const remove = async (req, res) => {
 }
 
 
-
-// const removeFromBasket = async (req, res) => {
-
-//     const basket = new basketModel(req.item)
-
-//     console.log("BASKET !!!"+JSON.stringify(basket))
-
-//     try {
-//         let user = req.profile
-//         user = extend(user, req.body)
-//         console.log("USER !!! "+JSON.stringify(user.basket))
-//         user.basket = user.basket.remove(basket)
-//         await user.save()
-//         user.hashed_password = undefined
-//         user.salt = undefined
-//         res.json(user)
-//     } catch (err) {
-//         return res.status(400).json({
-//             error: errorHandler.getErrorMessage(err)
-//         })
-//     }
-// }
-
 export default {
     create,
     userByID,
@@ -166,5 +126,5 @@ export default {
     remove,
     update,
     updateBasket,
-    readHome
+    readAdmin
 }

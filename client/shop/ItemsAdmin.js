@@ -26,11 +26,11 @@ export default function Items(prop) {
             const abortController = new AbortController()
             const signal = abortController.signal
 
-            read({
+            readAdmin({
                 userId: auth.isAuthenticated().user._id
             }, { t: jwt.token }, signal).then((data) => {
                 if (data && data.error) {
-                    console.log("User not logged in")
+                    console.log("Admin user not logged in")
                 } else {
                     setUser(data)
                 }
@@ -46,49 +46,14 @@ export default function Items(prop) {
 
     }
 
-    const updateItems = (user) => {
-        
 
-        updateBasket({
-            userId: auth.isAuthenticated().user._id
-        }, {
-            t: jwt.token
-        }, user).then((data) => {
-            if (data && data.error) {
-                setUser({ ...user, error: data.error })
-            } else {
-                setUser(user)
-            }
-        })
-
-        window.location.reload()
+    const addStock = (item) => {
+        item.amount++
     }
 
-
-
-
-
-    const addItem = (item, user) => {
-        //if basket is available, set amount to 1 and add to the basket if item isnt in the basket
-        if (user.basket !== null && user.basket !== undefined && user.basket !== NaN) {
-            
-            item.amount=1
-
-            const containsItem = (user.basket.filter(e => e.name === item.name).length>0);
-            if (!containsItem) {
-                user.basket = user.basket.concat(item);
-            }
-            else {
-                alert("Item already in basket")
-            }
-            updateItems(user)
-
-        }
-        else {
-            alert("Adding to basket failed: need user to login")
-        }
+    const removeStock = (item) => {
+        item.amount--
     }
-
 
     return (
         <List dense>
@@ -102,10 +67,16 @@ export default function Items(prop) {
                                     <Person />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary={item.name} secondary={"£" + item.price} />
+                            <ListItemText primary={item.name} secondary={"£" + item.price+"   Amount in Stock: "+item.amount} />
                             <ListItemSecondaryAction>
-                                <IconButton onClick={() => addItem(item, user)}>
-                                    <Typography>Add to Basket</Typography>
+                                <IconButton onClick={() => addStock(item)}>
+                                    <Typography>+</Typography>
+                                </IconButton>
+                                <IconButton onClick={() => removeStock(item)}>
+                                    <Typography>-</Typography>
+                                </IconButton>
+                                <IconButton onClick={() => addItem(item)}>
+                                    <Typography>Save Changes</Typography>
                                 </IconButton>
                             </ListItemSecondaryAction>
 
