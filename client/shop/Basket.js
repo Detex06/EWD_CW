@@ -41,22 +41,8 @@ export default function Basket(prop) {
         updateItems(user)
     }
 
-    const buy = (updateItems, user) => {
-        console.log(JSON.stringify(user.basket))
-        updateItems(user)
-
-        user.basket?.map((itemFromBasket) => {
-            itemsStock?.map((itemFromStock) => {
-                if (itemFromBasket.name === itemFromStock.name && itemFromBasket.amount <= itemFromStock.amount) {
-                    
-                    itemFromStock.amount = itemFromStock.amount - itemFromBasket.amount
-                    removeEntireItem()
-                }
-            })
-        })
-
-        alert("Basket cleared and items bought!")
-        updateItems(user)
+    const buy = () => {
+        alert("nothing will happen because there is no transaction window")
     }
 
     return (
@@ -109,7 +95,7 @@ export default function Basket(prop) {
             </IconButton>
 
             <Divider />
-            <IconButton onClick={() => buy(prop.updateItems, prop.user)}>
+            <IconButton onClick={() => buy()}>
                 <Typography>Buy</Typography>
             </IconButton>
 
