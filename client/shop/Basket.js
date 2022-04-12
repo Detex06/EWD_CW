@@ -65,7 +65,7 @@ export default function Basket(prop) {
                     console.log("LOADING ITEM " + i);
                     console.log(JSON.stringify(item));
                     return (
-
+                        
                         <ListItem>
                             <ListItemAvatar>
                                 <Avatar>
@@ -80,9 +80,6 @@ export default function Basket(prop) {
                                     <IconButton onClick={() => addOne(item)}>
                                         <Typography>+</Typography>
                                     </IconButton>
-
-                                    <Typography>{item.amount}</Typography>
-
                                     <IconButton onClick={() => removeOne(item)}>
                                         <Typography>-</Typography>
                                     </IconButton>
@@ -94,7 +91,6 @@ export default function Basket(prop) {
                                 
                             </ListItemSecondaryAction>
                             
-                            <Divider />
                         </ListItem>
                         
                     )
@@ -103,7 +99,7 @@ export default function Basket(prop) {
             }
 
 
-            Total: £ {total!=null || total!=NaN? total: 0}
+            Total: £ {total!=null || total!=NaN? Math.round(total*100)/100: 0}
             <IconButton onClick={() => update(prop.updateItems, prop.user)}>
                 <Typography>Save Changes</Typography>
             </IconButton>
