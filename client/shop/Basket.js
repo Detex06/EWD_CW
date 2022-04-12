@@ -42,12 +42,12 @@ export default function Basket(prop) {
     }
 
     const buy = (updateItems, user) => {
-
+        console.log(JSON.stringify(user.basket))
         updateItems(user)
 
         user.basket?.map((itemFromBasket) => {
             itemsStock?.map((itemFromStock) => {
-                if (itemFromBasket.name == itemFromStock.name && itemFromBasket.amount <= itemFromStock.amount) {
+                if (itemFromBasket.name === itemFromStock.name && itemFromBasket.amount <= itemFromStock.amount) {
                     
                     itemFromStock.amount = itemFromStock.amount - itemFromBasket.amount
                     removeEntireItem()
@@ -55,7 +55,7 @@ export default function Basket(prop) {
             })
         })
 
-        console.log("Basket cleared and items bought!")
+        alert("Basket cleared and items bought!")
         updateItems(user)
     }
 
