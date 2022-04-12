@@ -104,8 +104,9 @@ export default function Items(prop) {
         <List dense>
             {prop.items?.map((item) => {
                 if (item.amount !== 0) {
+                    
+                    console.log(JSON.stringify(item))
                     return (
-
                         <ListItem>
                             <ListItemAvatar>
                                 <Avatar>
