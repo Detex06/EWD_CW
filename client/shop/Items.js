@@ -25,9 +25,9 @@ export default function Items(prop) {
 
     console.log("!!!!!!!!!")
     console.log(jwt)
-    console.log(auth.isAuthenticated().user)
+    console.log(jwt.user)
 
-    if (  jwt!=null || jwt!=undefined || jwt!=false) {
+    if (!jwt == null || !jwt == undefined || !jwt == false) {
         useEffect(() => {
             const abortController = new AbortController()
             const signal = abortController.signal
@@ -49,7 +49,8 @@ export default function Items(prop) {
 
 
         }, [auth.isAuthenticated().user._id])
-    
+
+    }
 
     console.log(JSON.stringify(user))
 
@@ -70,64 +71,63 @@ export default function Items(prop) {
         })
     }
 
-}
 
 
-// if (setdirectToSignin) {
-//     return (<Redirect to={'/user/' + user.userId} />)
-// }
+    // if (setdirectToSignin) {
+    //     return (<Redirect to={'/user/' + user.userId} />)
+    // }
 
 
 
-const addItem = (item, user) => {
+    const addItem = (item, user) => {
 
-    if (user != null || user != undefined || user != NaN) {
-        console.log("BASKET BEFORE " + JSON.stringify(user.basket))
-        const index = user.basket.indexOf(item);
-        if (index === -1) {
-            user.basket = user.basket.concat(item);
-        }
-        console.log("BASKET AFTER " + JSON.stringify(user.basket))
-        updateItems(user)
-
-    }
-    else {
-        alert("Adding to basket failed: need user to login")
-    }
-}
-
-console.log("CHECKING USER DATA LOADED " + JSON.stringify(user))
-
-console.log("CHECKING ITEMS LOADED " + JSON.stringify(prop.items))
-
-return (
-    <List dense>
-        {prop.items?.map((item) => {
-            if (item.amount !== 0) {
-                return (
-
-                    <ListItem>
-                        <ListItemAvatar>
-                            <Avatar>
-                                <Person />
-                            </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText primary={item.name} secondary={"£" + item.price} />
-                        <ListItemSecondaryAction>
-                            <IconButton onClick={() => addItem(item, user)}>
-                                <Typography>Add to Basket</Typography>
-                            </IconButton>
-                        </ListItemSecondaryAction>
-
-
-                    </ListItem>
-
-                )
+        if (user != null || user != undefined || user != NaN) {
+            console.log("BASKET BEFORE " + JSON.stringify(user.basket))
+            const index = user.basket.indexOf(item);
+            if (index === -1) {
+                user.basket = user.basket.concat(item);
             }
-        })
+            console.log("BASKET AFTER " + JSON.stringify(user.basket))
+            updateItems(user)
+
         }
-    </List>
-)
-
-
+        else {
+            alert("Adding to basket failed: need user to login")
+        }
     }
+
+    console.log("CHECKING USER DATA LOADED " + JSON.stringify(user))
+
+    console.log("CHECKING ITEMS LOADED " + JSON.stringify(prop.items))
+
+    return (
+        <List dense>
+            {prop.items?.map((item) => {
+                if (item.amount !== 0) {
+                    return (
+
+                        <ListItem>
+                            <ListItemAvatar>
+                                <Avatar>
+                                    <Person />
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText primary={item.name} secondary={"£" + item.price} />
+                            <ListItemSecondaryAction>
+                                <IconButton onClick={() => addItem(item, user)}>
+                                    <Typography>Add to Basket</Typography>
+                                </IconButton>
+                            </ListItemSecondaryAction>
+
+
+                        </ListItem>
+
+                    )
+                }
+            })
+            }
+        </List>
+    )
+
+
+}
