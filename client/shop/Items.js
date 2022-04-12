@@ -17,56 +17,65 @@ import { read, updateBasket } from '../user/api-user.js'
 
 
 export default function Items(prop) {
-    
+
 
     const [user, setUser] = useState({})
     //const [setdirectToSignin, setRedirectToSignin] = useState(false)
     const jwt = auth.isAuthenticated()
 
-    useEffect(() => {
-        const abortController = new AbortController()
-        const signal = abortController.signal
 
-        read({
-            userId: auth.isAuthenticated().user._id
-        }, { t: jwt.token }, signal).then((data) => {
-            if (data && data.error) {
-                console.log("User not logged in")
-            } else {
-                setUser(data)
+    if (!jwt == null || !jwt == undefined || !jwt == NaN) {
+        useEffect(() => {
+            const abortController = new AbortController()
+            const signal = abortController.signal
+
+            read({
+                userId: auth.isAuthenticated().user._id
+            }, { t: jwt.token }, signal).then((data) => {
+                if (data && data.error) {
+                    console.log("User not logged in")
+                } else {
+                    setUser(data)
+                }
+            })
+
+
+            return function cleanup() {
+                abortController.abort()
             }
-        })
 
 
-        return function cleanup() {
-            abortController.abort()
-        }
-
-
-    }, [auth.isAuthenticated().user._id])
+        }, [auth.isAuthenticated().user._id])
+    }
 
     console.log(JSON.stringify(user))
 
-    const updateItems = (item,user) => {
+    const updateItems = (item, user) => {
         console.log("UPDATING BASKET")
         console.log("USER DATA IN UPDATE: " + JSON.stringify(user))
 
-        const index = user.basket.indexOf(item);
-        if (index === -1) {
-            user.basket.push(item);
-        }
+        if (!user == null || !user == undefined || !user == NaN) {
 
-        updateBasket({
-            userId: auth.isAuthenticated().user._id
-        }, {
-            t: jwt.token
-        }, user).then((data) => {
-            if (data && data.error) {
-                setUser({ ...user, error: data.error })
-            } else {
-                setUser(user)
+            const index = user.basket.indexOf(item);
+            if (index === -1) {
+                user.basket.push(item);
             }
-        })
+
+            updateBasket({
+                userId: auth.isAuthenticated().user._id
+            }, {
+                t: jwt.token
+            }, user).then((data) => {
+                if (data && data.error) {
+                    setUser({ ...user, error: data.error })
+                } else {
+                    setUser(user)
+                }
+            })
+        }
+        else {
+            alert("Adding to basket failed: need user to login")
+        }
     }
 
 
