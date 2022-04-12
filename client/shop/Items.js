@@ -23,8 +23,11 @@ export default function Items(prop) {
     //const [setdirectToSignin, setRedirectToSignin] = useState(false)
     const jwt = auth.isAuthenticated()
 
+    console.log("!!!!!!!!!")
+    console.log(jwt)
+    console.log(jwt.token)
 
-    if (!jwt == null || !jwt == undefined || !jwt == NaN) {
+    if (!jwt.token == null || !jwt.token == undefined || !jwt.token == NaN) {
         useEffect(() => {
             const abortController = new AbortController()
             const signal = abortController.signal
