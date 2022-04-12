@@ -10,10 +10,9 @@ router.route('/api/comments')
     .post(commentCtrl.createComment)
 
 
-//authCtrl.requireSignin, authCtrl.hasAdminAuthorization,
 router.route('/api/comments/admin/:userId')
-    .get(commentCtrl.listCommentsAdmin)
-    .put(commentCtrl.updateComment)
-    .delete(commentCtrl.removeComment)
+    .get(authCtrl.requireSignin, authCtrl.hasAdminAuthorization,commentCtrl.listCommentsAdmin)
+    .put(authCtrl.requireSignin, authCtrl.hasAdminAuthorization,commentCtrl.updateComment)
+    .delete(authCtrl.requireSignin, authCtrl.hasAdminAuthorization,commentCtrl.removeComment)
 
 export default router

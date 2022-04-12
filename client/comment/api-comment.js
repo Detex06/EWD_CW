@@ -46,7 +46,7 @@ const listCommentsAdmin = async (params, credentials, signal) => {
 }
 
 
-const updateComment = async (params, credentials, comment) => {
+const updateComment = async (params, credentials, comments) => {
     try {
         let response = await fetch('/api/comments/admin/' + params.userId, {
             method: 'PUT',
@@ -55,7 +55,7 @@ const updateComment = async (params, credentials, comment) => {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + credentials.t
             },
-            body: JSON.stringify(comment)
+            body: JSON.stringify(comments)
         })
         return await response.json()
     } catch (err) {

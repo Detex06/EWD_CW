@@ -29,14 +29,14 @@ const useStyles = makeStyles(theme => ({
 export default function Comments({ match }) {
     const classes = useStyles()
     const [comments, setComments] = useState([]);
-    const jwt = auth.isAuthenticated()
+    var jwt = auth.isAuthenticated()
 
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
 
         //this isnt authenticated as i couldnt get it to work
-        listCommentsAdmin({ userId: match.params.userId }, { t: jwt.token }, signal).then((data) => {
+        listCommentsAdmin({ userId: auth.authenticated().user._id }, { t: jwt.token }, signal).then((data) => {
             if (data && data.error) {
                 console.error()
             } else {
