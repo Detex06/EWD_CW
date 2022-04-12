@@ -36,7 +36,7 @@ export default function Comments({ match }) {
         const signal = abortController.signal
 
         //this isnt authenticated as i couldnt get it to work
-        listCommentsAdmin({ userId: auth.authenticated().user._id }, { t: jwt.token }, signal).then((data) => {
+        listCommentsAdmin({ userId: match.params.userId }, { t: jwt.token }, signal).then((data) => {
             if (data && data.error) {
                 console.error()
             } else {

@@ -46,7 +46,7 @@ export default function Items(prop) {
 
     }
 
-
+    //doesnt work as stock is stored "locally"
     const addStock = (item) => {
         item.amount++
     }
