@@ -54,7 +54,7 @@ export default function Items(prop) {
         console.log("UPDATING BASKET")
         console.log("USER DATA IN UPDATE: " + JSON.stringify(user))
 
-        if (!user == null || !user == undefined || !user == NaN) {
+        if (!jwt == null || !jwt == undefined || !jwt == NaN) {
 
             const index = user.basket.indexOf(item);
             if (index === -1) {
@@ -73,9 +73,6 @@ export default function Items(prop) {
                 }
             })
         }
-        else {
-            alert("Adding to basket failed: need user to login")
-        }
     }
 
 
@@ -87,15 +84,19 @@ export default function Items(prop) {
 
     const addItem = (item, user) => {
 
+        if (!user == null || !user == undefined || !user == NaN) {
+            console.log("BASKET BEFORE " + JSON.stringify(user.basket))
+            const index = user.basket.indexOf(item);
+            if (index === -1) {
+                user.basket = user.basket.concat(item);
+            }
+            console.log("BASKET AFTER " + JSON.stringify(user.basket))
+            updateItems(user)
 
-        console.log("BASKET BEFORE " + JSON.stringify(user.basket))
-        const index = user.basket.indexOf(item);
-        if (index === -1) {
-            user.basket = user.basket.concat(item);
         }
-        console.log("BASKET AFTER " + JSON.stringify(user.basket))
-        updateItems(user)
-
+        else {
+            alert("Adding to basket failed: need user to login")
+        }
     }
 
     console.log("CHECKING USER DATA LOADED " + JSON.stringify(auth.isAuthenticated().user))
