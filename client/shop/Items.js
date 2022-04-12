@@ -21,11 +21,11 @@ export default function Items(prop) {
 
     const [user, setUser] = useState({})
     //const [setdirectToSignin, setRedirectToSignin] = useState(false)
-    const jwt = auth.isAuthenticated()
+    var jwt = auth.isAuthenticated()
 
     console.log("!!!!!!!!!")
     console.log(auth.isAuthenticated())
-    console.log(auth.isAuthenticated().user)
+    console.log(auth.isAuthenticated().user._id)
 
     if (!jwt == null || !jwt == undefined || !jwt == false) {
         useEffect(() => {
