@@ -9,9 +9,7 @@ import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
 import Person from '@material-ui/icons/Person'
 import Typography from '@material-ui/core/Typography'
-import Basket from '../shop/Basket'
 import auth from './../auth/auth-helper'
-import { Redirect, Link } from 'react-router-dom'
 import { read, updateBasket } from '../user/api-user.js'
 
 
@@ -22,7 +20,6 @@ export default function Items(prop) {
     const [user, setUser] = useState({})
     var jwt = auth.isAuthenticated()
 
-    console.log(JSON.stringify(jwt))
 
     if ( jwt !== null && jwt !== undefined && jwt !== false) {
         useEffect(() => {
@@ -52,8 +49,7 @@ export default function Items(prop) {
     console.log(JSON.stringify(user))
 
     const updateItems = (user) => {
-        console.log("UPDATING BASKET")
-        console.log("USER DATA IN UPDATE: " + JSON.stringify(user))
+        
 
         updateBasket({
             userId: auth.isAuthenticated().user._id
@@ -72,10 +68,6 @@ export default function Items(prop) {
 
 
 
-    // if (setdirectToSignin) {
-    //     return (<Redirect to={'/user/' + user.userId} />)
-    // }
-
 
 
     const addItem = (item, user) => {
@@ -87,7 +79,9 @@ export default function Items(prop) {
             if (index === -1) {
                 user.basket = user.basket.concat(item);
             }
-            console.log("BASKET AFTER " + JSON.stringify(user.basket))
+            else {
+                alert("Item already in basket")
+            }
             updateItems(user)
 
         }
@@ -96,16 +90,12 @@ export default function Items(prop) {
         }
     }
 
-    console.log("CHECKING USER DATA LOADED " + JSON.stringify(user))
-
-    console.log("CHECKING ITEMS LOADED " + JSON.stringify(prop.items))
 
     return (
         <List dense>
             {prop.items?.map((item) => {
                 if (item.amount !== 0) {
                     
-                    console.log(JSON.stringify(item))
                     return (
                         <ListItem>
                             <ListItemAvatar>

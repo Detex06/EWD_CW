@@ -49,7 +49,7 @@ export default function Basket(prop) {
             itemsStock?.map((itemFromStock) => {
                 if (itemFromBasket.name == itemFromStock.name && itemFromBasket.amount <= itemFromStock.amount) {
                     
-                    itemFromStock.amount = itemFromStock.amount - itemFromBasket
+                    itemFromStock.amount = itemFromStock.amount - itemFromBasket.amount
                     removeEntireItem()
                 }
             })
