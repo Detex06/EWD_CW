@@ -79,9 +79,6 @@ export default function Home({ match }) {
 
     // }, [])
 
-    
-    console.log(match.params.userId)
-
     console.log(JSON.stringify(items));
     return (
         <Paper className={classes.root} elevation={4}>
@@ -91,7 +88,7 @@ export default function Home({ match }) {
 
             <Grid container columnSpacing={2} columns={12}>
                 <Grid item xs={12}>
-                    <Items items={items} match={match}></Items>
+                    <Items items={items} ></Items>
                 </Grid>
             </Grid>
 

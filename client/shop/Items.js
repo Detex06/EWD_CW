@@ -17,11 +17,9 @@ import { read, updateBasket } from '../user/api-user.js'
 
 
 export default function Items(prop) {
+    
 
-    var match = prop.match
-    const [user, setUser] = useState({
-
-    })
+    const [user, setUser] = useState({})
     //const [setdirectToSignin, setRedirectToSignin] = useState(false)
     const jwt = auth.isAuthenticated()
 
@@ -30,7 +28,7 @@ export default function Items(prop) {
         const signal = abortController.signal
 
         read({
-            userId: match.params.userId
+            userId: auth.isAuthenticated().user._id
         }, { t: jwt.token }, signal).then((data) => {
             if (data && data.error) {
                 console.log("User not logged in")
@@ -45,7 +43,7 @@ export default function Items(prop) {
         }
 
 
-    }, [match.params.userId])
+    }, [auth.isAuthenticated().user._id])
 
     console.log(JSON.stringify(user))
 
@@ -59,7 +57,7 @@ export default function Items(prop) {
         }
 
         updateBasket({
-            userId: match.params.userId
+            userId: auth.isAuthenticated().user._id
         }, {
             t: jwt.token
         }, user).then((data) => {
