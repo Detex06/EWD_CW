@@ -83,7 +83,7 @@ export default function Items(prop) {
         if (user.basket !== null && user.basket !== undefined && user.basket !== NaN) {
             console.log("BASKET BEFORE " + JSON.stringify(user.basket))
             item.amount=1
-            const index = user.basket.indexOf(item.name);
+            const index = (user.basket.filter(e.name === item.name).length>0);
             if (index === -1) {
                 user.basket = user.basket.concat(item);
             }
