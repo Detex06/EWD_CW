@@ -61,7 +61,7 @@ const useStyles = makeStyles(theme => ({
 */
 export default function Home({ match }) {
     const classes = useStyles()
-    const [items, setItems] = useState(itemsList);
+    const [items] = useState(itemsList);
 
     // useEffect(() => {
     //     const abortController = new AbortController()

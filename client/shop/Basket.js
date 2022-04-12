@@ -11,47 +11,53 @@ import Person from '@material-ui/icons/Person'
 import Divider from '@material-ui/core/Divider'
 import auth from './../auth/auth-helper'
 import { Link } from 'react-router-dom'
-//import { read } from './api-user.js'
-//import { listBasket, updateBasket } from '../user/api-user'
-
-
-// const useStyles = makeStyles(theme => ({
-//     root: theme.mixins.gutters({
-//         maxWidth: 600,
-//         margin: 'auto',
-//         padding: theme.spacing(3),
-//         marginTop: theme.spacing(5)
-//     }),
-//     title: {
-//         marginTop: theme.spacing(3),
-//         color: theme.palette.protectedTitle
-//     }
-// }))
+var itemsStock = require('./itemList.json');
 
 
 
 export default function Basket(prop) {
     var total = 0;
 
+    //add 1
     const addOne = (item) => {
         item.amount++
 
     }
+    //removes 1 amount if the current amount is more than 1
     const removeOne = (item) => {
         1 < item.amount ? item.amount-- : 1
     }
 
-    const removeEntireItem = (updateItems, item, user) => {
-        
+    //removes entire item
+    const removeEntireItem = (item, user) => {
+
         const index = user.basket.indexOf(item);
         if (index > -1) {
             user.basket.splice(index, 1);
         }
     }
+    //updates user's basket
     const update = (updateItems, user) => {
         updateItems(user)
     }
 
+    const buy = (updateItems, user) => {
+
+        updateItems(user)
+
+        user.basket?.map((itemFromBasket) => {
+            itemsStock?.map((itemFromStock) => {
+                if (itemFromBasket.name == itemFromStock.name && itemFromBasket.amount <= itemFromStock.amount) {
+                    
+                    itemFromStock.amount = itemFromStock.amount - itemFromBasket
+                    removeEntireItem()
+                }
+            })
+        })
+
+        console.log("Basket cleared and items bought!")
+        updateItems(user)
+    }
 
     return (
 
@@ -62,17 +68,15 @@ export default function Basket(prop) {
 
                 if (item.amount !== 0) {
                     total += item.price * item.amount
-                    console.log("LOADING ITEM " + i);
-                    console.log(JSON.stringify(item));
                     return (
-                        
+
                         <ListItem>
                             <ListItemAvatar>
                                 <Avatar>
                                     <Person />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText id="basket" primary={item.name} secondary={"£" + item.price + " x " + item.amount + " = " + item.price * item.amount} />
+                            <ListItemText id="basket" primary={item.name} secondary={"£" + item.price + " x " + item.amount + " = " + Math.round((item.price * item.amount) * 100) / 100} />
 
                             <ListItemSecondaryAction>
 
@@ -84,30 +88,31 @@ export default function Basket(prop) {
                                         <Typography>-</Typography>
                                     </IconButton>
 
-                                    <IconButton onClick={() => removeEntireItem(prop.updateBasket, item, prop.user)}>
+                                    <IconButton onClick={() => removeEntireItem(item, prop.user)}>
                                         <Typography>Remove</Typography>
                                     </IconButton>
                                 </Link>
-                                
+
                             </ListItemSecondaryAction>
-                            
+
                         </ListItem>
-                        
+
                     )
                 }
             })
             }
 
 
-            Total: £ {total!=null || total!=NaN? Math.round(total*100)/100: 0}
+            Total: £ {total != null || total != NaN ? Math.round(total * 100) / 100 : 0}
             <IconButton onClick={() => update(prop.updateItems, prop.user)}>
                 <Typography>Save Changes</Typography>
             </IconButton>
 
             <Divider />
-            <IconButton onClick={() => update(prop.updateItems, prop.user)}>
+            <IconButton onClick={() => buy(prop.updateItems, prop.user)}>
                 <Typography>Buy</Typography>
             </IconButton>
+
         </List>
 
     )
