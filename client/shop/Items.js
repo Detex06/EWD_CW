@@ -81,7 +81,7 @@ export default function Items(prop) {
 
     const addItem = (item, user) => {
 
-        if (user != null || user != undefined || user != NaN) {
+        if (user.basket != null || user.basket != undefined || user.basket != NaN) {
             console.log("BASKET BEFORE " + JSON.stringify(user.basket))
             const index = user.basket.indexOf(item);
             if (index === -1) {
