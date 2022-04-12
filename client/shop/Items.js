@@ -25,9 +25,9 @@ export default function Items(prop) {
 
     console.log("!!!!!!!!!")
     console.log(jwt)
-    console.log(jwt.token)
+    console.log(auth.isAuthenticated().user)
 
-    if ( auth.isAuthenticated().user._id!=undefined|| jwt!=null || jwt!=undefined || jwt!=false) {
+    if (  jwt!=null || jwt!=undefined || jwt!=false) {
         useEffect(() => {
             const abortController = new AbortController()
             const signal = abortController.signal
@@ -49,7 +49,7 @@ export default function Items(prop) {
 
 
         }, [auth.isAuthenticated().user._id])
-    }
+    
 
     console.log(JSON.stringify(user))
 
@@ -70,6 +70,7 @@ export default function Items(prop) {
         })
     }
 
+}
 
 
 // if (setdirectToSignin) {
