@@ -23,9 +23,9 @@ export default function Items(prop) {
     //const [setdirectToSignin, setRedirectToSignin] = useState(false)
     var jwt = auth.isAuthenticated()
 
-    console.log("!!!!!!!!!")
-    console.log(auth.isAuthenticated())
-    console.log(auth.isAuthenticated().user)
+    // console.log("!!!!!!!!!")
+    // console.log(auth.isAuthenticated())
+    // console.log(auth.isAuthenticated().user)
 
     if (!jwt == null || !jwt == undefined || !jwt == false) {
         useEffect(() => {
@@ -83,7 +83,8 @@ export default function Items(prop) {
 
         if (user.basket != null || user.basket != undefined || user.basket != NaN) {
             console.log("BASKET BEFORE " + JSON.stringify(user.basket))
-            const index = user.basket.indexOf(item);
+            item.amount=1
+            const index = user.basket.indexOf(item.name);
             if (index === -1) {
                 user.basket = user.basket.concat(item);
             }
